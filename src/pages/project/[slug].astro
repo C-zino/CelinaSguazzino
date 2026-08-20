@@ -47,7 +47,9 @@ if (!project) {
                 <div class="lg:col-span-7">
 
                   <!-- META -->
-                  <div class="mb-6 flex flex-wrap items-center font-sans text-sm text-muted-foreground">
+                  <div
+                    class="mb-6 flex flex-wrap items-center font-sans text-sm text-muted-foreground"
+                  >
                     <span>{project.category}</span>
 
                     <span class="mx-3 text-muted-foreground/40">·</span>
@@ -63,17 +65,23 @@ if (!project) {
                   </div>
 
                   <!-- TITLE -->
-                  <h1 class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight text-primary">
+                  <h1
+                    class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight text-primary"
+                  >
                     {project.title}
                   </h1>
 
                   <!-- DESCRIPTION -->
-                  <p class="font-sans text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-2xl">
+                  <p
+                    class="font-sans text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl"
+                  >
                     {project.description}
                   </p>
 
                   <!-- LONG DESCRIPTION -->
-                  <p class="font-sans text-lg md:text-xl text-foreground leading-relaxed max-w-2xl whitespace-pre-line">
+                  <p
+                    class="font-sans text-lg md:text-xl text-foreground leading-relaxed max-w-2xl whitespace-pre-line"
+                  >
                     {project.longDescription}
                   </p>
 
@@ -134,7 +142,9 @@ if (!project) {
               <div>
 
                 <!-- META -->
-                <div class="mb-6 flex flex-wrap items-center font-sans text-sm text-muted-foreground">
+                <div
+                  class="mb-6 flex flex-wrap items-center font-sans text-sm text-muted-foreground"
+                >
                   <span>{project.category}</span>
 
                   <span class="mx-3 text-muted-foreground/40">·</span>
@@ -150,17 +160,23 @@ if (!project) {
                 </div>
 
                 <!-- TITLE -->
-                <h1 class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight text-primary">
+                <h1
+                  class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight text-primary"
+                >
                   {project.title}
                 </h1>
 
                 <!-- DESCRIPTION -->
-                <p class="font-sans text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-3xl">
+                <p
+                  class="font-sans text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-3xl"
+                >
                   {project.description}
                 </p>
 
                 <!-- LONG DESCRIPTION -->
-                <p class="font-sans text-lg md:text-xl text-foreground leading-relaxed max-w-4xl whitespace-pre-line">
+                <p
+                  class="font-sans text-md md:text-lg text-foreground leading-relaxed max-w-4xl whitespace-pre-line"
+                >
                   {project.longDescription}
                 </p>
 
@@ -192,14 +208,16 @@ if (!project) {
           !project.video && project.gallery?.length > 0 && (
             <div
               class:list={[
-                "max-w-5xl mx-auto",
+                "w-full",
                 project.link ? "mt-8" : "mt-20",
               ]}
               data-carousel
             >
 
               <!-- SLIDES -->
-              <div class="relative aspect-[16/10] w-full overflow-hidden rounded-md bg-white">
+              <div
+                class="relative aspect-[15/10] w-full overflow-hidden rounded-md bg-white"
+              >
 
                 {
                   project.gallery.map((image, index) => (
@@ -249,7 +267,9 @@ if (!project) {
                 </div>
 
                 <!-- ARROWS -->
-                <div class="flex gap-3 font-sans text-sm text-muted-foreground">
+                <div
+                  class="flex gap-3 font-sans text-sm text-muted-foreground"
+                >
                   <button
                     type="button"
                     data-prev

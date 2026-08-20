@@ -34,7 +34,32 @@ export const projects = [
     ],
     tags: ["Current role", "Webmaster", "Digital communication"],
   },
+{
+  slug: "crying-wine",
+  title: "Crying Wine",
+  category: "Digital Design / Web Development",
+  year: "2026",
+  description:
+    "A Multimedia Design exam project combining digital design, web development, social media, and Meta advertising to create a more cohesive digital presence for Crying Wine.",
+  longDescription:
+    "As part of my final Multimedia Design exam project, I worked with Crying Wine, a small Danish wine business that was experiencing a gap between the audience they wanted to reach and the audience their existing communication was actually attracting.\n\nOur goal was to create a more cohesive digital presence and develop a visual direction that could communicate the brand consistently across different platforms. We designed and developed a new website, created Instagram content, and developed Meta ads to bring the new visual direction and communication together across the brand's digital touchpoints.\n\nI worked across both digital design and web development throughout the project, including UI design, UX, responsive web development, and visual communication. The website was designed in Figma and then developed into a functional coded website, allowing me to combine my design skills with HTML, CSS, JavaScript, and web development.\n\nThe project allowed me to bring together several areas of my Multimedia Design education, including digital design, UX/UI, web development, social media, Meta advertising, and visual communication. Working as part of a group also allowed us to combine different skill sets while creating one cohesive digital experience.",
+  image: "/images/projects/cryingwine/cryingwine.png",
+  link: "https://www.figma.com/proto/LENOsfWynbeOlPpVSy4nJU/Design-2.0?node-id=6843-9303&viewport=6%2C161%2C0.63&t=Z5PH8VwZGYS5fQAB-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6843%3A9303&page-id=6843%3A8785",
 
+  gallery: [
+    "/images/projects/cryingwine/cryingwine.png",
+    "/images/projects/cryingwine/c1.png",
+    "/images/projects/cryingwine/c2.png",
+    "/images/projects/cryingwine/c3.png",
+    "/images/projects/cryingwine/c4.png",
+    "/images/projects/cryingwine/c5.png",
+    "/images/projects/cryingwine/c6.png",
+    "/images/projects/cryingwine/c7.png",
+    "/images/projects/cryingwine/c8.png",
+    "/images/projects/cryingwine/c9.png",
+  ],
+  tags: ["Exam project", "Digital design", "Web development",],
+},
   {
     slug: "petit-bateau",
     title: "Petit Bateau",
