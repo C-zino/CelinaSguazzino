@@ -134,7 +134,9 @@ const tabs = [
       {
         title: "Canva",
         meta: "Advanced",
-        points: ["For quick designs and visual content."],
+        points: [
+          "For quick designs and visual content.",
+        ],
       },
       {
         title: "Microsoft Office Suite",
@@ -153,27 +155,37 @@ const tabs = [
       {
         title: "Git/GitHub",
         meta: "Moderate",
-        points: ["For version control and collaboration on projects."],
+        points: [
+          "For version control and collaboration on projects.",
+        ],
       },
       {
         title: "Adobe Photoshop",
         meta: "Beginner",
-        points: ["For image editing."],
+        points: [
+          "For image editing.",
+        ],
       },
       {
         title: "Adobe After Effects",
         meta: "Beginner",
-        points: ["For animation and motion graphics."],
+        points: [
+          "For animation and motion graphics.",
+        ],
       },
       {
         title: "Adobe Premiere Pro",
         meta: "Beginner",
-        points: ["For video editing and storytelling."],
+        points: [
+          "For video editing and storytelling.",
+        ],
       },
       {
         title: "LottieFiles",
         meta: "Beginner",
-        points: ["For integrating animations into web projects."],
+        points: [
+          "For integrating animations into web projects.",
+        ],
       },
     ],
   },
@@ -196,8 +208,14 @@ const defaultTab = "uddannelse";
 
   <div class="relative">
 
-    <!-- Sticky CV content -->
-    <div class="sticky top-24 z-20">
+    <!--
+      DESKTOP:
+      Sticky CV with scroll-controlled tabs.
+
+      MOBILE/TABLET:
+      Normal scrolling with clickable tabs.
+    -->
+    <div class="lg:sticky lg:top-24 lg:z-20">
 
       <!-- TAB NAVIGATION -->
       <div
@@ -238,19 +256,22 @@ const defaultTab = "uddannelse";
 
       <!-- CONTENT -->
       <div
-        class="relative h-[calc(100vh-12rem)] min-h-[600px] overflow-hidden"
+        class="relative lg:h-[calc(100vh-12rem)] lg:min-h-[600px] lg:overflow-hidden"
       >
+
         {
           tabs.map((tab) => (
             <div
               data-tab-panel={tab.key}
               class:list={[
-                "tab-panel absolute inset-0 w-full opacity-0 transition-[opacity,transform] duration-500 ease-out will-change-[opacity,transform]",
+                "tab-panel w-full",
+                "lg:absolute lg:inset-0 lg:transition-[opacity,transform] lg:duration-500 lg:ease-out lg:will-change-[opacity,transform]",
                 tab.key === defaultTab
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-8 pointer-events-none",
+                  ? "block opacity-100 translate-x-0"
+                  : "hidden opacity-0 translate-x-8 pointer-events-none lg:block",
               ]}
             >
+
               <div
                 class:list={[
                   "grid gap-x-10 gap-y-12",
@@ -258,60 +279,76 @@ const defaultTab = "uddannelse";
                 ]}
               >
 
-                {tab.entries.map((entry) => (
-                  <div class="border-t border-black/10 pt-5 font-sans">
+                {
+                  tab.entries.map((entry) => (
+                    <div class="border-t border-black/10 pt-5 font-sans">
 
-                    <!-- Entry title -->
-                    <h4
-                      class="font-sans text-xl md:text-2xl font-medium text-foreground leading-tight"
-                    >
-                      {entry.title}
-
-                      {entry.meta && (
-                        <span
-                          class="block mt-1 font-sans text-sm font-normal text-muted-foreground"
-                        >
-                          {entry.meta}
-                        </span>
-                      )}
-                    </h4>
-
-                    <!-- Subtitle -->
-                    {entry.subtitle && (
-                      <p
-                        class="mt-1 font-sans text-base text-foreground/80"
+                      <!-- Entry title -->
+                      <h4
+                        class="font-sans text-xl md:text-2xl font-medium text-foreground leading-tight"
                       >
-                        {entry.subtitle}
-                      </p>
-                    )}
+                        {entry.title}
 
-                    <!-- Description -->
-                    <ul class="mt-4 space-y-2 font-sans">
-                      {entry.points.map((point) => (
-                        <li
-                          class="relative pl-4 font-sans text-sm md:text-base font-normal leading-relaxed text-muted-foreground"
-                        >
+                        {entry.meta && (
                           <span
-                            class="absolute left-0 top-[0.6em] h-1.5 w-1.5 bg-primary"
-                          ></span>
+                            class="block mt-1 font-sans text-sm font-normal text-muted-foreground"
+                          >
+                            {entry.meta}
+                          </span>
+                        )}
+                      </h4>
 
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
+                      <!-- Subtitle -->
+                      {entry.subtitle && (
+                        <p
+                          class="mt-1 font-sans text-base text-foreground/80"
+                        >
+                          {entry.subtitle}
+                        </p>
+                      )}
 
-                  </div>
-                ))}
+                      <!-- Description -->
+                      <ul class="mt-4 space-y-2 font-sans">
+
+                        {
+                          entry.points.map((point) => (
+                            <li
+                              class="relative pl-4 font-sans text-sm md:text-base font-normal leading-relaxed text-muted-foreground"
+                            >
+                              <span
+                                class="absolute left-0 top-[0.6em] h-1.5 w-1.5 bg-primary"
+                              ></span>
+
+                              {point}
+                            </li>
+                          ))
+                        }
+
+                      </ul>
+
+                    </div>
+                  ))
+                }
 
               </div>
             </div>
           ))
         }
+
       </div>
     </div>
 
-    <!-- SCROLL TRACK -->
-    <div data-scroll-track class="relative">
+    <!--
+      DESKTOP ONLY SCROLL TRACK
+
+      Hidden completely on smaller screens.
+      This is what makes the automatic tab
+      switching possible on desktop.
+    -->
+    <div
+      data-scroll-track
+      class="relative hidden lg:block"
+    >
 
       {
         tabs.map((tab, index) => (
@@ -325,31 +362,64 @@ const defaultTab = "uddannelse";
       <div class="h-[40vh]"></div>
 
     </div>
+
   </div>
 </section>
 
 <script>
   const initialTab = "uddannelse";
 
+  /*
+   * Typed DOM elements
+   *
+   * These types prevent TypeScript errors such as:
+   * - Property 'dataset' does not exist on type 'Element'
+   * - Property 'style' does not exist on type 'Element'
+   * - Parameter implicitly has an 'any' type
+   */
+
   const tabButtons =
-    document.querySelectorAll("[data-tab-trigger]");
+    document.querySelectorAll<HTMLButtonElement>(
+      "[data-tab-trigger]"
+    );
 
   const tabPanels =
-    document.querySelectorAll("[data-tab-panel]");
+    document.querySelectorAll<HTMLElement>(
+      "[data-tab-panel]"
+    );
 
   const tabSentinels =
-    document.querySelectorAll("[data-tab-sentinel]");
+    document.querySelectorAll<HTMLElement>(
+      "[data-tab-sentinel]"
+    );
 
   const tabLine =
-    document.querySelector("[data-tab-line]");
+    document.querySelector<HTMLElement>(
+      "[data-tab-line]"
+    );
+
+  /*
+   * Check if we are on desktop.
+   *
+   * Desktop = 1024px and above.
+   */
+  const isDesktop = (): boolean => {
+    return window.matchMedia(
+      "(min-width: 1024px)"
+    ).matches;
+  };
 
   /*
    * Update active underline
    */
-  const updateTabLine = (button) => {
+  const updateTabLine = (
+    button: HTMLButtonElement | null
+  ): void => {
+
     if (!tabLine || !button) return;
 
-    tabLine.style.width = `${button.offsetWidth}px`;
+    tabLine.style.width =
+      `${button.offsetWidth}px`;
 
     tabLine.style.transform =
       `translateX(${button.offsetLeft}px)`;
@@ -359,9 +429,11 @@ const defaultTab = "uddannelse";
    * Change active tab
    */
   const setActiveTab = (
-    key,
-    options = {},
-  ) => {
+    key: string,
+    options: {
+      scroll?: boolean;
+    } = {}
+  ): void => {
 
     const activeIndex =
       Array.from(tabButtons).findIndex(
@@ -370,7 +442,7 @@ const defaultTab = "uddannelse";
       );
 
     /*
-     * Buttons
+     * Update buttons
      */
     tabButtons.forEach((button) => {
 
@@ -400,17 +472,17 @@ const defaultTab = "uddannelse";
     });
 
     /*
-     * Underline
+     * Update underline
      */
     const activeButton =
-      document.querySelector(
+      document.querySelector<HTMLButtonElement>(
         `[data-tab-trigger="${key}"]`
       );
 
     updateTabLine(activeButton);
 
     /*
-     * Panels
+     * Update panels
      */
     tabPanels.forEach((panel) => {
 
@@ -419,6 +491,39 @@ const defaultTab = "uddannelse";
 
       const isActive =
         panel.dataset.tabPanel === key;
+
+      /*
+       * MOBILE / TABLET
+       *
+       * Only the active panel exists
+       * in the normal document flow.
+       */
+      if (!isDesktop()) {
+
+        panel.classList.toggle(
+          "hidden",
+          !isActive
+        );
+
+        panel.classList.remove(
+          "opacity-0",
+          "opacity-100",
+          "translate-x-0",
+          "translate-x-8",
+          "-translate-x-8",
+          "pointer-events-none",
+          "pointer-events-auto"
+        );
+
+        return;
+      }
+
+      /*
+       * DESKTOP
+       *
+       * Keep the original fade/slide behavior.
+       */
+      panel.classList.remove("hidden");
 
       panel.classList.toggle(
         "opacity-100",
@@ -460,9 +565,16 @@ const defaultTab = "uddannelse";
     });
 
     /*
-     * Keep clicked tab visible
+     * Keep clicked tab visible.
+     *
+     * This only scrolls the tab navigation
+     * horizontally. It does not move the page
+     * on mobile.
      */
-    if (options.scroll && activeButton) {
+    if (
+      options.scroll &&
+      activeButton
+    ) {
 
       activeButton.scrollIntoView({
         behavior: "smooth",
@@ -478,41 +590,92 @@ const defaultTab = "uddannelse";
    */
   tabButtons.forEach((button) => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+      "click",
+      () => {
 
-      const key =
-        button.dataset.tabTrigger;
+        const key =
+          button.dataset.tabTrigger;
 
-      if (!key) return;
+        if (!key) return;
 
-      const sentinel =
-        document.querySelector(
-          `[data-tab-sentinel="${key}"]`
-        );
+        /*
+         * DESKTOP ONLY
+         *
+         * Clicking a tab moves the page
+         * to the corresponding scroll section.
+         */
+        if (isDesktop()) {
 
-      if (sentinel) {
+          const sentinel =
+            document.querySelector<HTMLElement>(
+              `[data-tab-sentinel="${key}"]`
+            );
 
-        sentinel.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
+          if (sentinel) {
+
+            sentinel.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+
+          }
+
+        }
+
+        /*
+         * MOBILE
+         *
+         * Simply change the active content.
+         */
+        setActiveTab(key, {
+          scroll: true,
         });
 
       }
-
-      setActiveTab(key, {
-        scroll: true,
-      });
-
-    });
+    );
 
   });
 
   /*
-   * Scroll detection
+   * Intersection Observer
+   *
+   * This is ONLY used on desktop.
+   *
+   * Mobile/tablet scrolling will NOT
+   * change the active tab.
    */
-  if ("IntersectionObserver" in window) {
+  let observer:
+    IntersectionObserver | null = null;
 
-    const observer =
+  const setupScrollObserver = (): void => {
+
+    /*
+     * Remove old observer
+     */
+    if (observer) {
+
+      observer.disconnect();
+
+      observer = null;
+
+    }
+
+    /*
+     * No observer on mobile/tablet
+     */
+    if (!isDesktop()) return;
+
+    /*
+     * Browser support
+     */
+    if (
+      !("IntersectionObserver" in window)
+    ) {
+      return;
+    }
+
+    observer =
       new IntersectionObserver(
         (entries) => {
 
@@ -529,45 +692,67 @@ const defaultTab = "uddannelse";
               )[0];
 
           const visibleTarget =
-            visibleEntry?.target;
+            visibleEntry?.target as
+              | HTMLElement
+              | undefined;
 
           if (
             visibleTarget?.dataset
               ?.tabSentinel
           ) {
+
             setActiveTab(
               visibleTarget.dataset.tabSentinel
             );
+
           }
 
         },
         {
           rootMargin:
             "-35% 0px -45% 0px",
+
           threshold: 0.1,
         }
       );
 
+    /*
+     * Observe desktop scroll sections
+     */
     tabSentinels.forEach(
-      (sentinel) =>
-        observer.observe(sentinel)
+      (sentinel) => {
+
+        observer?.observe(sentinel);
+
+      }
     );
 
-  }
+  };
 
   /*
    * Resize
+   *
+   * This makes sure that switching between
+   * mobile and desktop doesn't leave the
+   * panels in the wrong state.
    */
   window.addEventListener(
     "resize",
     () => {
 
+      setupScrollObserver();
+
       const activeButton =
-        document.querySelector(
+        document.querySelector<HTMLButtonElement>(
           '[aria-selected="true"]'
         );
 
       updateTabLine(activeButton);
+
+      setActiveTab(
+        activeButton?.dataset.tabTrigger ||
+          initialTab
+      );
 
     }
   );
@@ -576,4 +761,9 @@ const defaultTab = "uddannelse";
    * Initial state
    */
   setActiveTab(initialTab);
+
+  /*
+   * Start desktop scroll behavior
+   */
+  setupScrollObserver();
 </script>
