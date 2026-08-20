@@ -1,0 +1,30 @@
+---
+const links = [
+  { label: "about", href: "/#about" },
+  { label: "projects", href: "/#projects" },
+  { label: "contact", href: "/#contact" },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm">
+  <div class="max-w-7xl mx-auto px-8 py-6">
+    <div class="flex items-center justify-between">
+      <a
+        href="/"
+        class="font-display text-2xl md:text-3xl text-foreground hover:text-primary transition-colors tracking-tight"
+      >
+        celina sguazzino
+      </a>
+
+      <div class="flex items-center gap-8 md:gap-12 text-sm tracking-wide">
+        {
+          links.map((link) => (
+            <a href={link.href} class="nav-link">
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</nav>

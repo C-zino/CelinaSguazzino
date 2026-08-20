@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/forms';
+@import "tailwindcss-animated";
+@import "tailwindcss-intersect";
+@plugin 'daisyui';
+
+@font-face {
+  font-family: "ArchivoBlack";
+  src:
+    url("/fonts/archivoblack/ArchivoBlack-Regular.woff2") format("woff2"),
+    url("/fonts/archivoblack/ArchivoBlack-Regular.woff") format("woff"),
+    url("/fonts/archivoblack/ArchivoBlack-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Jost";
+  src:
+    url("/fonts/jost/Jost-Regular.woff2") format("woff2"),
+    url("/fonts/jost/Jost-Regular.woff") format("woff"),
+    url("/fonts/jost/Jost-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "JostBold";
+  src:
+    url("/fonts/jost/Jost-Bold.woff2") format("woff2"),
+    url("/fonts/jost/Jost-Bold.woff") format("woff"),
+    url("/fonts/jost/Jost-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "JostLight";
+  src:
+    url("/fonts/jost/Jost-Light.woff2") format("woff2"),
+    url("/fonts/jost/Jost-Light.woff") format("woff"),
+    url("/fonts/jost/Jost-Light.ttf") format("truetype");
+  font-weight: light;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "theballpoint";
+  src:
+    url("/fonts/theballpoint/theballpoint.woff2") format("woff2"),
+    url("/fonts/theballpoint/theballpoint.woff") format("woff"),
+    url("/fonts/theballpoint/theballpoint.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  /* Gap */
+  /* Gap mobile */
+  --gapmobile-xxs: 4px;
+  --gapmobile-xs: 8px;
+  --gapmobile-s: 16px;
+  --gapmobile-m: 24px;
+  --gapmobile-l: 40px;
+  --gapmobile-xl: 60px;
+  --gapmobile-2xl: 90px;
+  --gapmobile-3xl: 110px;
+  --gapmobile-4xl: 120px;
+
+  /* Gap web*/
+  --gapweb-xxs: 6px;
+  --gapweb-xs: 12px;
+  --gapweb-s: 20px;
+  --gapweb-m: 32px;
+  --gapweb-l: 50px;
+  --gapweb-xl: 80px;
+  --gapweb-2xl: 110px;
+  --gapweb-3xl: 130px;
+  --gapweb-4xl: 150px;
+
+  /* radius */
+  --radius-xs: 4px;
+  --radius-s: 6px;
+  --radius-m: 8px;
+  --radius-l: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Border */
+  --border-xs: 1px;
+  --border-s: 2px;
+  --border-m: 3px;
+  --border-l: 4px;
+
+  /* Margin */
+  --margin-mobile: 20px;
+  --margin-tablet: 40px;
+  --margin-web: 100px;
+}
+
+@theme {
+  /*Typografi */
+  --font-Heading: "ArchivoBlack";
+  --font-Text: "Jost";
+  --font-TextBold: "JostBold";
+  --font-TextLight: "JostLight";
+  --font-Caption: "theballpoint";
+}
+
+@plugin "daisyui/theme" {
+  name: "cryingwine";
+  default: false;
+  prefersdark: false;
+  color-scheme: "cryingwine";
+
+  /* Beige baggrund */
+  --color-base-100: #fffef7;
+  --color-base-200: #fffef7;
+  --color-base-300: #fffef7;
+
+  /* Sort tekst */
+  --color-base-content: #070707;
+
+  /* Mørkeblå + hvid tekst */
+  --color-primary: #001089;
+  --color-primary-content: #ffffff;
+
+  /* Gul + sort tekst*/
+  --color-secondary: #f8ff7e;
+  --color-secondary-content: #070707;
+
+  /* Cobolt blå + hvid tekst */
+  --color-accent: #0024ef;
+  --color-accent-content: #ffffff;
+
+  /* Hvid + mørkeblå tekst */
+  --color-neutral: #ffffff;
+  --color-neutral-content: #001089;
+
+  /* Lyseblå + sort tekst */
+  --color-info: #c9cbff;
+  --color-info-content: #070707;
+
+  /* Grøn + mørkegrøn tekst */
+  --color-success: #00d390;
+  --color-success-content: #004c39;
+
+  /* Orange + mørkeorange tekst */
+  --color-warning: #fcb700;
+  --color-warning-content: #793205;
+
+  /* Rød + mørkerød tekst */
+  --color-error: #ff627d;
+  --color-error-content: #4d0218;
+
+  /* Mørkeblå + hvid tekst */
+  --color-surfacedarker: #00022c;
+  --color-surfacedarker-content: #ffffff;
+
+  /* Daisy deffinerede variabler */
+  --radius-selector: 0.5rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@layer base {
+}
+
+@layer components {
+}
+
+@layer utilities {
+}

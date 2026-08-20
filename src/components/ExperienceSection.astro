@@ -1,0 +1,53 @@
+---
+const experiences = [
+  {
+    company: "Verve",
+    role: "Design Director",
+    period: "2024-Present",
+    link: "/verve",
+  },
+  {
+    company: "Spotify",
+    role: "Staff Designer",
+    period: "2020-2024",
+    link: "/spotify",
+  },
+  {
+    company: "Figma",
+    role: "Senior Designer",
+    period: "2016-2020",
+    link: "/figma",
+  },
+  {
+    company: "Notion",
+    role: "Senior Designer",
+    period: "2012-2016",
+    link: "/notion",
+  },
+];
+---
+
+<section class="section-container">
+  <h3 class="section-header">experience</h3>
+  <div class="flex flex-col">
+    {
+      experiences.map((item) => (
+        <a href={item.link ?? "#"} class="experience-card group block">
+          <div class="flex-1 flex items-center justify-between">
+            <div class="flex flex-col gap-1">
+              <span class="font-serif text-2xl md:text-3xl text-foreground">
+                {item.company}
+              </span>
+              <div class="flex items-center gap-3 text-sm">
+                <span class="text-muted-foreground">{item.period}</span>
+                <span class="text-muted-foreground/40">·</span>
+                <span class="text-muted-foreground">{item.role}</span>
+              </div>
+            </div>
+            {item.link && <span class="text-primary">↗</span>}
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,579 @@
+---
+const tabs = [
+  {
+    key: "uddannelse",
+    label: "Education",
+    entries: [
+      {
+        title: "Magasin",
+        meta: "2020 - 2022",
+        subtitle: "Apprenticeship",
+        points: [
+          "Completed apprenticeship focused on sales, service, and customer experience.",
+          "Experience with advice-giving and need assessment in direct customer contact.",
+          "Strengthened understanding of retail, sales, and commercial thinking.",
+          "Experience with product presentation, visual merchandising, and brand identity.",
+          "Developed strong communication, teamwork, and problem-solving skills.",
+        ],
+      },
+      {
+        title: "Niels Brock HHX",
+        meta: "2015 - 2018",
+        subtitle: "Marketing",
+        points: [
+          "Understanding of target audiences and branding.",
+          "Strategic thinking and communication.",
+          "Experience with project management and teamwork.",
+          "Business insight for value-creating design.",
+        ],
+      },
+      {
+        title: "Erhvervsakademi København",
+        meta: "2024 - 2026",
+        subtitle: "Multimedia Design",
+        points: [
+          "Skills in UI/UX design and prototyping.",
+          "Experience with web development (HTML, CSS, JavaScript).",
+          "Animation and video editing with After Effects and Premiere Pro.",
+          "Work with user-centered design and research.",
+          "Focus on creative problem-solving and visual communication.",
+        ],
+      },
+      {
+        title: "Erhvervsakademi København",
+        meta: "2026 - now",
+        subtitle: "Digital Concept Development",
+        points: [
+          "Development of digital concepts and solutions from idea to finished concept.",
+          "Focus on concept development, user experiences, and digital trends.",
+          "Work with strategy, research, and user-centered design processes.",
+          "Development and communication of creative concepts across digital platforms.",
+          "Focus on innovation, creative problem-solving, and visual communication.",
+        ],
+      },
+    ],
+  },
+
+  {
+    key: "erfaring",
+    label: "Experience",
+    entries: [
+      {
+        title: "Magasin du Nord",
+        meta: "2020 - 2022",
+        subtitle: "Sales Apprentice",
+        points: [
+          "Customer-oriented service and needs assessment.",
+          "Experience with presentation and visual merchandising.",
+          "Handling busy environments and deadlines.",
+          "Teamwork and effective communication.",
+          "Focus on quality and attention to detail.",
+        ],
+      },
+      {
+        title: "Dansk Kirurgisk Selskab",
+        meta: "2025 - now",
+        subtitle: "Webmaster",
+        points: [
+          "Experience with web development in Wix and JavaScript.",
+          "Skills in Figma.",
+          "Independent working style with responsibility for planning and managing own tasks and time.",
+          "Flexible adaptation to deadlines and ongoing communication with partners.",
+        ],
+      },
+      {
+        title: "REFYNE",
+        meta: "Jan 2026 - Apr 2026",
+        subtitle: "Internship",
+        points: [
+          "Experience with Paid Social (Meta Ads), campaign setup, and advertising.",
+          "Creative development in Canva and application of UX/UI principles from Figma.",
+          "Creation of still images, carousels, and video.",
+          "Independent work style with focus on optimization and collaboration.",
+        ],
+      },
+      {
+        title: "nordic hair glow",
+        meta: "May 2026 - now",
+        subtitle: "Multimedia Designer",
+        points: [
+          "Graphic design for social media, web, and marketing materials.",
+          "Marketing and visual communication across channels.",
+          "Everything from content creation to layout, brand identity, and campaign materials.",
+          "Close collaboration on all visual and digital work in a small company.",
+        ],
+      },
+    ],
+  },
+
+  {
+    key: "programmer",
+    label: "Tools",
+    entries: [
+      {
+        title: "Figma",
+        meta: "Advanced",
+        points: [
+          "For prototyping, user interfaces, moodboards, design systems, and more.",
+        ],
+      },
+      {
+        title: "Visual Studio Code",
+        meta: "Advanced",
+        points: [
+          "For coding in HTML, CSS, JavaScript, and Astro + Tailwind CSS.",
+        ],
+      },
+      {
+        title: "Adobe Illustrator",
+        meta: "Advanced",
+        points: [
+          "For illustrations, icons, logo design, and graphic elements for print, web, and animation.",
+        ],
+      },
+      {
+        title: "Canva",
+        meta: "Advanced",
+        points: ["For quick designs and visual content."],
+      },
+      {
+        title: "Microsoft Office Suite",
+        meta: "Advanced",
+        points: [
+          "For efficient task handling and organization with Word, PowerPoint, and Excel.",
+        ],
+      },
+      {
+        title: "Wix",
+        meta: "Advanced",
+        points: [
+          "For building and designing websites in a user-friendly drag-and-drop system.",
+        ],
+      },
+      {
+        title: "Git/GitHub",
+        meta: "Moderate",
+        points: ["For version control and collaboration on projects."],
+      },
+      {
+        title: "Adobe Photoshop",
+        meta: "Beginner",
+        points: ["For image editing."],
+      },
+      {
+        title: "Adobe After Effects",
+        meta: "Beginner",
+        points: ["For animation and motion graphics."],
+      },
+      {
+        title: "Adobe Premiere Pro",
+        meta: "Beginner",
+        points: ["For video editing and storytelling."],
+      },
+      {
+        title: "LottieFiles",
+        meta: "Beginner",
+        points: ["For integrating animations into web projects."],
+      },
+    ],
+  },
+];
+
+const defaultTab = "uddannelse";
+---
+
+<section
+  id="resume"
+  class:list={[
+    "section-container",
+    "lg:!max-w-[1200px]",
+    "lg:!mx-auto",
+    "!pt-20",
+    "relative",
+  ]}
+>
+  <h3 class="section-header">CV</h3>
+
+  <div class="relative">
+
+    <!-- Sticky CV content -->
+    <div class="sticky top-24 z-20">
+
+      <!-- TAB NAVIGATION -->
+      <div
+        data-tablist
+        role="tablist"
+        aria-label="CV categories"
+        class="mb-12 overflow-x-auto whitespace-nowrap border-b border-black/10 bg-background/90 pb-4 pt-2 backdrop-blur-sm"
+      >
+        <div class="relative flex items-center gap-3 md:gap-6">
+
+          {
+            tabs.map((tab) => (
+              <button
+                type="button"
+                role="tab"
+                aria-selected={tab.key === defaultTab}
+                data-tab-trigger={tab.key}
+                class:list={[
+                  "relative shrink-0 font-display text-3xl md:text-5xl tracking-wide uppercase transition-colors",
+                  tab.key === defaultTab
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground",
+                ]}
+              >
+                {tab.label}
+              </button>
+            ))
+          }
+
+          <!-- Active tab line -->
+          <span
+            data-tab-line
+            class="pointer-events-none absolute bottom-0 left-0 h-[2px] bg-primary transition-all duration-300 ease-out"
+          ></span>
+
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div
+        class="relative h-[calc(100vh-12rem)] min-h-[600px] overflow-hidden"
+      >
+        {
+          tabs.map((tab) => (
+            <div
+              data-tab-panel={tab.key}
+              class:list={[
+                "tab-panel absolute inset-0 w-full opacity-0 transition-[opacity,transform] duration-500 ease-out will-change-[opacity,transform]",
+                tab.key === defaultTab
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 translate-x-8 pointer-events-none",
+              ]}
+            >
+              <div
+                class:list={[
+                  "grid gap-x-10 gap-y-12",
+                  "grid-cols-1 md:grid-cols-2 lg:grid-cols-4",
+                ]}
+              >
+
+                {tab.entries.map((entry) => (
+                  <div class="border-t border-black/10 pt-5 font-sans">
+
+                    <!-- Entry title -->
+                    <h4
+                      class="font-sans text-xl md:text-2xl font-medium text-foreground leading-tight"
+                    >
+                      {entry.title}
+
+                      {entry.meta && (
+                        <span
+                          class="block mt-1 font-sans text-sm font-normal text-muted-foreground"
+                        >
+                          {entry.meta}
+                        </span>
+                      )}
+                    </h4>
+
+                    <!-- Subtitle -->
+                    {entry.subtitle && (
+                      <p
+                        class="mt-1 font-sans text-base text-foreground/80"
+                      >
+                        {entry.subtitle}
+                      </p>
+                    )}
+
+                    <!-- Description -->
+                    <ul class="mt-4 space-y-2 font-sans">
+                      {entry.points.map((point) => (
+                        <li
+                          class="relative pl-4 font-sans text-sm md:text-base font-normal leading-relaxed text-muted-foreground"
+                        >
+                          <span
+                            class="absolute left-0 top-[0.6em] h-1.5 w-1.5 bg-primary"
+                          ></span>
+
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+
+                  </div>
+                ))}
+
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- SCROLL TRACK -->
+    <div data-scroll-track class="relative">
+
+      {
+        tabs.map((tab, index) => (
+          <div
+            data-tab-sentinel={tab.key}
+            class={index === 0 ? "h-[5vh]" : "h-[50vh]"}
+          />
+        ))
+      }
+
+      <div class="h-[40vh]"></div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const initialTab = "uddannelse";
+
+  const tabButtons =
+    document.querySelectorAll("[data-tab-trigger]");
+
+  const tabPanels =
+    document.querySelectorAll("[data-tab-panel]");
+
+  const tabSentinels =
+    document.querySelectorAll("[data-tab-sentinel]");
+
+  const tabLine =
+    document.querySelector("[data-tab-line]");
+
+  /*
+   * Update active underline
+   */
+  const updateTabLine = (button) => {
+    if (!tabLine || !button) return;
+
+    tabLine.style.width = `${button.offsetWidth}px`;
+
+    tabLine.style.transform =
+      `translateX(${button.offsetLeft}px)`;
+  };
+
+  /*
+   * Change active tab
+   */
+  const setActiveTab = (
+    key,
+    options = {},
+  ) => {
+
+    const activeIndex =
+      Array.from(tabButtons).findIndex(
+        (button) =>
+          button.dataset.tabTrigger === key
+      );
+
+    /*
+     * Buttons
+     */
+    tabButtons.forEach((button) => {
+
+      const isActive =
+        button.dataset.tabTrigger === key;
+
+      button.setAttribute(
+        "aria-selected",
+        String(isActive)
+      );
+
+      button.classList.toggle(
+        "text-foreground",
+        isActive
+      );
+
+      button.classList.toggle(
+        "text-muted-foreground",
+        !isActive
+      );
+
+      button.classList.toggle(
+        "hover:text-foreground",
+        !isActive
+      );
+
+    });
+
+    /*
+     * Underline
+     */
+    const activeButton =
+      document.querySelector(
+        `[data-tab-trigger="${key}"]`
+      );
+
+    updateTabLine(activeButton);
+
+    /*
+     * Panels
+     */
+    tabPanels.forEach((panel) => {
+
+      const panelIndex =
+        Array.from(tabPanels).indexOf(panel);
+
+      const isActive =
+        panel.dataset.tabPanel === key;
+
+      panel.classList.toggle(
+        "opacity-100",
+        isActive
+      );
+
+      panel.classList.toggle(
+        "opacity-0",
+        !isActive
+      );
+
+      panel.classList.toggle(
+        "pointer-events-auto",
+        isActive
+      );
+
+      panel.classList.toggle(
+        "pointer-events-none",
+        !isActive
+      );
+
+      panel.classList.toggle(
+        "translate-x-0",
+        isActive
+      );
+
+      panel.classList.toggle(
+        "-translate-x-8",
+        !isActive &&
+          panelIndex < activeIndex
+      );
+
+      panel.classList.toggle(
+        "translate-x-8",
+        !isActive &&
+          panelIndex > activeIndex
+      );
+
+    });
+
+    /*
+     * Keep clicked tab visible
+     */
+    if (options.scroll && activeButton) {
+
+      activeButton.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+
+    }
+  };
+
+  /*
+   * Tab clicks
+   */
+  tabButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+      const key =
+        button.dataset.tabTrigger;
+
+      if (!key) return;
+
+      const sentinel =
+        document.querySelector(
+          `[data-tab-sentinel="${key}"]`
+        );
+
+      if (sentinel) {
+
+        sentinel.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+
+      }
+
+      setActiveTab(key, {
+        scroll: true,
+      });
+
+    });
+
+  });
+
+  /*
+   * Scroll detection
+   */
+  if ("IntersectionObserver" in window) {
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+
+          const visibleEntry =
+            entries
+              .filter(
+                (entry) =>
+                  entry.isIntersecting
+              )
+              .sort(
+                (a, b) =>
+                  b.intersectionRatio -
+                  a.intersectionRatio
+              )[0];
+
+          const visibleTarget =
+            visibleEntry?.target;
+
+          if (
+            visibleTarget?.dataset
+              ?.tabSentinel
+          ) {
+            setActiveTab(
+              visibleTarget.dataset.tabSentinel
+            );
+          }
+
+        },
+        {
+          rootMargin:
+            "-35% 0px -45% 0px",
+          threshold: 0.1,
+        }
+      );
+
+    tabSentinels.forEach(
+      (sentinel) =>
+        observer.observe(sentinel)
+    );
+
+  }
+
+  /*
+   * Resize
+   */
+  window.addEventListener(
+    "resize",
+    () => {
+
+      const activeButton =
+        document.querySelector(
+          '[aria-selected="true"]'
+        );
+
+      updateTabLine(activeButton);
+
+    }
+  );
+
+  /*
+   * Initial state
+   */
+  setActiveTab(initialTab);
+</script>

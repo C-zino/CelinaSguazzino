@@ -1,0 +1,74 @@
+---
+const portraitUrl = "/images/about/about-pp.png";
+const poolUrl = "/images/about/about-pool.jpg";
+const yellowUrl = "/images/about/about-yellow.jpg";
+const aboutUrl = "/images/about/about-italy.jpg";
+const galleryUrl = "/images/about/italy-about.jpg";
+---
+
+<section id="about" class="section-container">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+    <div class="grid grid-cols-2 gap-4">
+      <img
+        src={yellowUrl}
+        alt="Butter yellow outfit street photography"
+        loading="lazy"
+        class="w-full h-auto object-cover aspect-[4/5]"
+      />
+      <img
+        src={poolUrl}
+        alt="Celina by the pool, shot on film-like summer light"
+        loading="lazy"
+        class="w-full h-auto object-cover aspect-[4/5] mt-12"
+      />
+      <img
+        src={portraitUrl}
+        alt="Celina Sguazzino portrait"
+        loading="lazy"
+        class="w-full h-auto object-cover aspect-[4/5] col-span-2 mt-3 mb-3"
+      />
+      <img
+        src={aboutUrl}
+        alt="Celina in a portrait-style editorial image"
+        loading="lazy"
+        class="w-full h-auto object-cover aspect-[4/5]"
+      />
+      <img
+        src={galleryUrl}
+        alt="Additional portrait photography of Celina"
+        loading="lazy"
+        class="w-full h-auto object-cover aspect-[4/5] mt-12"
+      />
+    </div>
+
+    <div class="lg:sticky lg:top-24">
+      <h3 class="section-header" data-i18n="about.heading">about me</h3>
+      <p
+        class="font-sans text-2xl md:text-3xl lg:text-4xl leading-snug text-foreground mb-8"
+        data-i18n="about.intro"
+      >
+        I’m Celina, <br /> a multimedia designer based in Kongens Lyngby, Denmark.
+      </p>
+      <p
+        class="text-base md:text-lg text-muted-foreground leading-relaxed mb-6"
+        data-i18n="about.paragraphOne"
+      >
+        I work across digital design, UX/UI, branding, graphic design,
+        photography, and web development. I enjoy bringing ideas to life through
+        a mix of visual storytelling, creative thinking, and technology. Whether
+        I’m designing a visual identity, building a digital experience, creating
+        imagery, or writing code, I’m always looking for the balance between
+        creativity, functionality, and a strong visual expression.
+      </p>
+      <p
+        class="text-base md:text-lg text-muted-foreground leading-relaxed"
+        data-i18n="about.paragraphTwo"
+      >
+        I’m curious, detail-oriented, and always eager to learn, experiment, and
+        take on new creative challenges. As I continue developing my skills, I’m
+        looking forward to collaborating with people and brands that value
+        thoughtful and engaging design.
+      </p>
+    </div>
+  </div>
+</section>

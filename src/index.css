@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+@import "tailwindcss";
+
+/* =========================================================
+   THEME
+   ========================================================= */
+
+@theme {
+  /* Colors */
+
+  --color-background: hsl(47 52% 93%);
+  --color-foreground: hsl(220 50% 10%);
+
+  --color-primary: hsl(221 83% 53%);
+  --color-primary-foreground: hsl(47 52% 93%);
+
+  --color-secondary: hsl(45 90% 77%);
+  --color-secondary-foreground: hsl(220 50% 10%);
+
+  --color-muted: hsl(45 30% 85%);
+  --color-muted-foreground: hsl(220 20% 35%);
+
+  --color-accent: hsl(45 90% 77%);
+  --color-accent-foreground: hsl(220 50% 10%);
+
+  /* Fonts */
+
+  --font-sans:
+    "DM Sans",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  --font-display:
+    "Bebas Neue",
+    Impact,
+    Haettenschweiler,
+    "Arial Narrow Bold",
+    sans-serif;
+}
+
+
+/* =========================================================
+   CUSTOM VARIABLES
+   ========================================================= */
+
+:root {
+  /* Links */
+
+  --link-blue: 221 83% 53%;
+  --link-blue-hover: 221 83% 43%;
+
+  /* Very subtle borders */
+
+  --border-light: 220 50% 10% / 0.10;
+
+  --border-lighter: 220 50% 10% / 0.06;
+
+  /* Hover surfaces */
+
+  --surface-hover: 220 50% 10% / 0.03;
+
+  --surface-active: 220 50% 10% / 0.05;
+}
+
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  background-color: hsl(47 52% 93%);
+  color: hsl(220 50% 10%);
+
+  font-family:
+    "DM Sans",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* =========================================================
+   COMPONENTS
+   ========================================================= */
+
+@layer components {
+
+  /* -------------------------------------------------------
+     Section heading
+     ------------------------------------------------------- */
+
+  .section-header {
+    @apply mb-20 text-sm font-medium tracking-widest text-primary lowercase;
+  }
+
+
+  /* -------------------------------------------------------
+     Main section container
+     ------------------------------------------------------- */
+
+  .section-container {
+    @apply mx-auto max-w-5xl px-8 py-32;
+  }
+
+
+  /* -------------------------------------------------------
+     Large body text
+     ------------------------------------------------------- */
+
+  .body-text {
+    @apply text-[22px] leading-relaxed text-foreground md:text-[28px];
+  }
+
+
+  /* -------------------------------------------------------
+     Emphasised body text
+     ------------------------------------------------------- */
+
+  .body-emphasis {
+    @apply font-medium text-primary;
+  }
+
+
+  /* -------------------------------------------------------
+     Experience cards
+     ------------------------------------------------------- */
+
+  .experience-card {
+    @apply flex cursor-pointer items-center gap-6 px-4 py-4 transition-all duration-200;
+  }
+
+  .experience-card:hover {
+    background-color: hsl(var(--surface-active));
+  }
+
+
+  /* -------------------------------------------------------
+     Experience card icon
+     ------------------------------------------------------- */
+
+  .experience-card-icon {
+    @apply h-10 w-10 flex-shrink-0 overflow-hidden rounded;
+  }
+
+
+  /* -------------------------------------------------------
+     External links
+     ------------------------------------------------------- */
+
+  .link-external {
+    @apply font-medium text-primary transition-colors duration-200;
+  }
+
+  .link-external:hover {
+    color: hsl(var(--link-blue-hover));
+  }
+
+
+  /* -------------------------------------------------------
+     Navigation links
+     ------------------------------------------------------- */
+
+  .nav-link {
+    @apply cursor-pointer tracking-wide text-muted-foreground lowercase transition-colors duration-200;
+  }
+
+  .nav-link:hover {
+    @apply text-primary;
+  }
+
+
+  /* -------------------------------------------------------
+     Display font
+     ------------------------------------------------------- */
+
+  .font-display {
+    font-family:
+      "Bebas Neue",
+      Impact,
+      Haettenschweiler,
+      "Arial Narrow Bold",
+      sans-serif;
+  }
+
+
+  /* -------------------------------------------------------
+     Serif utility
+     
+     Keeping this class because your existing components
+     use "font-serif". It currently uses DM Sans to match
+     your original portfolio design.
+     ------------------------------------------------------- */
+
+  .font-serif {
+    font-family:
+      "DM Sans",
+      Georgia,
+      serif;
+  }
+
+
+  /* -------------------------------------------------------
+     Display headings
+     ------------------------------------------------------- */
+
+  .heading-display {
+    @apply font-display font-normal tracking-tight text-primary;
+  }
+}
+
+
+/* =========================================================
+   UTILITIES
+   ========================================================= */
+
+@layer utilities {
+
+  /* -------------------------------------------------------
+     Balanced text
+     ------------------------------------------------------- */
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+
+  /* -------------------------------------------------------
+     Soft border utilities
+     
+     These replace the old "border-border" classes
+     that came from the previous setup.
+     ------------------------------------------------------- */
+
+  .border-soft {
+    border-color: hsl(var(--border-light));
+  }
+
+  .border-softer {
+    border-color: hsl(var(--border-lighter));
+  }
+
+
+  /* -------------------------------------------------------
+     Project card entrance animation
+     ------------------------------------------------------- */
+
+  .project-card {
+    opacity: 0;
+
+    transform: translateY(26px);
+
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+
+    will-change: opacity, transform;
+  }
+
+  .project-card.is-visible {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .project-card {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+}

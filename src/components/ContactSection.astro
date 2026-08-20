@@ -1,0 +1,112 @@
+---
+const contacts = [
+  {
+    label: "celinakhrs@gmail.com",
+    href: "mailto:celinakhrs@gmail.com",
+    external: false,
+  },
+  {
+    label: "linkedin.com/in/celina-sguazzino",
+    href: "https://linkedin.com/in/celina-sguazzino",
+    external: true,
+  },
+  {
+    label: "instagram.com/c_zino",
+    href: "https://instagram.com/c_zino",
+    external: true,
+  },
+];
+---
+
+<section id="contact" class="section-container font-sans">
+  <h3 class="section-header" data-i18n="contact.heading">contact</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+    <!-- Contact -->
+    <div>
+      <h4
+        class="font-sans text-2xl font-medium text-foreground mb-8"
+        data-i18n="contact.getInTouch"
+      >
+        Get in touch
+      </h4>
+
+      <div class="flex flex-col gap-2">
+        {
+          contacts.map((contact) => (
+            <a
+              href={contact.href}
+              target={contact.external ? "_blank" : undefined}
+              rel={contact.external ? "noopener noreferrer" : undefined}
+              class="flex items-center gap-4 py-3 group border-b border-black/10 font-sans"
+            >
+              <span class="text-primary">✦</span>
+
+              <span class="font-sans text-base text-muted-foreground group-hover:text-primary transition-colors duration-200">
+                {contact.label}
+              </span>
+
+              {contact.external && (
+                <span class="ml-auto font-sans text-primary">↗</span>
+              )}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Location -->
+    <div>
+      <h4
+        class="font-sans text-2xl font-medium text-foreground mb-8"
+        data-i18n="contact.location"
+      >
+        Location
+      </h4>
+
+      <div
+        class="flex items-center gap-4 py-3 border-b border-black/10 font-sans"
+      >
+        <span class="text-primary"> ⌖ </span>
+
+        <span
+          class="font-sans text-base text-muted-foreground flex items-center gap-2"
+          data-i18n="contact.denmark"
+        >
+          Kongens Lyngby, Denmark
+        </span>
+      </div>
+
+      <p
+        id="local-time"
+        class="font-sans text-sm text-muted-foreground mt-4"
+        data-i18n="contact.localTime"
+      >
+        local time
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const updateTime = () => {
+    const node = document.getElementById("local-time");
+
+    if (!node) return;
+
+    const now = new Date();
+
+    const copenhagenTime = now.toLocaleTimeString("en-US", {
+      timeZone: "Europe/Copenhagen",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+
+    node.textContent = `${copenhagenTime} local time`;
+  };
+
+  updateTime();
+
+  setInterval(updateTime, 60000);
+</script>

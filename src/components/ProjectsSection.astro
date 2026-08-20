@@ -1,0 +1,137 @@
+---
+import { projects } from "../data/projects";
+---
+
+<section id="projects" class="bg-secondary/30 py-20">
+  <div class="section-container">
+    <h3 class="section-header">selected projects</h3>
+
+    <div class="flex flex-col gap-16 md:gap-24">
+      {
+        projects.map((project, index) => (
+          <article
+            class="project-card font-sans"
+            style={{ transitionDelay: `${index * 120}ms` }}
+          >
+            <a
+              href={`/project/${project.slug}`}
+              class="group grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
+            >
+              <!-- Project image -->
+              <div class="overflow-hidden bg-transparent">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  width="1024"
+                  height="768"
+                  loading="lazy"
+                  class="w-full h-auto object-contain aspect-[4/3] transition-transform duration-700 group-hover:scale-[1.03]"
+                />
+              </div>
+
+              <!-- Project information -->
+              <div class="flex flex-col font-sans">
+
+                <!-- Category + year -->
+                <div class="flex items-center gap-3 text-sm font-sans text-muted-foreground mb-4">
+                  <span>{project.category}</span>
+
+                  <span class="text-muted-foreground/40">
+                    ·
+                  </span>
+
+                  <span>{project.year}</span>
+                </div>
+
+                <!-- Tags -->
+                {project.tags && project.tags.length > 0 && (
+                  <div class="mb-4 flex flex-wrap gap-3 font-sans">
+                    {project.tags.map((tag) => (
+                      <span
+                        class="inline-flex items-center rounded-full bg-slate-200/80 px-3 py-1 text-sm font-sans font-medium text-slate-700"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <!-- Project title -->
+                <h4
+                  class="font-sans text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-4 group-hover:text-primary transition-colors duration-200"
+                >
+                  {project.title}
+                </h4>
+
+                <!-- Description -->
+                <p
+                  class="font-sans text-base md:text-lg text-muted-foreground leading-relaxed mb-6"
+                >
+                  {project.description}
+                </p>
+
+                <!-- Project link -->
+                <span
+                  class="inline-flex items-center gap-2 font-sans text-primary font-medium"
+                >
+                  View project
+
+                  <span aria-hidden="true">
+                    ↗
+                  </span>
+                </span>
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const initProjectReveal = () => {
+    const projectCards =
+      document.querySelectorAll(".project-card");
+
+    if (projectCards.length === 0) return;
+
+    if ("IntersectionObserver" in window) {
+      const revealObserver =
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+
+                revealObserver.unobserve(
+                  entry.target,
+                );
+              }
+            });
+          },
+          {
+            threshold: 0.15,
+            rootMargin: "0px 0px -8% 0px",
+          },
+        );
+
+      projectCards.forEach((card) => {
+        revealObserver.observe(card);
+      });
+    } else {
+      projectCards.forEach((card) => {
+        card.classList.add("is-visible");
+      });
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initProjectReveal,
+    );
+  } else {
+    initProjectReveal();
+  }
+</script>

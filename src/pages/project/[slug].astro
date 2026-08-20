@@ -1,0 +1,365 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import { getProjectBySlug, projects } from "../../data/projects.js";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const project = slug ? getProjectBySlug(slug) : undefined;
+
+if (!project) {
+  return Astro.redirect("/");
+}
+---
+
+<Layout title={`${project.title} | Celina Sguazzino`}>
+  <div class="min-h-screen bg-background">
+    <Navigation />
+
+    <main class="min-h-screen pt-40 pb-24 px-4 md:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+
+        <!-- BACK TO PROJECTS -->
+        <div class="mb-8">
+          <a
+            href="/#projects"
+            class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
+          >
+            <span aria-hidden="true">←</span>
+            Back to projects
+          </a>
+        </div>
+
+        <!-- PROJECT CONTENT -->
+        <section>
+          {
+            project.video ? (
+              <!-- VIDEO PROJECT -->
+              <div class="grid gap-12 lg:grid-cols-12 lg:items-start">
+
+                <!-- TEXT -->
+                <div class="lg:col-span-7">
+
+                  <!-- META -->
+                  <div class="mb-6 flex flex-wrap items-center font-sans text-sm text-muted-foreground">
+                    <span>{project.category}</span>
+
+                    <span class="mx-3 text-muted-foreground/40">·</span>
+
+                    <span>{project.year}</span>
+
+                    {project.tags?.map((tag) => (
+                      <>
+                        <span class="mx-3 text-muted-foreground/40">·</span>
+                        <span>{tag}</span>
+                      </>
+                    ))}
+                  </div>
+
+                  <!-- TITLE -->
+                  <h1 class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight text-primary">
+                    {project.title}
+                  </h1>
+
+                  <!-- DESCRIPTION -->
+                  <p class="font-sans text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-2xl">
+                    {project.description}
+                  </p>
+
+                  <!-- LONG DESCRIPTION -->
+                  <p class="font-sans text-lg md:text-xl text-foreground leading-relaxed max-w-2xl whitespace-pre-line">
+                    {project.longDescription}
+                  </p>
+
+                  <!-- PROJECT LINK -->
+                  {
+                    project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="link-external inline-flex items-center gap-1 mt-8 font-sans text-base font-medium"
+                      >
+                        {project.linkLabel ??
+                          (project.link.includes("figma")
+                            ? "View prototype"
+                            : "Visit website")}
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    )
+                  }
+                </div>
+
+                <!-- MEDIA -->
+                <div class="lg:col-span-5 space-y-8">
+
+                  <!-- VIDEO -->
+                  <figure class="bg-black">
+                    <video
+                      controls
+                      preload="metadata"
+                      class="block aspect-video h-full w-full object-cover"
+                    >
+                      <source src={project.video} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </figure>
+
+                  <!-- FIRST IMAGE -->
+                  {
+                    project.gallery?.[0] && (
+                      <figure>
+                        <img
+                          src={project.gallery[0]}
+                          alt={`${project.title} image 1`}
+                          width="1200"
+                          height="900"
+                          loading="lazy"
+                          class="w-full h-auto object-cover"
+                        />
+                      </figure>
+                    )
+                  }
+
+                </div>
+              </div>
+            ) : (
+              <!-- STANDARD PROJECT -->
+              <div>
+
+                <!-- META -->
+                <div class="mb-6 flex flex-wrap items-center font-sans text-sm text-muted-foreground">
+                  <span>{project.category}</span>
+
+                  <span class="mx-3 text-muted-foreground/40">·</span>
+
+                  <span>{project.year}</span>
+
+                  {project.tags?.map((tag) => (
+                    <>
+                      <span class="mx-3 text-muted-foreground/40">·</span>
+                      <span>{tag}</span>
+                    </>
+                  ))}
+                </div>
+
+                <!-- TITLE -->
+                <h1 class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight text-primary">
+                  {project.title}
+                </h1>
+
+                <!-- DESCRIPTION -->
+                <p class="font-sans text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-3xl">
+                  {project.description}
+                </p>
+
+                <!-- LONG DESCRIPTION -->
+                <p class="font-sans text-lg md:text-xl text-foreground leading-relaxed max-w-4xl whitespace-pre-line">
+                  {project.longDescription}
+                </p>
+
+                <!-- PROJECT LINK -->
+                {
+                  project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="link-external inline-flex items-center gap-1 mt-8 font-sans text-base font-medium"
+                    >
+                      {project.linkLabel ??
+                        (project.link.includes("figma")
+                          ? "View prototype"
+                          : "Visit website")}
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  )
+                }
+
+              </div>
+            )
+          }
+        </section>
+
+        <!-- IMAGE CAROUSEL -->
+        {
+          !project.video && project.gallery?.length > 0 && (
+            <div
+              class:list={[
+                "max-w-5xl mx-auto",
+                project.link ? "mt-8" : "mt-20",
+              ]}
+              data-carousel
+            >
+
+              <!-- SLIDES -->
+              <div class="relative aspect-[16/10] w-full overflow-hidden rounded-md bg-white">
+
+                {
+                  project.gallery.map((image, index) => (
+                    <div
+                      data-slide
+                      class:list={[
+                        "absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-700 ease-in-out",
+                        index === 0
+                          ? "opacity-100 pointer-events-auto"
+                          : "",
+                      ]}
+                    >
+                      <img
+                        src={image}
+                        alt={`${project.title} image ${index + 1}`}
+                        width="1200"
+                        height="900"
+                        loading={index === 0 ? "eager" : "lazy"}
+                        class="h-full w-full object-cover bg-white"
+                      />
+                    </div>
+                  ))
+                }
+
+              </div>
+
+              <!-- CAROUSEL CONTROLS -->
+              <div class="mt-4 flex items-center justify-between">
+
+                <!-- DOTS -->
+                <div class="flex gap-2">
+                  {
+                    project.gallery.map((_, index) => (
+                      <button
+                        type="button"
+                        data-dot={index}
+                        aria-label={`Go to slide ${index + 1}`}
+                        class:list={[
+                          "h-2.5 w-2.5 rounded-full transition-all duration-200",
+                          index === 0
+                            ? "bg-primary"
+                            : "bg-primary/30",
+                        ]}
+                      />
+                    ))
+                  }
+                </div>
+
+                <!-- ARROWS -->
+                <div class="flex gap-3 font-sans text-sm text-muted-foreground">
+                  <button
+                    type="button"
+                    data-prev
+                    aria-label="Previous image"
+                    class="hover:text-primary transition-colors"
+                  >
+                    ←
+                  </button>
+
+                  <button
+                    type="button"
+                    data-next
+                    aria-label="Next image"
+                    class="hover:text-primary transition-colors"
+                  >
+                    →
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          )
+        }
+
+      </div>
+
+      <Footer />
+    </main>
+  </div>
+
+  <!-- CAROUSEL JAVASCRIPT -->
+  <script>
+    const carousel = document.querySelector("[data-carousel]");
+
+    if (carousel) {
+      const slides = Array.from(
+        carousel.querySelectorAll("[data-slide]")
+      );
+
+      const dots = Array.from(
+        carousel.querySelectorAll("[data-dot]")
+      );
+
+      const prevButton = carousel.querySelector("[data-prev]");
+      const nextButton = carousel.querySelector("[data-next]");
+
+      let currentIndex = 0;
+
+      const showSlide = (nextIndex) => {
+        if (!slides.length) return;
+
+        currentIndex =
+          (nextIndex + slides.length) % slides.length;
+
+        slides.forEach((slide, index) => {
+          const isActive = index === currentIndex;
+
+          slide.classList.toggle(
+            "opacity-100",
+            isActive
+          );
+
+          slide.classList.toggle(
+            "pointer-events-auto",
+            isActive
+          );
+
+          slide.classList.toggle(
+            "opacity-0",
+            !isActive
+          );
+
+          slide.classList.toggle(
+            "pointer-events-none",
+            !isActive
+          );
+        });
+
+        dots.forEach((dot, index) => {
+          dot.classList.toggle(
+            "bg-primary",
+            index === currentIndex
+          );
+
+          dot.classList.toggle(
+            "bg-primary/30",
+            index !== currentIndex
+          );
+        });
+      };
+
+      prevButton?.addEventListener("click", () => {
+        showSlide(currentIndex - 1);
+      });
+
+      nextButton?.addEventListener("click", () => {
+        showSlide(currentIndex + 1);
+      });
+
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          showSlide(
+            Number(dot.getAttribute("data-dot"))
+          );
+        });
+      });
+
+      window.setInterval(() => {
+        showSlide(currentIndex + 1);
+      }, 4000);
+    }
+  </script>
+</Layout>
