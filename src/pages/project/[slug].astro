@@ -27,10 +27,10 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
     <main
       class:list={[
-        "min-h-screen pb-24 px-4 md:px-6 lg:px-8",
+        "min-h-screen px-4 md:px-6 lg:px-8 pb-24",
         isNordicHairGlow
           ? "pt-0"
-          : "pt-28 md:pt-32",
+          : "pt-24 md:pt-28",
       ]}
     >
 
@@ -39,18 +39,19 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
         {
           isNordicHairGlow ? (
 
-            <!-- ===================================================== -->
+            <!-- ================================================= -->
             <!-- NORDIC HAIR GLOW -->
-            <!-- ===================================================== -->
+            <!-- ================================================= -->
 
             <section
               class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start"
             >
 
-              <!-- LEFT -->
+              <!-- LEFT — NORDIC CONTENT -->
+
               <div class="order-2 lg:order-1">
 
-                <div class="mt-30 mb-10">
+                <div class="mt-24 mb-10">
 
                   <a
                     href="/#projects"
@@ -67,16 +68,16 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
                 <section
                   id="meta-ads"
-                  class="scroll-mt-32 mb-32"
+                  class="mb-32"
                 >
 
                   <div class="mb-8">
 
-                    <p class="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                    <p class="project-number">
                       01
                     </p>
 
-                    <h2 class="heading-display text-4xl md:text-5xl text-primary mt-2">
+                    <h2 class="project-heading">
                       Meta Ads
                     </h2>
 
@@ -92,14 +93,10 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         preload="metadata"
                         class="block w-full aspect-video object-cover"
                       >
-
                         <source
                           src="/videos/nordic-meta-ads.mp4"
                           type="video/mp4"
                         />
-
-                        Your browser does not support the video tag.
-
                       </video>
 
                     </figure>
@@ -111,7 +108,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         src="/images/nordic-hair-glow/meta-ad-01.jpg"
                         alt="Nordic Hair Glow Meta advertisement"
                         loading="lazy"
-                        class="w-full h-auto aspect-[4/5] object-cover"
+                        class="w-full aspect-[4/5] object-cover"
                       />
 
                     </figure>
@@ -123,7 +120,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         src="/images/nordic-hair-glow/meta-ad-02.jpg"
                         alt="Nordic Hair Glow Meta advertisement"
                         loading="lazy"
-                        class="w-full h-auto aspect-[4/5] object-cover"
+                        class="w-full aspect-[4/5] object-cover"
                       />
 
                     </figure>
@@ -147,7 +144,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         src="/images/nordic-hair-glow/meta-ad-04.jpg"
                         alt="Nordic Hair Glow Meta advertisement"
                         loading="lazy"
-                        class="w-full h-auto aspect-[4/5] object-cover"
+                        class="w-full aspect-[4/5] object-cover"
                       />
 
                     </figure>
@@ -159,7 +156,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         src="/images/nordic-hair-glow/meta-ad-05.jpg"
                         alt="Nordic Hair Glow Meta advertisement"
                         loading="lazy"
-                        class="w-full h-auto aspect-[4/5] object-cover"
+                        class="w-full aspect-[4/5] object-cover"
                       />
 
                     </figure>
@@ -173,16 +170,16 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
                 <section
                   id="web-design"
-                  class="scroll-mt-32 mb-32"
+                  class="mb-32"
                 >
 
                   <div class="mb-8">
 
-                    <p class="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                    <p class="project-number">
                       02
                     </p>
 
-                    <h2 class="heading-display text-4xl md:text-5xl text-primary mt-2">
+                    <h2 class="project-heading">
                       Web Design
                     </h2>
 
@@ -251,16 +248,16 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
                 <section
                   id="photography"
-                  class="scroll-mt-32 mb-32"
+                  class="mb-32"
                 >
 
                   <div class="mb-8">
 
-                    <p class="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                    <p class="project-number">
                       03
                     </p>
 
-                    <h2 class="heading-display text-4xl md:text-5xl text-primary mt-2">
+                    <h2 class="project-heading">
                       Photography
                     </h2>
 
@@ -287,7 +284,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         src="/images/nordic-hair-glow/photo-02.jpg"
                         alt="Nordic Hair Glow product photography"
                         loading="lazy"
-                        class="w-full h-auto aspect-[4/5] object-cover"
+                        class="w-full aspect-[4/5] object-cover"
                       />
 
                     </figure>
@@ -299,7 +296,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         src="/images/nordic-hair-glow/photo-03.jpg"
                         alt="Nordic Hair Glow product photography"
                         loading="lazy"
-                        class="w-full h-auto aspect-[4/5] object-cover"
+                        class="w-full aspect-[4/5] object-cover"
                       />
 
                     </figure>
@@ -325,16 +322,16 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
                 <section
                   id="ai-imagery"
-                  class="scroll-mt-32 mb-32"
+                  class="mb-32"
                 >
 
                   <div class="mb-8">
 
-                    <p class="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                    <p class="project-number">
                       04
                     </p>
 
-                    <h2 class="heading-display text-4xl md:text-5xl text-primary mt-2">
+                    <h2 class="project-heading">
                       AI Imagery
                     </h2>
 
@@ -349,7 +346,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         src="/images/nordic-hair-glow/ai-01.jpg"
                         alt="AI generated Nordic Hair Glow imagery"
                         loading="lazy"
-                        class="w-full h-auto aspect-[4/5] object-cover"
+                        class="w-full aspect-[4/5] object-cover"
                       />
 
                     </figure>
@@ -361,7 +358,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         src="/images/nordic-hair-glow/ai-02.jpg"
                         alt="AI generated Nordic Hair Glow imagery"
                         loading="lazy"
-                        class="w-full h-auto aspect-[4/5] object-cover"
+                        class="w-full aspect-[4/5] object-cover"
                       />
 
                     </figure>
@@ -385,7 +382,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         src="/images/nordic-hair-glow/ai-04.jpg"
                         alt="AI generated Nordic Hair Glow imagery"
                         loading="lazy"
-                        class="w-full h-auto aspect-[4/5] object-cover"
+                        class="w-full aspect-[4/5] object-cover"
                       />
 
                     </figure>
@@ -397,7 +394,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         src="/images/nordic-hair-glow/ai-05.jpg"
                         alt="AI generated Nordic Hair Glow imagery"
                         loading="lazy"
-                        class="w-full h-auto aspect-[4/5] object-cover"
+                        class="w-full aspect-[4/5] object-cover"
                       />
 
                     </figure>
@@ -411,16 +408,16 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
                 <section
                   id="packaging"
-                  class="scroll-mt-32 mb-20"
+                  class="mb-20"
                 >
 
                   <div class="mb-8">
 
-                    <p class="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                    <p class="project-number">
                       05
                     </p>
 
-                    <h2 class="heading-display text-4xl md:text-5xl text-primary mt-2">
+                    <h2 class="project-heading">
                       Packaging
                     </h2>
 
@@ -447,7 +444,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         src="/images/nordic-hair-glow/packaging-02.jpg"
                         alt="Nordic Hair Glow packaging detail"
                         loading="lazy"
-                        class="w-full h-auto aspect-[4/5] object-cover"
+                        class="w-full aspect-[4/5] object-cover"
                       />
 
                     </figure>
@@ -459,7 +456,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         src="/images/nordic-hair-glow/packaging-03.jpg"
                         alt="Nordic Hair Glow packaging detail"
                         loading="lazy"
-                        class="w-full h-auto aspect-[4/5] object-cover"
+                        class="w-full aspect-[4/5] object-cover"
                       />
 
                     </figure>
@@ -471,141 +468,142 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
               </div>
 
 
-              <!-- ================================================= -->
-              <!-- NORDIC RIGHT -->
-              <!-- ================================================= -->
+              <!-- RIGHT — NORDIC INFO -->
 
               <aside
                 class="order-1 lg:order-2 lg:sticky lg:top-24 self-start"
               >
 
-                <div class="mb-6 flex flex-wrap items-center font-sans text-sm text-muted-foreground">
+                <div class="project-intro">
 
-                  <span>{project.category}</span>
+                  <div class="project-meta">
 
-                  <span class="mx-3 text-muted-foreground/40">·</span>
+                    <span>{project.category}</span>
 
-                  <span>{project.year}</span>
+                    <span>·</span>
 
-                  {
-                    project.tags?.map((tag) => (
-                      <>
-                        <span class="mx-3 text-muted-foreground/40">·</span>
-                        <span>{tag}</span>
-                      </>
-                    ))
-                  }
+                    <span>{project.year}</span>
 
-                </div>
-
-
-                <h1
-                  class="heading-display text-5xl md:text-6xl lg:text-7xl leading-tight text-primary mb-8"
-                >
-                  {project.title}
-                </h1>
-
-
-                <p
-                  class="font-sans text-lg md:text-xl lg:text-2xl leading-relaxed text-foreground mb-8 max-w-xl"
-                >
-                  {project.description}
-                </p>
-
-
-                {
-                  project.longDescription && (
-                    <p
-                      class="font-sans text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl whitespace-pre-line mb-8"
-                    >
-                      {project.longDescription}
-                    </p>
-                  )
-                }
-
-
-                {
-                  project.link && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="link-external inline-flex items-center gap-1 mb-10 font-sans text-base font-medium"
-                    >
-                      {project.linkLabel ??
-                        (project.link.includes("figma")
-                          ? "View prototype"
-                          : "Visit website")}
-                      <span aria-hidden="true">↗</span>
-                    </a>
-                  )
-                }
-
-
-                <nav
-                  aria-label="Project sections"
-                  class="border-t border-border pt-6"
-                >
-
-                  <p class="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground mb-5">
-                    Project
-                  </p>
-
-
-                  <div class="space-y-3">
-
-                    <a
-                      href="#meta-ads"
-                      data-section-link="meta-ads"
-                      class="project-nav-link block font-sans text-sm text-primary"
-                    >
-                      <span class="mr-3 text-muted-foreground/50">01</span>
-                      Meta Ads
-                    </a>
-
-
-                    <a
-                      href="#web-design"
-                      data-section-link="web-design"
-                      class="project-nav-link block font-sans text-sm text-muted-foreground"
-                    >
-                      <span class="mr-3 text-muted-foreground/50">02</span>
-                      Web Design
-                    </a>
-
-
-                    <a
-                      href="#photography"
-                      data-section-link="photography"
-                      class="project-nav-link block font-sans text-sm text-muted-foreground"
-                    >
-                      <span class="mr-3 text-muted-foreground/50">03</span>
-                      Photography
-                    </a>
-
-
-                    <a
-                      href="#ai-imagery"
-                      data-section-link="ai-imagery"
-                      class="project-nav-link block font-sans text-sm text-muted-foreground"
-                    >
-                      <span class="mr-3 text-muted-foreground/50">04</span>
-                      AI Imagery
-                    </a>
-
-
-                    <a
-                      href="#packaging"
-                      data-section-link="packaging"
-                      class="project-nav-link block font-sans text-sm text-muted-foreground"
-                    >
-                      <span class="mr-3 text-muted-foreground/50">05</span>
-                      Packaging
-                    </a>
+                    {
+                      project.tags?.map((tag) => (
+                        <>
+                          <span>·</span>
+                          <span>{tag}</span>
+                        </>
+                      ))
+                    }
 
                   </div>
 
-                </nav>
+
+                  <h1
+                    class="heading-display text-5xl md:text-6xl lg:text-7xl leading-tight text-primary mb-8 mt-8"
+                  >
+                    {project.title}
+                  </h1>
+
+
+                  <p class="project-description">
+                    {project.description}
+                  </p>
+
+
+                  {
+                    project.longDescription && (
+                      <p class="project-extra-text nordic-long-description">
+                        {project.longDescription}
+                      </p>
+                    )
+                  }
+
+
+                  {
+                    project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="link-external inline-flex items-center gap-1 font-sans text-base font-medium"
+                      >
+                        {project.linkLabel ??
+                          (project.link.includes("figma")
+                            ? "View prototype"
+                            : "Visit website")}
+
+                        <span aria-hidden="true">
+                          ↗
+                        </span>
+                      </a>
+                    )
+                  }
+
+
+                  <nav
+                    aria-label="Project sections"
+                    class="project-navigation"
+                  >
+
+                    <p class="project-navigation-label">
+                      Project
+                    </p>
+
+
+                    <div class="space-y-3">
+
+                      <a
+                        href="#meta-ads"
+                        data-section-link="meta-ads"
+                        class="project-nav-link active"
+                      >
+                        <span>01</span>
+                        Meta Ads
+                      </a>
+
+
+                      <a
+                        href="#web-design"
+                        data-section-link="web-design"
+                        class="project-nav-link"
+                      >
+                        <span>02</span>
+                        Web Design
+                      </a>
+
+
+                      <a
+                        href="#photography"
+                        data-section-link="photography"
+                        class="project-nav-link"
+                      >
+                        <span>03</span>
+                        Photography
+                      </a>
+
+
+                      <a
+                        href="#ai-imagery"
+                        data-section-link="ai-imagery"
+                        class="project-nav-link"
+                      >
+                        <span>04</span>
+                        AI Imagery
+                      </a>
+
+
+                      <a
+                        href="#packaging"
+                        data-section-link="packaging"
+                        class="project-nav-link"
+                      >
+                        <span>05</span>
+                        Packaging
+                      </a>
+
+                    </div>
+
+                  </nav>
+
+                </div>
 
               </aside>
 
@@ -613,23 +611,17 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
           ) : (
 
-            <!-- ===================================================== -->
+            <!-- ================================================= -->
             <!-- OTHER PROJECTS -->
-            <!-- ===================================================== -->
+            <!-- ================================================= -->
 
-            <section
-              class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start"
-            >
+            <section class="other-project-layout">
 
-              <!-- ================================================= -->
-              <!-- LEFT TEXT -->
-              <!-- ================================================= -->
+              <!-- LEFT -->
 
-              <div class="order-1">
+              <div class="other-project-text">
 
-                <!-- BACK -->
-
-                <div class="mb-10">
+                <div class="mb-8">
 
                   <a
                     href="/#projects"
@@ -644,25 +636,18 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
                 <!-- META -->
 
-                <div
-                  class="mb-6 flex flex-wrap items-center font-sans text-sm text-muted-foreground"
-                >
+                <div class="project-meta">
 
                   <span>{project.category}</span>
 
-                  <span class="mx-3 text-muted-foreground/40">
-                    ·
-                  </span>
+                  <span>·</span>
 
                   <span>{project.year}</span>
 
                   {
                     project.tags?.map((tag) => (
                       <>
-                        <span class="mx-3 text-muted-foreground/40">
-                          ·
-                        </span>
-
+                        <span>·</span>
                         <span>{tag}</span>
                       </>
                     ))
@@ -682,24 +667,9 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
                 <!-- DESCRIPTION -->
 
-                <p
-                  class="font-sans text-lg md:text-xl lg:text-2xl leading-relaxed text-foreground mb-8 max-w-xl"
-                >
+                <p class="project-description">
                   {project.description}
                 </p>
-
-
-                <!-- LONG DESCRIPTION -->
-
-                {
-                  project.longDescription && (
-                    <p
-                      class="font-sans text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl whitespace-pre-line mb-8"
-                    >
-                      {project.longDescription}
-                    </p>
-                  )
-                }
 
 
                 <!-- LINK -->
@@ -712,35 +682,49 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                       rel="noopener noreferrer"
                       class="link-external inline-flex items-center gap-1 font-sans text-base font-medium"
                     >
-
                       {project.linkLabel ??
                         (project.link.includes("figma")
                           ? "View prototype"
                           : "Visit website")}
 
-                      <span aria-hidden="true">↗</span>
-
+                      <span aria-hidden="true">
+                        ↗
+                      </span>
                     </a>
+                  )
+                }
+
+
+                <!-- MORE INFORMATION -->
+
+                {
+                  project.longDescription && (
+                    <div class="project-extra-info">
+
+                      <p class="project-extra-label">
+                        About the project
+                      </p>
+
+                      <p class="project-extra-text">
+                        {project.longDescription}
+                      </p>
+
+                    </div>
                   )
                 }
 
               </div>
 
 
-              <!-- ================================================= -->
-              <!-- RIGHT IMAGES -->
-              <!-- ================================================= -->
+              <!-- RIGHT — FIXED VIEWPORT IMAGE AREA -->
 
-              <div class="order-2">
+              <div class="other-project-images -mt-5">
 
-                <div class="space-y-8">
-
-
-                  <!-- VIDEO -->
+                <div class="image-scroll-area">
 
                   {
                     project.video && (
-                      <figure class="bg-black overflow-hidden">
+                      <figure class="project-media">
 
                         <video
                           controls
@@ -753,8 +737,6 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                             type="video/mp4"
                           />
 
-                          Your browser does not support the video tag.
-
                         </video>
 
                       </figure>
@@ -762,31 +744,16 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                   }
 
 
-                  <!-- GALLERY -->
-
                   {
                     project.gallery?.map((image, index) => (
 
-                      <figure
-                        class:list={[
-                          "project-image-frame",
-                          index % 2 === 1
-                            ? "lg:mt-12"
-                            : "",
-                        ]}
-                      >
+                      <figure class="project-media">
 
                         <img
                           src={image}
                           alt={`${project.title} image ${index + 1}`}
-                          width="1600"
-                          height="1200"
-                          loading={
-                            index === 0
-                              ? "eager"
-                              : "lazy"
-                          }
-                          class="project-image"
+                          loading={index === 0 ? "eager" : "lazy"}
+                          class="block w-full h-auto"
                         />
 
                       </figure>
@@ -850,17 +817,12 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
           links.forEach((link) => {
 
-            const isActive =
+            const active =
               link.dataset.sectionLink === activeId;
 
             link.classList.toggle(
-              "text-primary",
-              isActive
-            );
-
-            link.classList.toggle(
-              "text-muted-foreground",
-              !isActive
+              "active",
+              active
             );
 
           });
@@ -880,189 +842,6 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
 
   <!-- =============================================================== -->
-  <!-- IMAGE HOVER SCROLL -->
-  <!-- =============================================================== -->
-
-  {
-    !isNordicHairGlow && (
-      <script>
-        const frames =
-          Array.from(
-            document.querySelectorAll<HTMLElement>(
-              ".project-image-frame"
-            )
-          );
-
-
-        frames.forEach((frame) => {
-
-          const image =
-            frame.querySelector<HTMLImageElement>(
-              ".project-image"
-            );
-
-          if (!image) return;
-
-
-          const enableScrolling = () => {
-
-            /*
-             * We wait until the image has loaded,
-             * because we need its real height.
-             */
-
-            if (!image.complete) {
-              image.addEventListener(
-                "load",
-                enableScrolling,
-                { once: true }
-              );
-
-              return;
-            }
-
-
-            const imageHeight =
-              image.getBoundingClientRect().height;
-
-
-            const frameHeight =
-              frame.getBoundingClientRect().height;
-
-
-            /*
-             * If the image is not taller than the frame,
-             * there is nothing to scroll.
-             */
-
-            if (imageHeight <= frameHeight) {
-              frame.classList.remove(
-                "has-scroll"
-              );
-
-              return;
-            }
-
-
-            frame.classList.add(
-              "has-scroll"
-            );
-
-          };
-
-
-          enableScrolling();
-
-
-          /*
-           * IMPORTANT:
-           *
-           * The wheel event is attached to the IMAGE FRAME.
-           *
-           * When the mouse is over the image:
-           *
-           * wheel down  → image moves down
-           * wheel up    → image moves up
-           *
-           * When the image reaches its limit,
-           * the page takes over again.
-           */
-
-          frame.addEventListener(
-            "wheel",
-            (event) => {
-
-              /*
-               * Only activate this behaviour on desktop.
-               */
-
-              if (window.innerWidth < 1024) {
-                return;
-              }
-
-
-              const maxScroll =
-                frame.scrollHeight -
-                frame.clientHeight;
-
-
-              /*
-               * No internal scrolling needed.
-               */
-
-              if (maxScroll <= 0) {
-                return;
-              }
-
-
-              const currentScroll =
-                frame.scrollTop;
-
-
-              const delta =
-                event.deltaY;
-
-
-              const scrollingDown =
-                delta > 0;
-
-
-              const scrollingUp =
-                delta < 0;
-
-
-              const atTop =
-                currentScroll <= 0;
-
-
-              const atBottom =
-                currentScroll >= maxScroll - 1;
-
-
-              /*
-               * If there is still room inside the image,
-               * prevent the page from scrolling.
-               */
-
-              if (
-                (scrollingDown && !atBottom) ||
-                (scrollingUp && !atTop)
-              ) {
-
-                event.preventDefault();
-
-                frame.scrollTop =
-                  Math.max(
-                    0,
-                    Math.min(
-                      maxScroll,
-                      currentScroll + delta
-                    )
-                  );
-
-              }
-
-            },
-            { passive: false }
-          );
-
-
-          /*
-           * Recalculate when the window changes size.
-           */
-
-          window.addEventListener(
-            "resize",
-            enableScrolling
-          );
-
-        });
-      </script>
-    )
-  }
-
-
-  <!-- =============================================================== -->
   <!-- STYLES -->
   <!-- =============================================================== -->
 
@@ -1073,12 +852,114 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
     }
 
 
-    /* ============================================================= */
-    /* NORDIC NAV */
-    /* ============================================================= */
+    /* ==========================================================
+       GENERAL PROJECT TYPOGRAPHY
+       ========================================================== */
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+
+      font-family: sans-serif;
+      font-size: 0.875rem;
+
+      color: hsl(var(--muted-foreground));
+    }
+
+
+    .project-description {
+      max-width: 38rem;
+
+      margin-bottom: 1.75rem;
+
+      font-family: sans-serif;
+
+      font-size: clamp(
+        1.25rem,
+        2vw,
+        1.75rem
+      );
+
+      line-height: 1.35;
+
+      color: hsl(var(--foreground));
+    }
+
+
+    /* ==========================================================
+       NORDIC
+       ========================================================== */
+
+    .project-number {
+      margin: 0;
+
+      font-family: sans-serif;
+
+      font-size: 0.75rem;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      color: hsl(var(--muted-foreground));
+    }
+
+
+    .project-heading {
+      margin-top: 0.5rem;
+
+      font-family: var(--font-heading, sans-serif);
+
+      font-size: clamp(
+        2.25rem,
+        4vw,
+        3rem
+      );
+
+      line-height: 1;
+
+      color: hsl(var(--primary));
+    }
+
+
+    .project-navigation {
+      margin-top: 2.5rem;
+
+      padding-top: 1.25rem;
+
+      border-top:
+        1px solid
+        hsl(var(--border));
+    }
+
+
+    .project-navigation-label {
+      margin-bottom: 1rem;
+
+      font-family: sans-serif;
+
+      font-size: 0.75rem;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      color: hsl(var(--muted-foreground));
+    }
+
 
     .project-nav-link {
+      display: block;
+
       position: relative;
+
+      font-family: sans-serif;
+
+      font-size: 0.875rem;
+
+      color: hsl(var(--muted-foreground));
 
       transition:
         color 200ms ease,
@@ -1086,17 +967,29 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
     }
 
 
-    .project-nav-link.text-primary {
-      padding-left: 6px;
+    .project-nav-link span {
+      display: inline-block;
+
+      width: 2rem;
+
+      color:
+        hsl(var(--muted-foreground) / 0.5);
     }
 
 
-    .project-nav-link.text-primary::before {
+    .project-nav-link.active {
+      color: hsl(var(--primary));
+
+      padding-left: 0.375rem;
+    }
+
+
+    .project-nav-link.active::before {
       content: "";
 
       position: absolute;
 
-      left: -10px;
+      left: -0.625rem;
 
       top: 50%;
 
@@ -1104,117 +997,229 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
       height: 14px;
 
-      transform: translateY(-50%);
+      transform:
+        translateY(-50%);
 
-      background: currentColor;
+      background:
+        currentColor;
     }
 
 
-    /* ============================================================= */
-    /* OTHER PROJECT IMAGE FRAME */
-    /* ============================================================= */
+    /* ==========================================================
+       NORDIC LONG DESCRIPTION
+       ========================================================== */
 
-    .project-image-frame {
+    .nordic-long-description {
+      max-width: 38rem;
+
+      margin-top: 0;
+
+      margin-bottom: 2rem;
+
+      font-family: sans-serif;
+
+      font-size: 1rem;
+
+      line-height: 1.7;
+
+      color: hsl(var(--muted-foreground));
+
+      white-space: pre-line;
+    }
+
+
+    /* ==========================================================
+       OTHER PROJECTS
+       ========================================================== */
+
+    .other-project-layout {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 0.9fr)
+        minmax(0, 1.1fr);
+
+      gap: 4rem;
+
+      align-items: start;
+    }
+
+
+    /* ==========================================================
+       LEFT TEXT
+       ========================================================== */
+
+    .other-project-text {
+      min-width: 0;
+
+      padding-top: 0.5rem;
+    }
+
+
+    .project-extra-info {
+      margin-top: 4rem;
+
+      padding-top: 1.5rem;
+
+      border-top:
+        1px solid
+        hsl(var(--border));
+    }
+
+
+    .project-extra-label {
+      margin-bottom: 1rem;
+
+      font-family: sans-serif;
+
+      font-size: 0.75rem;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      color: hsl(var(--muted-foreground));
+    }
+
+
+    .project-extra-text {
+      max-width: 38rem;
+
+      font-family: sans-serif;
+
+      font-size: 1rem;
+
+      line-height: 1.7;
+
+      color: hsl(var(--muted-foreground));
+
+      white-space: pre-line;
+    }
+
+
+    /* ==========================================================
+       RIGHT IMAGE AREA
+       ========================================================== */
+
+    .other-project-images {
+      position: sticky;
+
+      top: 6rem;
+
+      height: 80vh;
+
+      min-height: 500px;
+
+      min-width: 0;
+
+      align-self: start;
+    }
+
+
+    .image-scroll-area {
       width: 100%;
 
-      height: 70vh;
+      height: 100%;
 
       overflow-y: auto;
 
       overflow-x: hidden;
 
-      position: relative;
-
-      background: transparent;
+      overscroll-behavior: contain;
 
       scrollbar-width: thin;
 
-      scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+      scrollbar-color:
+        rgba(0, 0, 0, 0.18)
+        transparent;
     }
 
 
-    .project-image {
-      display: block;
-
-      width: 100%;
-
-      height: auto;
-
-      min-height: 100%;
-
-      object-fit: contain;
-
-      object-position: top;
-    }
-
-
-    /*
-     * Hide the scrollbar visually until the user
-     * actually interacts with the image.
-     */
-
-    .project-image-frame::-webkit-scrollbar {
+    .image-scroll-area::-webkit-scrollbar {
       width: 4px;
     }
 
 
-    .project-image-frame::-webkit-scrollbar-track {
+    .image-scroll-area::-webkit-scrollbar-track {
       background: transparent;
     }
 
 
-    .project-image-frame::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.15);
+    .image-scroll-area::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.18);
 
       border-radius: 999px;
     }
 
 
-    /*
-     * A subtle cursor indication on desktop.
-     */
+    .project-media {
+      width: 100%;
 
-    @media (min-width: 1024px) {
-
-      .project-image-frame.has-scroll {
-        cursor: ns-resize;
-      }
-
+      margin: 0 0 1rem 0;
     }
 
 
-    /* ============================================================= */
-    /* MOBILE */
-    /* ============================================================= */
+    .project-media:last-child {
+      margin-bottom: 0;
+    }
+
+
+    .project-media img {
+      display: block;
+
+      width: 100%;
+
+      height: auto;
+    }
+
+
+    /* ==========================================================
+       MOBILE
+       ========================================================== */
 
     @media (max-width: 1023px) {
 
-      .project-image-frame {
+      .other-project-layout {
+        display: block;
+      }
+
+
+      .other-project-text {
+        padding-top: 0;
+      }
+
+
+      .other-project-images {
+        position: static;
+
         height: auto;
 
-        max-height: none;
+        min-height: 0;
+
+        margin-top: 4rem;
+      }
+
+
+      .image-scroll-area {
+        height: auto;
 
         overflow: visible;
 
-        scrollbar-width: auto;
+        overscroll-behavior: auto;
       }
 
 
-      .project-image {
-        min-height: 0;
-
-        width: 100%;
-
-        height: auto;
+      .project-extra-info {
+        margin-top: 3rem;
       }
 
 
-      .project-nav-link.text-primary {
+      .project-nav-link.active {
         padding-left: 0;
       }
 
 
-      .project-nav-link.text-primary::before {
+      .project-nav-link.active::before {
         display: none;
       }
 
