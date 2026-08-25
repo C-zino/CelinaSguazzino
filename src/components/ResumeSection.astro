@@ -1,5 +1,29 @@
 ---
-const tabs = [
+
+type CVEntry = {
+
+  title: string;
+
+  meta?: string;
+
+  subtitle?: string;
+
+  points: string[];
+
+};
+
+type CVTab = {
+
+  key: string;
+
+  label: string;
+
+  entries: CVEntry[];
+
+};
+
+const tabs: CVTab[] = [
+
   {
     key: "uddannelse",
     label: "Education",
@@ -309,7 +333,6 @@ const defaultTab = "uddannelse";
 
                       <!-- Description -->
                       <ul class="mt-4 space-y-2 font-sans">
-
                         {
                           entry.points.map((point) => (
                             <li
@@ -323,7 +346,6 @@ const defaultTab = "uddannelse";
                             </li>
                           ))
                         }
-
                       </ul>
 
                     </div>
@@ -371,11 +393,6 @@ const defaultTab = "uddannelse";
 
   /*
    * Typed DOM elements
-   *
-   * These types prevent TypeScript errors such as:
-   * - Property 'dataset' does not exist on type 'Element'
-   * - Property 'style' does not exist on type 'Element'
-   * - Parameter implicitly has an 'any' type
    */
 
   const tabButtons =
@@ -400,8 +417,6 @@ const defaultTab = "uddannelse";
 
   /*
    * Check if we are on desktop.
-   *
-   * Desktop = 1024px and above.
    */
   const isDesktop = (): boolean => {
     return window.matchMedia(
@@ -494,9 +509,6 @@ const defaultTab = "uddannelse";
 
       /*
        * MOBILE / TABLET
-       *
-       * Only the active panel exists
-       * in the normal document flow.
        */
       if (!isDesktop()) {
 
@@ -520,8 +532,6 @@ const defaultTab = "uddannelse";
 
       /*
        * DESKTOP
-       *
-       * Keep the original fade/slide behavior.
        */
       panel.classList.remove("hidden");
 
@@ -565,11 +575,7 @@ const defaultTab = "uddannelse";
     });
 
     /*
-     * Keep clicked tab visible.
-     *
-     * This only scrolls the tab navigation
-     * horizontally. It does not move the page
-     * on mobile.
+     * Keep clicked tab visible
      */
     if (
       options.scroll &&
@@ -600,8 +606,7 @@ const defaultTab = "uddannelse";
         if (!key) return;
 
         /*
-         * DESKTOP ONLY
-         *
+         * DESKTOP:
          * Clicking a tab moves the page
          * to the corresponding scroll section.
          */
@@ -624,8 +629,7 @@ const defaultTab = "uddannelse";
         }
 
         /*
-         * MOBILE
-         *
+         * MOBILE:
          * Simply change the active content.
          */
         setActiveTab(key, {
@@ -639,11 +643,6 @@ const defaultTab = "uddannelse";
 
   /*
    * Intersection Observer
-   *
-   * This is ONLY used on desktop.
-   *
-   * Mobile/tablet scrolling will NOT
-   * change the active tab.
    */
   let observer:
     IntersectionObserver | null = null;
@@ -679,7 +678,7 @@ const defaultTab = "uddannelse";
       new IntersectionObserver(
         (entries) => {
 
-          const visibleEntry =
+          const visibleEntry =n
             entries
               .filter(
                 (entry) =>
@@ -731,10 +730,6 @@ const defaultTab = "uddannelse";
 
   /*
    * Resize
-   *
-   * This makes sure that switching between
-   * mobile and desktop doesn't leave the
-   * panels in the wrong state.
    */
   window.addEventListener(
     "resize",
