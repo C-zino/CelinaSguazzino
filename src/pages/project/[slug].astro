@@ -16,178 +16,521 @@ const project = slug ? getProjectBySlug(slug) : undefined;
 if (!project) {
   return Astro.redirect("/");
 }
+
+const isNordicHairGlow = project.slug === "nordic-hair-glow";
 ---
 
 <Layout title={`${project.title} | Celina Sguazzino`}>
   <div class="min-h-screen bg-background">
+
     <Navigation />
 
-    <main class="min-h-screen pt-40 pb-24 px-4 md:px-6 lg:px-8">
-      <div class="max-w-6xl mx-auto">
+    <main
+      class:list={[
+        "min-h-screen pb-24 px-4 md:px-6 lg:px-8",
+        isNordicHairGlow
+          ? "pt-0"
+          : "pt-28 md:pt-32",
+      ]}
+    >
 
-        <!-- BACK TO PROJECTS -->
-        <div class="mb-8">
-          <a
-            href="/#projects"
-            class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
-          >
-            <span aria-hidden="true">←</span>
-            Back to projects
-          </a>
-        </div>
+      <div class="max-w-7xl mx-auto">
 
-        <!-- PROJECT CONTENT -->
-        <section>
-          {
-            project.video ? (
-              <!-- VIDEO PROJECT -->
-              <div class="grid gap-12 lg:grid-cols-12 lg:items-start">
+        {
+          isNordicHairGlow ? (
 
-                <!-- TEXT -->
-                <div class="lg:col-span-7">
+            <!-- ===================================================== -->
+            <!-- NORDIC HAIR GLOW -->
+            <!-- ===================================================== -->
 
-                  <!-- META -->
-                  <div
-                    class="mb-6 flex flex-wrap items-center font-sans text-sm text-muted-foreground"
+            <section
+              class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start"
+            >
+
+              <!-- LEFT -->
+              <div class="order-2 lg:order-1">
+
+                <div class="mt-30 mb-10">
+
+                  <a
+                    href="/#projects"
+                    class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    <span>{project.category}</span>
+                    <span aria-hidden="true">←</span>
+                    Back to projects
+                  </a>
 
-                    <span class="mx-3 text-muted-foreground/40">·</span>
-
-                    <span>{project.year}</span>
-
-                    {project.tags?.map((tag) => (
-                      <>
-                        <span class="mx-3 text-muted-foreground/40">·</span>
-                        <span>{tag}</span>
-                      </>
-                    ))}
-                  </div>
-
-                  <!-- TITLE -->
-                  <h1
-                    class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight text-primary"
-                  >
-                    {project.title}
-                  </h1>
-
-                  <!-- DESCRIPTION -->
-                  <p
-                    class="font-sans text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl"
-                  >
-                    {project.description}
-                  </p>
-
-                  <!-- LONG DESCRIPTION -->
-                  <p
-                    class="font-sans text-lg md:text-xl text-foreground leading-relaxed max-w-2xl whitespace-pre-line"
-                  >
-                    {project.longDescription}
-                  </p>
-
-                  <!-- PROJECT LINK -->
-                  {
-                    project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="link-external inline-flex items-center gap-1 mt-8 font-sans text-base font-medium"
-                      >
-                        {project.linkLabel ??
-                          (project.link.includes("figma")
-                            ? "View prototype"
-                            : "Visit website")}
-                        <span aria-hidden="true">↗</span>
-                      </a>
-                    )
-                  }
                 </div>
 
-                <!-- MEDIA -->
-                <div class="lg:col-span-5 space-y-8">
 
-                  <!-- VIDEO -->
-                  <figure class="bg-black">
-                    <video
-                      controls
-                      preload="metadata"
-                      class="block aspect-video h-full w-full object-cover"
-                    >
-                      <source src={project.video} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </figure>
+                <!-- 01 META ADS -->
 
-                  <!-- FIRST IMAGE -->
-                  {
-                    project.gallery?.[0] && (
+                <section
+                  id="meta-ads"
+                  class="scroll-mt-32 mb-32"
+                >
+
+                  <div class="mb-8">
+
+                    <p class="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                      01
+                    </p>
+
+                    <h2 class="heading-display text-4xl md:text-5xl text-primary mt-2">
+                      Meta Ads
+                    </h2>
+
+                  </div>
+
+
+                  <div class="grid grid-cols-2 gap-4">
+
+                    <figure class="col-span-2 bg-black overflow-hidden">
+
+                      <video
+                        controls
+                        preload="metadata"
+                        class="block w-full aspect-video object-cover"
+                      >
+
+                        <source
+                          src="/videos/nordic-meta-ads.mp4"
+                          type="video/mp4"
+                        />
+
+                        Your browser does not support the video tag.
+
+                      </video>
+
+                    </figure>
+
+
+                    <figure>
+
+                      <img
+                        src="/images/nordic-hair-glow/meta-ad-01.jpg"
+                        alt="Nordic Hair Glow Meta advertisement"
+                        loading="lazy"
+                        class="w-full h-auto aspect-[4/5] object-cover"
+                      />
+
+                    </figure>
+
+
+                    <figure class="mt-12">
+
+                      <img
+                        src="/images/nordic-hair-glow/meta-ad-02.jpg"
+                        alt="Nordic Hair Glow Meta advertisement"
+                        loading="lazy"
+                        class="w-full h-auto aspect-[4/5] object-cover"
+                      />
+
+                    </figure>
+
+
+                    <figure class="col-span-2">
+
+                      <img
+                        src="/images/nordic-hair-glow/meta-ad-03.jpg"
+                        alt="Nordic Hair Glow advertising creative"
+                        loading="lazy"
+                        class="w-full h-auto object-cover"
+                      />
+
+                    </figure>
+
+
+                    <figure>
+
+                      <img
+                        src="/images/nordic-hair-glow/meta-ad-04.jpg"
+                        alt="Nordic Hair Glow Meta advertisement"
+                        loading="lazy"
+                        class="w-full h-auto aspect-[4/5] object-cover"
+                      />
+
+                    </figure>
+
+
+                    <figure class="mt-12">
+
+                      <img
+                        src="/images/nordic-hair-glow/meta-ad-05.jpg"
+                        alt="Nordic Hair Glow Meta advertisement"
+                        loading="lazy"
+                        class="w-full h-auto aspect-[4/5] object-cover"
+                      />
+
+                    </figure>
+
+                  </div>
+
+                </section>
+
+
+                <!-- 02 WEB DESIGN -->
+
+                <section
+                  id="web-design"
+                  class="scroll-mt-32 mb-32"
+                >
+
+                  <div class="mb-8">
+
+                    <p class="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                      02
+                    </p>
+
+                    <h2 class="heading-display text-4xl md:text-5xl text-primary mt-2">
+                      Web Design
+                    </h2>
+
+                  </div>
+
+
+                  <div class="space-y-4">
+
+                    <figure>
+
+                      <img
+                        src="/images/nordic-hair-glow/web-main.jpg"
+                        alt="Nordic Hair Glow website design"
+                        loading="lazy"
+                        class="w-full h-auto object-cover"
+                      />
+
+                    </figure>
+
+
+                    <div class="grid grid-cols-2 gap-4">
+
                       <figure>
+
                         <img
-                          src={project.gallery[0]}
-                          alt={`${project.title} image 1`}
-                          width="1200"
-                          height="900"
+                          src="/images/nordic-hair-glow/web-mobile-01.jpg"
+                          alt="Nordic Hair Glow mobile website"
                           loading="lazy"
                           class="w-full h-auto object-cover"
                         />
+
                       </figure>
-                    )
-                  }
 
-                </div>
-              </div>
-            ) : (
-              <!-- STANDARD PROJECT -->
-              <div>
 
-                <!-- META -->
-                <div
-                  class="mb-6 flex flex-wrap items-center font-sans text-sm text-muted-foreground"
+                      <figure class="mt-12">
+
+                        <img
+                          src="/images/nordic-hair-glow/web-mobile-02.jpg"
+                          alt="Nordic Hair Glow mobile website"
+                          loading="lazy"
+                          class="w-full h-auto object-cover"
+                        />
+
+                      </figure>
+
+                    </div>
+
+
+                    <figure>
+
+                      <img
+                        src="/images/nordic-hair-glow/web-detail.jpg"
+                        alt="Nordic Hair Glow website detail"
+                        loading="lazy"
+                        class="w-full h-auto object-cover"
+                      />
+
+                    </figure>
+
+                  </div>
+
+                </section>
+
+
+                <!-- 03 PHOTOGRAPHY -->
+
+                <section
+                  id="photography"
+                  class="scroll-mt-32 mb-32"
                 >
+
+                  <div class="mb-8">
+
+                    <p class="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                      03
+                    </p>
+
+                    <h2 class="heading-display text-4xl md:text-5xl text-primary mt-2">
+                      Photography
+                    </h2>
+
+                  </div>
+
+
+                  <div class="grid grid-cols-2 gap-4">
+
+                    <figure class="col-span-2">
+
+                      <img
+                        src="/images/nordic-hair-glow/photo-01.jpg"
+                        alt="Nordic Hair Glow product photography"
+                        loading="lazy"
+                        class="w-full h-auto object-cover"
+                      />
+
+                    </figure>
+
+
+                    <figure>
+
+                      <img
+                        src="/images/nordic-hair-glow/photo-02.jpg"
+                        alt="Nordic Hair Glow product photography"
+                        loading="lazy"
+                        class="w-full h-auto aspect-[4/5] object-cover"
+                      />
+
+                    </figure>
+
+
+                    <figure class="mt-12">
+
+                      <img
+                        src="/images/nordic-hair-glow/photo-03.jpg"
+                        alt="Nordic Hair Glow product photography"
+                        loading="lazy"
+                        class="w-full h-auto aspect-[4/5] object-cover"
+                      />
+
+                    </figure>
+
+
+                    <figure class="col-span-2">
+
+                      <img
+                        src="/images/nordic-hair-glow/photo-04.jpg"
+                        alt="Nordic Hair Glow photography"
+                        loading="lazy"
+                        class="w-full h-auto object-cover"
+                      />
+
+                    </figure>
+
+                  </div>
+
+                </section>
+
+
+                <!-- 04 AI -->
+
+                <section
+                  id="ai-imagery"
+                  class="scroll-mt-32 mb-32"
+                >
+
+                  <div class="mb-8">
+
+                    <p class="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                      04
+                    </p>
+
+                    <h2 class="heading-display text-4xl md:text-5xl text-primary mt-2">
+                      AI Imagery
+                    </h2>
+
+                  </div>
+
+
+                  <div class="grid grid-cols-2 gap-4">
+
+                    <figure>
+
+                      <img
+                        src="/images/nordic-hair-glow/ai-01.jpg"
+                        alt="AI generated Nordic Hair Glow imagery"
+                        loading="lazy"
+                        class="w-full h-auto aspect-[4/5] object-cover"
+                      />
+
+                    </figure>
+
+
+                    <figure class="mt-12">
+
+                      <img
+                        src="/images/nordic-hair-glow/ai-02.jpg"
+                        alt="AI generated Nordic Hair Glow imagery"
+                        loading="lazy"
+                        class="w-full h-auto aspect-[4/5] object-cover"
+                      />
+
+                    </figure>
+
+
+                    <figure class="col-span-2">
+
+                      <img
+                        src="/images/nordic-hair-glow/ai-03.jpg"
+                        alt="AI generated Nordic Hair Glow imagery"
+                        loading="lazy"
+                        class="w-full h-auto object-cover"
+                      />
+
+                    </figure>
+
+
+                    <figure>
+
+                      <img
+                        src="/images/nordic-hair-glow/ai-04.jpg"
+                        alt="AI generated Nordic Hair Glow imagery"
+                        loading="lazy"
+                        class="w-full h-auto aspect-[4/5] object-cover"
+                      />
+
+                    </figure>
+
+
+                    <figure class="mt-12">
+
+                      <img
+                        src="/images/nordic-hair-glow/ai-05.jpg"
+                        alt="AI generated Nordic Hair Glow imagery"
+                        loading="lazy"
+                        class="w-full h-auto aspect-[4/5] object-cover"
+                      />
+
+                    </figure>
+
+                  </div>
+
+                </section>
+
+
+                <!-- 05 PACKAGING -->
+
+                <section
+                  id="packaging"
+                  class="scroll-mt-32 mb-20"
+                >
+
+                  <div class="mb-8">
+
+                    <p class="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                      05
+                    </p>
+
+                    <h2 class="heading-display text-4xl md:text-5xl text-primary mt-2">
+                      Packaging
+                    </h2>
+
+                  </div>
+
+
+                  <div class="grid grid-cols-2 gap-4">
+
+                    <figure class="col-span-2">
+
+                      <img
+                        src="/images/nordic-hair-glow/packaging-01.jpg"
+                        alt="Nordic Hair Glow packaging design"
+                        loading="lazy"
+                        class="w-full h-auto object-cover"
+                      />
+
+                    </figure>
+
+
+                    <figure>
+
+                      <img
+                        src="/images/nordic-hair-glow/packaging-02.jpg"
+                        alt="Nordic Hair Glow packaging detail"
+                        loading="lazy"
+                        class="w-full h-auto aspect-[4/5] object-cover"
+                      />
+
+                    </figure>
+
+
+                    <figure class="mt-12">
+
+                      <img
+                        src="/images/nordic-hair-glow/packaging-03.jpg"
+                        alt="Nordic Hair Glow packaging detail"
+                        loading="lazy"
+                        class="w-full h-auto aspect-[4/5] object-cover"
+                      />
+
+                    </figure>
+
+                  </div>
+
+                </section>
+
+              </div>
+
+
+              <!-- ================================================= -->
+              <!-- NORDIC RIGHT -->
+              <!-- ================================================= -->
+
+              <aside
+                class="order-1 lg:order-2 lg:sticky lg:top-24 self-start"
+              >
+
+                <div class="mb-6 flex flex-wrap items-center font-sans text-sm text-muted-foreground">
+
                   <span>{project.category}</span>
 
                   <span class="mx-3 text-muted-foreground/40">·</span>
 
                   <span>{project.year}</span>
 
-                  {project.tags?.map((tag) => (
-                    <>
-                      <span class="mx-3 text-muted-foreground/40">·</span>
-                      <span>{tag}</span>
-                    </>
-                  ))}
+                  {
+                    project.tags?.map((tag) => (
+                      <>
+                        <span class="mx-3 text-muted-foreground/40">·</span>
+                        <span>{tag}</span>
+                      </>
+                    ))
+                  }
+
                 </div>
 
-                <!-- TITLE -->
+
                 <h1
-                  class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight text-primary"
+                  class="heading-display text-5xl md:text-6xl lg:text-7xl leading-tight text-primary mb-8"
                 >
                   {project.title}
                 </h1>
 
-                <!-- DESCRIPTION -->
+
                 <p
-                  class="font-sans text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-3xl"
+                  class="font-sans text-lg md:text-xl lg:text-2xl leading-relaxed text-foreground mb-8 max-w-xl"
                 >
                   {project.description}
                 </p>
 
-                <!-- LONG DESCRIPTION -->
-                <p
-                  class="font-sans text-md md:text-lg text-foreground leading-relaxed max-w-4xl whitespace-pre-line"
-                >
-                  {project.longDescription}
-                </p>
 
-                <!-- PROJECT LINK -->
+                {
+                  project.longDescription && (
+                    <p
+                      class="font-sans text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl whitespace-pre-line mb-8"
+                    >
+                      {project.longDescription}
+                    </p>
+                  )
+                }
+
+
                 {
                   project.link && (
                     <a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="link-external inline-flex items-center gap-1 mt-8 font-sans text-base font-medium"
+                      class="link-external inline-flex items-center gap-1 mb-10 font-sans text-base font-medium"
                     >
                       {project.linkLabel ??
                         (project.link.includes("figma")
@@ -198,188 +541,685 @@ if (!project) {
                   )
                 }
 
-              </div>
-            )
-          }
-        </section>
 
-        <!-- IMAGE CAROUSEL -->
-        {
-          !project.video && project.gallery?.length > 0 && (
-            <div
-              class:list={[
-                "w-full",
-                project.link ? "mt-8" : "mt-20",
-              ]}
-              data-carousel
+                <nav
+                  aria-label="Project sections"
+                  class="border-t border-border pt-6"
+                >
+
+                  <p class="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground mb-5">
+                    Project
+                  </p>
+
+
+                  <div class="space-y-3">
+
+                    <a
+                      href="#meta-ads"
+                      data-section-link="meta-ads"
+                      class="project-nav-link block font-sans text-sm text-primary"
+                    >
+                      <span class="mr-3 text-muted-foreground/50">01</span>
+                      Meta Ads
+                    </a>
+
+
+                    <a
+                      href="#web-design"
+                      data-section-link="web-design"
+                      class="project-nav-link block font-sans text-sm text-muted-foreground"
+                    >
+                      <span class="mr-3 text-muted-foreground/50">02</span>
+                      Web Design
+                    </a>
+
+
+                    <a
+                      href="#photography"
+                      data-section-link="photography"
+                      class="project-nav-link block font-sans text-sm text-muted-foreground"
+                    >
+                      <span class="mr-3 text-muted-foreground/50">03</span>
+                      Photography
+                    </a>
+
+
+                    <a
+                      href="#ai-imagery"
+                      data-section-link="ai-imagery"
+                      class="project-nav-link block font-sans text-sm text-muted-foreground"
+                    >
+                      <span class="mr-3 text-muted-foreground/50">04</span>
+                      AI Imagery
+                    </a>
+
+
+                    <a
+                      href="#packaging"
+                      data-section-link="packaging"
+                      class="project-nav-link block font-sans text-sm text-muted-foreground"
+                    >
+                      <span class="mr-3 text-muted-foreground/50">05</span>
+                      Packaging
+                    </a>
+
+                  </div>
+
+                </nav>
+
+              </aside>
+
+            </section>
+
+          ) : (
+
+            <!-- ===================================================== -->
+            <!-- OTHER PROJECTS -->
+            <!-- ===================================================== -->
+
+            <section
+              class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start"
             >
 
-              <!-- SLIDES -->
-              <div
-                class="relative aspect-[15/10] w-full overflow-hidden rounded-md bg-white"
-              >
+              <!-- ================================================= -->
+              <!-- LEFT TEXT -->
+              <!-- ================================================= -->
+
+              <div class="order-1">
+
+                <!-- BACK -->
+
+                <div class="mb-10">
+
+                  <a
+                    href="/#projects"
+                    class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <span aria-hidden="true">←</span>
+                    Back to projects
+                  </a>
+
+                </div>
+
+
+                <!-- META -->
+
+                <div
+                  class="mb-6 flex flex-wrap items-center font-sans text-sm text-muted-foreground"
+                >
+
+                  <span>{project.category}</span>
+
+                  <span class="mx-3 text-muted-foreground/40">
+                    ·
+                  </span>
+
+                  <span>{project.year}</span>
+
+                  {
+                    project.tags?.map((tag) => (
+                      <>
+                        <span class="mx-3 text-muted-foreground/40">
+                          ·
+                        </span>
+
+                        <span>{tag}</span>
+                      </>
+                    ))
+                  }
+
+                </div>
+
+
+                <!-- TITLE -->
+
+                <h1
+                  class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight text-primary"
+                >
+                  {project.title}
+                </h1>
+
+
+                <!-- DESCRIPTION -->
+
+                <p
+                  class="font-sans text-lg md:text-xl lg:text-2xl leading-relaxed text-foreground mb-8 max-w-xl"
+                >
+                  {project.description}
+                </p>
+
+
+                <!-- LONG DESCRIPTION -->
 
                 {
-                  project.gallery.map((image, index) => (
-                    <div
-                      data-slide
-                      class:list={[
-                        "absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-700 ease-in-out",
-                        index === 0
-                          ? "opacity-100 pointer-events-auto"
-                          : "",
-                      ]}
+                  project.longDescription && (
+                    <p
+                      class="font-sans text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl whitespace-pre-line mb-8"
                     >
-                      <img
-                        src={image}
-                        alt={`${project.title} image ${index + 1}`}
-                        width="1200"
-                        height="900"
-                        loading={index === 0 ? "eager" : "lazy"}
-                        class="h-full w-full object-cover bg-white"
-                      />
-                    </div>
-                  ))
+                      {project.longDescription}
+                    </p>
+                  )
+                }
+
+
+                <!-- LINK -->
+
+                {
+                  project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="link-external inline-flex items-center gap-1 font-sans text-base font-medium"
+                    >
+
+                      {project.linkLabel ??
+                        (project.link.includes("figma")
+                          ? "View prototype"
+                          : "Visit website")}
+
+                      <span aria-hidden="true">↗</span>
+
+                    </a>
+                  )
                 }
 
               </div>
 
-              <!-- CAROUSEL CONTROLS -->
-              <div class="mt-4 flex items-center justify-between">
 
-                <!-- DOTS -->
-                <div class="flex gap-2">
+              <!-- ================================================= -->
+              <!-- RIGHT IMAGES -->
+              <!-- ================================================= -->
+
+              <div class="order-2">
+
+                <div class="space-y-8">
+
+
+                  <!-- VIDEO -->
+
                   {
-                    project.gallery.map((_, index) => (
-                      <button
-                        type="button"
-                        data-dot={index}
-                        aria-label={`Go to slide ${index + 1}`}
+                    project.video && (
+                      <figure class="bg-black overflow-hidden">
+
+                        <video
+                          controls
+                          preload="metadata"
+                          class="block w-full aspect-video object-cover"
+                        >
+
+                          <source
+                            src={project.video}
+                            type="video/mp4"
+                          />
+
+                          Your browser does not support the video tag.
+
+                        </video>
+
+                      </figure>
+                    )
+                  }
+
+
+                  <!-- GALLERY -->
+
+                  {
+                    project.gallery?.map((image, index) => (
+
+                      <figure
                         class:list={[
-                          "h-2.5 w-2.5 rounded-full transition-all duration-200",
-                          index === 0
-                            ? "bg-primary"
-                            : "bg-primary/30",
+                          "project-image-frame",
+                          index % 2 === 1
+                            ? "lg:mt-12"
+                            : "",
                         ]}
-                      />
+                      >
+
+                        <img
+                          src={image}
+                          alt={`${project.title} image ${index + 1}`}
+                          width="1600"
+                          height="1200"
+                          loading={
+                            index === 0
+                              ? "eager"
+                              : "lazy"
+                          }
+                          class="project-image"
+                        />
+
+                      </figure>
+
                     ))
                   }
-                </div>
 
-                <!-- ARROWS -->
-                <div
-                  class="flex gap-3 font-sans text-sm text-muted-foreground"
-                >
-                  <button
-                    type="button"
-                    data-prev
-                    aria-label="Previous image"
-                    class="hover:text-primary transition-colors"
-                  >
-                    ←
-                  </button>
-
-                  <button
-                    type="button"
-                    data-next
-                    aria-label="Next image"
-                    class="hover:text-primary transition-colors"
-                  >
-                    →
-                  </button>
                 </div>
 
               </div>
-            </div>
+
+            </section>
+
           )
         }
 
       </div>
 
+
       <Footer />
+
     </main>
+
   </div>
 
-  <!-- CAROUSEL JAVASCRIPT -->
-  <script>
-    const carousel = document.querySelector("[data-carousel]");
 
-    if (carousel) {
-      const slides = Array.from(
-        carousel.querySelectorAll("[data-slide]")
-      );
+  <!-- =============================================================== -->
+  <!-- NORDIC ACTIVE SECTION -->
+  <!-- =============================================================== -->
 
-      const dots = Array.from(
-        carousel.querySelectorAll("[data-dot]")
-      );
+  {
+    isNordicHairGlow && (
+      <script>
+        const sections = Array.from(
+          document.querySelectorAll<HTMLElement>(
+            "#meta-ads, #web-design, #photography, #ai-imagery, #packaging"
+          )
+        );
 
-      const prevButton = carousel.querySelector("[data-prev]");
-      const nextButton = carousel.querySelector("[data-next]");
+        const links = Array.from(
+          document.querySelectorAll<HTMLAnchorElement>(
+            "[data-section-link]"
+          )
+        );
 
-      let currentIndex = 0;
+        const updateActiveSection = () => {
 
-      const showSlide = (nextIndex) => {
-        if (!slides.length) return;
+          const position =
+            window.scrollY +
+            window.innerHeight * 0.35;
 
-        currentIndex =
-          (nextIndex + slides.length) % slides.length;
+          let activeId = sections[0]?.id;
 
-        slides.forEach((slide, index) => {
-          const isActive = index === currentIndex;
+          sections.forEach((section) => {
 
-          slide.classList.toggle(
-            "opacity-100",
-            isActive
+            if (position >= section.offsetTop) {
+              activeId = section.id;
+            }
+
+          });
+
+          links.forEach((link) => {
+
+            const isActive =
+              link.dataset.sectionLink === activeId;
+
+            link.classList.toggle(
+              "text-primary",
+              isActive
+            );
+
+            link.classList.toggle(
+              "text-muted-foreground",
+              !isActive
+            );
+
+          });
+
+        };
+
+        window.addEventListener(
+          "scroll",
+          updateActiveSection,
+          { passive: true }
+        );
+
+        updateActiveSection();
+      </script>
+    )
+  }
+
+
+  <!-- =============================================================== -->
+  <!-- IMAGE HOVER SCROLL -->
+  <!-- =============================================================== -->
+
+  {
+    !isNordicHairGlow && (
+      <script>
+        const frames =
+          Array.from(
+            document.querySelectorAll<HTMLElement>(
+              ".project-image-frame"
+            )
           );
 
-          slide.classList.toggle(
-            "pointer-events-auto",
-            isActive
+
+        frames.forEach((frame) => {
+
+          const image =
+            frame.querySelector<HTMLImageElement>(
+              ".project-image"
+            );
+
+          if (!image) return;
+
+
+          const enableScrolling = () => {
+
+            /*
+             * We wait until the image has loaded,
+             * because we need its real height.
+             */
+
+            if (!image.complete) {
+              image.addEventListener(
+                "load",
+                enableScrolling,
+                { once: true }
+              );
+
+              return;
+            }
+
+
+            const imageHeight =
+              image.getBoundingClientRect().height;
+
+
+            const frameHeight =
+              frame.getBoundingClientRect().height;
+
+
+            /*
+             * If the image is not taller than the frame,
+             * there is nothing to scroll.
+             */
+
+            if (imageHeight <= frameHeight) {
+              frame.classList.remove(
+                "has-scroll"
+              );
+
+              return;
+            }
+
+
+            frame.classList.add(
+              "has-scroll"
+            );
+
+          };
+
+
+          enableScrolling();
+
+
+          /*
+           * IMPORTANT:
+           *
+           * The wheel event is attached to the IMAGE FRAME.
+           *
+           * When the mouse is over the image:
+           *
+           * wheel down  → image moves down
+           * wheel up    → image moves up
+           *
+           * When the image reaches its limit,
+           * the page takes over again.
+           */
+
+          frame.addEventListener(
+            "wheel",
+            (event) => {
+
+              /*
+               * Only activate this behaviour on desktop.
+               */
+
+              if (window.innerWidth < 1024) {
+                return;
+              }
+
+
+              const maxScroll =
+                frame.scrollHeight -
+                frame.clientHeight;
+
+
+              /*
+               * No internal scrolling needed.
+               */
+
+              if (maxScroll <= 0) {
+                return;
+              }
+
+
+              const currentScroll =
+                frame.scrollTop;
+
+
+              const delta =
+                event.deltaY;
+
+
+              const scrollingDown =
+                delta > 0;
+
+
+              const scrollingUp =
+                delta < 0;
+
+
+              const atTop =
+                currentScroll <= 0;
+
+
+              const atBottom =
+                currentScroll >= maxScroll - 1;
+
+
+              /*
+               * If there is still room inside the image,
+               * prevent the page from scrolling.
+               */
+
+              if (
+                (scrollingDown && !atBottom) ||
+                (scrollingUp && !atTop)
+              ) {
+
+                event.preventDefault();
+
+                frame.scrollTop =
+                  Math.max(
+                    0,
+                    Math.min(
+                      maxScroll,
+                      currentScroll + delta
+                    )
+                  );
+
+              }
+
+            },
+            { passive: false }
           );
 
-          slide.classList.toggle(
-            "opacity-0",
-            !isActive
+
+          /*
+           * Recalculate when the window changes size.
+           */
+
+          window.addEventListener(
+            "resize",
+            enableScrolling
           );
 
-          slide.classList.toggle(
-            "pointer-events-none",
-            !isActive
-          );
         });
+      </script>
+    )
+  }
 
-        dots.forEach((dot, index) => {
-          dot.classList.toggle(
-            "bg-primary",
-            index === currentIndex
-          );
 
-          dot.classList.toggle(
-            "bg-primary/30",
-            index !== currentIndex
-          );
-        });
-      };
+  <!-- =============================================================== -->
+  <!-- STYLES -->
+  <!-- =============================================================== -->
 
-      prevButton?.addEventListener("click", () => {
-        showSlide(currentIndex - 1);
-      });
+  <style>
 
-      nextButton?.addEventListener("click", () => {
-        showSlide(currentIndex + 1);
-      });
-
-      dots.forEach((dot) => {
-        dot.addEventListener("click", () => {
-          showSlide(
-            Number(dot.getAttribute("data-dot"))
-          );
-        });
-      });
-
-      window.setInterval(() => {
-        showSlide(currentIndex + 1);
-      }, 4000);
+    html {
+      scroll-behavior: smooth;
     }
-  </script>
+
+
+    /* ============================================================= */
+    /* NORDIC NAV */
+    /* ============================================================= */
+
+    .project-nav-link {
+      position: relative;
+
+      transition:
+        color 200ms ease,
+        padding-left 200ms ease;
+    }
+
+
+    .project-nav-link.text-primary {
+      padding-left: 6px;
+    }
+
+
+    .project-nav-link.text-primary::before {
+      content: "";
+
+      position: absolute;
+
+      left: -10px;
+
+      top: 50%;
+
+      width: 3px;
+
+      height: 14px;
+
+      transform: translateY(-50%);
+
+      background: currentColor;
+    }
+
+
+    /* ============================================================= */
+    /* OTHER PROJECT IMAGE FRAME */
+    /* ============================================================= */
+
+    .project-image-frame {
+      width: 100%;
+
+      height: 70vh;
+
+      overflow-y: auto;
+
+      overflow-x: hidden;
+
+      position: relative;
+
+      background: transparent;
+
+      scrollbar-width: thin;
+
+      scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+    }
+
+
+    .project-image {
+      display: block;
+
+      width: 100%;
+
+      height: auto;
+
+      min-height: 100%;
+
+      object-fit: contain;
+
+      object-position: top;
+    }
+
+
+    /*
+     * Hide the scrollbar visually until the user
+     * actually interacts with the image.
+     */
+
+    .project-image-frame::-webkit-scrollbar {
+      width: 4px;
+    }
+
+
+    .project-image-frame::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+
+    .project-image-frame::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.15);
+
+      border-radius: 999px;
+    }
+
+
+    /*
+     * A subtle cursor indication on desktop.
+     */
+
+    @media (min-width: 1024px) {
+
+      .project-image-frame.has-scroll {
+        cursor: ns-resize;
+      }
+
+    }
+
+
+    /* ============================================================= */
+    /* MOBILE */
+    /* ============================================================= */
+
+    @media (max-width: 1023px) {
+
+      .project-image-frame {
+        height: auto;
+
+        max-height: none;
+
+        overflow: visible;
+
+        scrollbar-width: auto;
+      }
+
+
+      .project-image {
+        min-height: 0;
+
+        width: 100%;
+
+        height: auto;
+      }
+
+
+      .project-nav-link.text-primary {
+        padding-left: 0;
+      }
+
+
+      .project-nav-link.text-primary::before {
+        display: none;
+      }
+
+    }
+
+  </style>
+
 </Layout>
