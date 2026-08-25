@@ -2,11 +2,15 @@
 import { projects } from "../data/projects";
 ---
 
-<section id="projects" class="bg-secondary/30 ">
+<section id="projects" class="bg-secondary/30">
   <div class="section-container">
-    <h3 class="section-header">selected projects</h3>
+
+    <h3 class="section-header reveal-section">
+      selected projects
+    </h3>
 
     <div class="flex flex-col gap-16 md:gap-24">
+
       {
         projects.map((project, index) => (
           <article
@@ -17,23 +21,28 @@ import { projects } from "../data/projects";
               href={`/project/${project.slug}`}
               class="group grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
             >
+
               <!-- Project image -->
-              <div class="overflow-hidden bg-transparent">
+              <div
+                class="project-image overflow-hidden bg-transparent"
+              >
                 <img
                   src={project.image}
                   alt={project.title}
                   width="1024"
                   height="768"
                   loading="lazy"
-                  class="w-full h-auto object-contain aspect-[4/3] transition-transform duration-700 group-hover:scale-[1.03]"
+                  class="w-full h-auto object-contain aspect-[4/3] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
               </div>
 
               <!-- Project information -->
-              <div class="flex flex-col font-sans">
+              <div class="project-info flex flex-col font-sans">
 
                 <!-- Category + year -->
-                <div class="flex items-center gap-3 text-sm font-sans text-muted-foreground mb-4">
+                <div
+                  class="project-meta flex items-center gap-3 text-sm font-sans text-muted-foreground mb-4"
+                >
                   <span>{project.category}</span>
 
                   <span class="text-muted-foreground/40">
@@ -45,10 +54,12 @@ import { projects } from "../data/projects";
 
                 <!-- Tags -->
                 {project.tags && project.tags.length > 0 && (
-                  <div class="mb-4 flex flex-wrap gap-3 font-sans">
+                  <div
+                    class="project-tags mb-4 flex flex-wrap gap-3 font-sans"
+                  >
                     {project.tags.map((tag) => (
                       <span
-                        class="inline-flex items-center rounded-full bg-slate-200/80 px-3 py-1 text-sm font-sans font-medium text-slate-700"
+                        class="inline-flex items-center rounded-full bg-secondary/70 px-3 py-1 text-sm font-sans font-medium text-secondary-foreground transition-colors duration-300"
                       >
                         {tag}
                       </span>
@@ -58,33 +69,38 @@ import { projects } from "../data/projects";
 
                 <!-- Project title -->
                 <h4
-                  class="font-sans text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-4 group-hover:text-primary transition-colors duration-200"
+                  class="project-title font-sans text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-4 transition-colors duration-300 group-hover:text-primary"
                 >
                   {project.title}
                 </h4>
 
                 <!-- Description -->
                 <p
-                  class="font-sans text-base md:text-lg text-muted-foreground leading-relaxed mb-6"
+                  class="project-description font-sans text-base md:text-lg text-muted-foreground leading-relaxed mb-6"
                 >
                   {project.description}
                 </p>
 
                 <!-- Project link -->
                 <span
-                  class="inline-flex items-center gap-2 font-sans text-primary font-medium"
+                  class="project-link inline-flex items-center gap-2 font-sans text-primary font-medium"
                 >
                   View project
 
-                  <span aria-hidden="true">
+                  <span
+                    aria-hidden="true"
+                    class="inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                  >
                     ↗
                   </span>
                 </span>
+
               </div>
             </a>
           </article>
         ))
       }
+
     </div>
   </div>
 </section>
@@ -92,7 +108,9 @@ import { projects } from "../data/projects";
 <script>
   const initProjectReveal = () => {
     const projectCards =
-      document.querySelectorAll(".project-card");
+      document.querySelectorAll<HTMLElement>(
+        ".project-card",
+      );
 
     if (projectCards.length === 0) return;
 
@@ -101,13 +119,14 @@ import { projects } from "../data/projects";
         new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
+              if (!entry.isIntersecting) return;
 
-                revealObserver.unobserve(
-                  entry.target,
-                );
-              }
+              const card =
+                entry.target as HTMLElement;
+
+              card.classList.add("is-visible");
+
+              revealObserver.unobserve(card);
             });
           },
           {
