@@ -15,13 +15,15 @@
   --color-primary: hsl(221 83% 53%);
   --color-primary-foreground: hsl(47 52% 93%);
 
-  --color-secondary: hsl(45 90% 77%);
+  /* Sage */
+
+  --color-secondary: hsl(105 22% 72%);
   --color-secondary-foreground: hsl(220 50% 10%);
 
-  --color-muted: hsl(45 30% 85%);
+  --color-muted: hsl(145 15% 87%);
   --color-muted-foreground: hsl(220 20% 35%);
 
-  --color-accent: hsl(45 90% 77%);
+  --color-accent: hsl(105 22% 72%);
   --color-accent-foreground: hsl(220 50% 10%);
 
   /* Fonts */
@@ -55,13 +57,11 @@
   /* Very subtle borders */
 
   --border-light: 220 50% 10% / 0.10;
-
   --border-lighter: 220 50% 10% / 0.06;
 
   /* Hover surfaces */
 
   --surface-hover: 220 50% 10% / 0.03;
-
   --surface-active: 220 50% 10% / 0.05;
 }
 

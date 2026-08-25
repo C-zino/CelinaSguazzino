@@ -1,10 +1,83 @@
-<footer class="border-t border-border mt-24">
-  <div
-    class="max-w-7xl mx-auto px-8 py-12 flex flex-col gap-4 md:flex-row justify-between items-center"
-  >
-    <span class="text-sm text-muted-foreground">© Celina Sguazzino</span>
-    <span class="text-sm text-muted-foreground" data-i18n="footer.made"
-      >Made in Kongens Lyngby, Denmark</span
+<footer class="border-t border-black/10 mt-24">
+  <div class="max-w-7xl mx-auto px-8 py-10">
+    <!-- Contact links -->
+    <div
+      class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
     >
+      <!-- Contact -->
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+        <span class="text-sm font-medium text-foreground"> Get in touch </span>
+
+        <a
+          href="mailto:celinakhrs@gmail.com"
+          class="group flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-200 hover:text-primary"
+        >
+          <span class="text-[#A9B89C]">✦</span>
+          <span>celinakhrs@gmail.com</span>
+        </a>
+
+        <a
+          href="https://linkedin.com/in/celina-sguazzino"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-200 hover:text-primary"
+        >
+          <span>LinkedIn</span>
+          <span class="text-primary">↗</span>
+        </a>
+
+        <a
+          href="https://instagram.com/c_zino"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-200 hover:text-primary"
+        >
+          <span>Instagram</span>
+          <span class="text-primary">↗</span>
+        </a>
+      </div>
+
+      <!-- Location -->
+      <div class="flex items-center gap-2 text-sm text-muted-foreground">
+        <span class="text-[#A9B89C]">⌖</span>
+        <span>Kongens Lyngby, Denmark</span>
+        <span class="hidden sm:inline">·</span>
+        <span id="footer-local-time">local time</span>
+      </div>
+    </div>
+
+    <!-- Bottom row -->
+    <div
+      class="mt-8 pt-6 border-t border-black/10 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <span class="text-xs text-muted-foreground"> © Celina Sguazzino </span>
+
+      <span class="text-xs text-muted-foreground" data-i18n="footer.made">
+        Made in Kongens Lyngby, Denmark
+      </span>
+    </div>
   </div>
 </footer>
+
+<script>
+  const updateFooterTime = () => {
+    const node = document.getElementById("footer-local-time");
+
+    if (!node) return;
+
+    const now = new Date();
+
+    const copenhagenTime = now.toLocaleTimeString("en-US", {
+      timeZone: "Europe/Copenhagen",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+
+    node.textContent = `${copenhagenTime} local time`;
+  };
+
+  updateFooterTime();
+
+  setInterval(updateFooterTime, 60000);
+</script>

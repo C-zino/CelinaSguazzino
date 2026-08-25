@@ -27,14 +27,12 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
     <main
       class:list={[
-        "min-h-screen px-4 md:px-6 lg:px-8 pb-24",
-        isNordicHairGlow
-          ? "pt-0"
-          : "pt-24 md:pt-28",
+        "min-h-screen px-4 pb-24 md:px-5 lg:px-8",
+        isNordicHairGlow ? "pt-0" : "pt-24 md:pt-28",
       ]}
     >
 
-      <div class="max-w-7xl mx-auto">
+      <div class="mx-auto max-w-7xl lg:pl-10">
 
         {
           isNordicHairGlow ? (
@@ -44,18 +42,90 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
             <!-- ================================================= -->
 
             <section
-              class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start"
+              class="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(320px,3fr)] lg:gap-12 xl:gap-16 2xl:gap-20"
             >
 
-              <!-- LEFT — NORDIC CONTENT -->
+              <!-- ================================================= -->
+              <!-- NORDIC PROJECT MENU -->
+              <!-- Only visible on 2xl and larger screens -->
+              <!-- ================================================= -->
 
-              <div class="order-2 lg:order-1">
+              <nav
+                aria-label="Project sections"
+                class="fixed left-15 top-24 z-40 hidden 2xl:block"
+              >
 
-                <div class="mt-24 mb-10">
+                <p
+                  class="mb-3 font-sans text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground"
+                >
+                  Project
+                </p>
+
+                <div class="space-y-2">
+
+                  <a
+                    href="#meta-ads"
+                    data-section-link="meta-ads"
+                    class="project-nav-link active block text-sm font-sans text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <span class="inline-block w-8 text-muted-foreground/50">
+                      01
+                    </span>
+                    Meta Ads
+                  </a>
+
+                  <a
+                    href="#web-design"
+                    data-section-link="web-design"
+                    class="project-nav-link block text-sm font-sans text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <span class="inline-block w-8 text-muted-foreground/50">
+                      02
+                    </span>
+                    Web Design
+                  </a>
+
+                  <a
+                    href="#ai-imagery"
+                    data-section-link="ai-imagery"
+                    class="project-nav-link block text-sm font-sans text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <span class="inline-block w-8 text-muted-foreground/50">
+                      03
+                    </span>
+                    AI Imagery
+                  </a>
+
+                  <a
+                    href="#packaging"
+                    data-section-link="packaging"
+                    class="project-nav-link block text-sm font-sans text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <span class="inline-block w-8 text-muted-foreground/50">
+                      04
+                    </span>
+                    Packaging
+                  </a>
+
+                </div>
+
+              </nav>
+
+
+              <!-- ================================================= -->
+              <!-- LEFT — NORDIC CONTENT / MEDIA -->
+              <!-- ================================================= -->
+
+             <div
+  class="order-2 min-w-0  max-w-[500px] lg:order-1 lg:mx-0 lg:max-w-[700px] lg:pl-0 xl:pl-2 2xl:pl-4"
+>
+                <!-- BACK -->
+
+                <div class="mb-10 mt-24">
 
                   <a
                     href="/#projects"
-                    class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
+                    class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
                     <span aria-hidden="true">←</span>
                     Back to projects
@@ -64,11 +134,13 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                 </div>
 
 
+                <!-- ================================================= -->
                 <!-- 01 META ADS -->
+                <!-- ================================================= -->
 
                 <section
                   id="meta-ads"
-                  class="mb-32"
+                  class="mb-32 scroll-mt-28"
                 >
 
                   <div class="mb-8">
@@ -77,88 +149,100 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                       01
                     </p>
 
-                    <h2 class="project-heading">
+                    <h2
+                      class="mt-2 font-heading text-3xl font-normal leading-tight tracking-[-0.02em] text-primary md:text-4xl"
+                    >
                       Meta Ads
                     </h2>
 
                   </div>
 
 
-                  <div class="grid grid-cols-2 gap-4">
+                  <div class="grid grid-cols-2 gap-3 md:gap-4">
 
-                    <figure class="col-span-2 bg-black overflow-hidden">
+                    <!-- VIDEO 01 -->
 
+                    <figure class="w-full overflow-hidden">
                       <video
-                        controls
-                        preload="metadata"
-                        class="block w-full aspect-video object-cover"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="auto"
+                        class="block h-auto w-full"
                       >
                         <source
-                          src="/videos/nordic-meta-ads.mp4"
+                          src="/videos/nordichairglow/Video1.mp4"
                           type="video/mp4"
                         />
                       </video>
-
                     </figure>
 
 
-                    <figure>
+                    <!-- VIDEO 02 — SLIGHTLY LOWER -->
 
-                      <img
-                        src="/images/nordic-hair-glow/meta-ad-01.jpg"
-                        alt="Nordic Hair Glow Meta advertisement"
-                        loading="lazy"
-                        class="w-full aspect-[4/5] object-cover"
-                      />
-
+                    <figure class="mt-8 w-full overflow-hidden md:mt-12">
+                      <video
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="auto"
+                        class="block h-auto w-full"
+                      >
+                        <source
+                          src="/videos/nordichairglow/Video2.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
                     </figure>
 
 
-                    <figure class="mt-12">
+                    <!-- META IMAGE 01 -->
 
+                    <figure class="w-full">
                       <img
-                        src="/images/nordic-hair-glow/meta-ad-02.jpg"
-                        alt="Nordic Hair Glow Meta advertisement"
+                        src="/images/projects/nordichairglow/meta1.png"
+                        alt="Nordic Hair Glow Meta advertising creative"
                         loading="lazy"
-                        class="w-full aspect-[4/5] object-cover"
+                        class="block h-auto w-full object-contain"
                       />
-
                     </figure>
 
 
-                    <figure class="col-span-2">
+                    <!-- META IMAGE 02 — SLIGHTLY LOWER -->
 
+                    <figure class="mt-8 w-full md:mt-12">
                       <img
-                        src="/images/nordic-hair-glow/meta-ad-03.jpg"
-                        alt="Nordic Hair Glow advertising creative"
+                        src="/images/projects/nordichairglow/meta2.png"
+                        alt="Nordic Hair Glow Meta advertising creative"
                         loading="lazy"
-                        class="w-full h-auto object-cover"
+                        class="block h-auto w-full object-contain"
                       />
-
                     </figure>
 
 
-                    <figure>
+                    <!-- META IMAGE 03 -->
 
+                    <figure class="w-full">
                       <img
-                        src="/images/nordic-hair-glow/meta-ad-04.jpg"
-                        alt="Nordic Hair Glow Meta advertisement"
+                        src="/images/projects/nordichairglow/meta3.png"
+                        alt="Nordic Hair Glow Meta advertising creative"
                         loading="lazy"
-                        class="w-full aspect-[4/5] object-cover"
+                        class="block h-auto w-full object-contain"
                       />
-
                     </figure>
 
 
-                    <figure class="mt-12">
+                    <!-- META IMAGE 04 — SLIGHTLY LOWER -->
 
+                    <figure class="mt-8 w-full md:mt-12">
                       <img
-                        src="/images/nordic-hair-glow/meta-ad-05.jpg"
-                        alt="Nordic Hair Glow Meta advertisement"
+                        src="/images/projects/nordichairglow/meta4.png"
+                        alt="Nordic Hair Glow Meta advertising creative"
                         loading="lazy"
-                        class="w-full aspect-[4/5] object-cover"
+                        class="block h-auto w-full object-contain"
                       />
-
                     </figure>
 
                   </div>
@@ -166,235 +250,259 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                 </section>
 
 
+                <!-- ================================================= -->
                 <!-- 02 WEB DESIGN -->
+                <!-- ================================================= -->
 
                 <section
                   id="web-design"
-                  class="mb-32"
+                  class="mb-32 scroll-mt-28"
                 >
 
                   <div class="mb-8">
 
-                    <p class="project-number">
+                    <p
+                      class="m-0 font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground"
+                    >
                       02
                     </p>
 
-                    <h2 class="project-heading">
+                    <h2
+                      class="mt-2 font-heading text-3xl font-normal leading-tight tracking-[-0.02em] text-primary md:text-4xl"
+                    >
                       Web Design
                     </h2>
 
                   </div>
 
 
-                  <div class="space-y-4">
+                  <div class="space-y-6">
+
+                    <!-- MAIN WEB DESIGN -->
 
                     <figure>
 
                       <img
-                        src="/images/nordic-hair-glow/web-main.jpg"
-                        alt="Nordic Hair Glow website design"
+                        src="/images/projects/nordichairglow/webdesign1.png"
+                        alt="Nordic Hair Glow web design"
                         loading="lazy"
-                        class="w-full h-auto object-cover"
+                        class="block h-auto w-full object-contain"
                       />
 
                     </figure>
 
 
-                    <div class="grid grid-cols-2 gap-4">
+                    <!-- SECOND WEB DESIGN -->
+
+                    <figure>
+
+                      <img
+                        src="/images/projects/nordichairglow/webdesign2.png"
+                        alt="Nordic Hair Glow web design"
+                        loading="lazy"
+                        class="block h-auto w-full object-contain"
+                      />
+
+                    </figure>
+
+
+                    <!-- MOBILE DESIGNS -->
+
+                    <div class="grid grid-cols-2 gap-3 md:gap-4">
 
                       <figure>
 
                         <img
-                          src="/images/nordic-hair-glow/web-mobile-01.jpg"
-                          alt="Nordic Hair Glow mobile website"
+                          src="/images/projects/nordichairglow/webdesignmobile1.PNG"
+                          alt="Nordic Hair Glow mobile web design"
                           loading="lazy"
-                          class="w-full h-auto object-cover"
+                          class="block h-auto w-full object-contain"
                         />
 
                       </figure>
 
 
-                      <figure class="mt-12">
+                      <figure class="mt-8 md:mt-12">
 
                         <img
-                          src="/images/nordic-hair-glow/web-mobile-02.jpg"
-                          alt="Nordic Hair Glow mobile website"
+                          src="/images/projects/nordichairglow/webdesignmobile2.PNG"
+                          alt="Nordic Hair Glow mobile web design"
                           loading="lazy"
-                          class="w-full h-auto object-cover"
+                          class="block h-auto w-full object-contain"
                         />
 
                       </figure>
 
                     </div>
 
-
-                    <figure>
-
-                      <img
-                        src="/images/nordic-hair-glow/web-detail.jpg"
-                        alt="Nordic Hair Glow website detail"
-                        loading="lazy"
-                        class="w-full h-auto object-cover"
-                      />
-
-                    </figure>
-
                   </div>
 
                 </section>
 
 
-                <!-- 03 PHOTOGRAPHY -->
-
-                <section
-                  id="photography"
-                  class="mb-32"
-                >
-
-                  <div class="mb-8">
-
-                    <p class="project-number">
-                      03
-                    </p>
-
-                    <h2 class="project-heading">
-                      Photography
-                    </h2>
-
-                  </div>
-
-
-                  <div class="grid grid-cols-2 gap-4">
-
-                    <figure class="col-span-2">
-
-                      <img
-                        src="/images/nordic-hair-glow/photo-01.jpg"
-                        alt="Nordic Hair Glow product photography"
-                        loading="lazy"
-                        class="w-full h-auto object-cover"
-                      />
-
-                    </figure>
-
-
-                    <figure>
-
-                      <img
-                        src="/images/nordic-hair-glow/photo-02.jpg"
-                        alt="Nordic Hair Glow product photography"
-                        loading="lazy"
-                        class="w-full aspect-[4/5] object-cover"
-                      />
-
-                    </figure>
-
-
-                    <figure class="mt-12">
-
-                      <img
-                        src="/images/nordic-hair-glow/photo-03.jpg"
-                        alt="Nordic Hair Glow product photography"
-                        loading="lazy"
-                        class="w-full aspect-[4/5] object-cover"
-                      />
-
-                    </figure>
-
-
-                    <figure class="col-span-2">
-
-                      <img
-                        src="/images/nordic-hair-glow/photo-04.jpg"
-                        alt="Nordic Hair Glow photography"
-                        loading="lazy"
-                        class="w-full h-auto object-cover"
-                      />
-
-                    </figure>
-
-                  </div>
-
-                </section>
-
-
-                <!-- 04 AI -->
+                <!-- ================================================= -->
+                <!-- 03 AI IMAGERY -->
+                <!-- ================================================= -->
 
                 <section
                   id="ai-imagery"
-                  class="mb-32"
+                  class="mb-32 scroll-mt-28"
                 >
 
                   <div class="mb-8">
 
-                    <p class="project-number">
-                      04
+                    <p
+                      class="m-0 font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground"
+                    >
+                      03
                     </p>
 
-                    <h2 class="project-heading">
+                    <h2
+                      class="mt-2 font-heading text-3xl font-normal leading-tight tracking-[-0.02em] text-primary md:text-4xl"
+                    >
                       AI Imagery
                     </h2>
 
                   </div>
 
 
-                  <div class="grid grid-cols-2 gap-4">
+                  <div class="grid grid-cols-2 gap-3 md:gap-4">
+
+                    <!-- AI 1 -->
 
                     <figure>
 
                       <img
-                        src="/images/nordic-hair-glow/ai-01.jpg"
-                        alt="AI generated Nordic Hair Glow imagery"
+                        src="/images/projects/nordichairglow/ai1.png"
+                        alt="Nordic Hair Glow AI imagery"
                         loading="lazy"
-                        class="w-full aspect-[4/5] object-cover"
+                        class="block h-auto w-full object-contain"
                       />
 
                     </figure>
 
 
-                    <figure class="mt-12">
+                    <!-- AI 2 -->
+
+                    <figure class="mt-8 md:mt-12">
 
                       <img
-                        src="/images/nordic-hair-glow/ai-02.jpg"
-                        alt="AI generated Nordic Hair Glow imagery"
+                        src="/images/projects/nordichairglow/ai3.png"
+                        alt="Nordic Hair Glow AI imagery"
                         loading="lazy"
-                        class="w-full aspect-[4/5] object-cover"
+                        class="block h-auto w-full object-contain"
                       />
 
                     </figure>
 
+
+                    <!-- AI 3 -->
 
                     <figure class="col-span-2">
 
                       <img
-                        src="/images/nordic-hair-glow/ai-03.jpg"
-                        alt="AI generated Nordic Hair Glow imagery"
+                        src="/images/projects/nordichairglow/ai2.png"
+                        alt="Nordic Hair Glow AI imagery"
                         loading="lazy"
-                        class="w-full h-auto object-cover"
+                        class="block h-auto w-full object-contain"
                       />
 
                     </figure>
 
+
+                    <!-- AI 4 -->
+
+                    <figure class="mt-4 md:mt-5">
+
+                      <img
+                        src="/images/projects/nordichairglow/ai6.png"
+                        alt="Nordic Hair Glow AI imagery"
+                        loading="lazy"
+                        class="block h-auto w-full object-contain"
+                      />
+
+                    </figure>
+
+
+                    <!-- AI 5 -->
+
+                    <figure class="mt-8 md:mt-12">
+
+                      <img
+                        src="/images/projects/nordichairglow/ai5.png"
+                        alt="Nordic Hair Glow AI imagery"
+                        loading="lazy"
+                        class="block h-auto w-full object-contain"
+                      />
+
+                    </figure>
+
+
+                    <!-- AI 6 -->
+
+                    <figure class="col-span-2">
+
+                      <img
+                        src="/images/projects/nordichairglow/ai7.png"
+                        alt="Nordic Hair Glow AI imagery"
+                        loading="lazy"
+                        class="block h-auto w-full object-contain"
+                      />
+
+                    </figure>
+
+
+                    <!-- AI 7 -->
 
                     <figure>
 
                       <img
-                        src="/images/nordic-hair-glow/ai-04.jpg"
-                        alt="AI generated Nordic Hair Glow imagery"
+                        src="/images/projects/nordichairglow/ai8.png"
+                        alt="Nordic Hair Glow AI imagery"
                         loading="lazy"
-                        class="w-full aspect-[4/5] object-cover"
+                        class="block h-auto w-full object-contain"
                       />
 
                     </figure>
 
 
-                    <figure class="mt-12">
+                    <!-- AI 8 -->
+
+                    <figure class="mt-8 md:mt-12">
 
                       <img
-                        src="/images/nordic-hair-glow/ai-05.jpg"
-                        alt="AI generated Nordic Hair Glow imagery"
+                        src="/images/projects/nordichairglow/ai9.png"
+                        alt="Nordic Hair Glow AI imagery"
                         loading="lazy"
-                        class="w-full aspect-[4/5] object-cover"
+                        class="block h-auto w-full object-contain"
+                      />
+
+                    </figure>
+
+
+                    <!-- AI 9 -->
+
+                    <figure class="col-span-2">
+
+                      <img
+                        src="/images/projects/nordichairglow/ai10.png"
+                        alt="Nordic Hair Glow AI imagery"
+                        loading="lazy"
+                        class="block h-auto w-full object-contain"
+                      />
+
+                    </figure>
+
+
+                    <!-- AI 10 -->
+
+                    <figure class="col-span-2">
+
+                      <img
+                        src="/images/projects/nordichairglow/ai11.png"
+                        alt="Nordic Hair Glow AI imagery"
+                        loading="lazy"
+                        class="block h-auto w-full object-contain"
                       />
 
                     </figure>
@@ -404,77 +512,97 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                 </section>
 
 
-                <!-- 05 PACKAGING -->
+                <!-- ================================================= -->
+                <!-- 04 PACKAGING -->
+                <!-- ================================================= -->
 
                 <section
                   id="packaging"
-                  class="mb-20"
+                  class="mb-20 scroll-mt-28"
                 >
 
                   <div class="mb-8">
 
-                    <p class="project-number">
-                      05
+                    <p
+                      class="m-0 font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground"
+                    >
+                      04
                     </p>
 
-                    <h2 class="project-heading">
-                      Packaging
+                    <h2
+                      class="mt-2 font-heading text-3xl font-normal leading-tight tracking-[-0.02em] text-primary md:text-4xl"
+                    >
+                      Packaging (conceptual)
                     </h2>
 
                   </div>
 
 
-                  <div class="grid grid-cols-2 gap-4">
+                 <div class="grid grid-cols-2 gap-3 md:gap-4">
 
-                    <figure class="col-span-2">
+  <!-- PACKAGING 01 -->
 
-                      <img
-                        src="/images/nordic-hair-glow/packaging-01.jpg"
-                        alt="Nordic Hair Glow packaging design"
-                        loading="lazy"
-                        class="w-full h-auto object-cover"
-                      />
-
-                    </figure>
-
-
-                    <figure>
-
-                      <img
-                        src="/images/nordic-hair-glow/packaging-02.jpg"
-                        alt="Nordic Hair Glow packaging detail"
-                        loading="lazy"
-                        class="w-full aspect-[4/5] object-cover"
-                      />
-
-                    </figure>
+  <figure class="w-full">
+    <img
+      src="/images/projects/nordichairglow/pack1.png"
+      alt="Nordic Hair Glow packaging design"
+      loading="lazy"
+      class="block h-auto w-full object-contain"
+    />
+  </figure>
 
 
-                    <figure class="mt-12">
+  <!-- PACKAGING 02 — SLIGHTLY LOWER -->
 
-                      <img
-                        src="/images/nordic-hair-glow/packaging-03.jpg"
-                        alt="Nordic Hair Glow packaging detail"
-                        loading="lazy"
-                        class="w-full aspect-[4/5] object-cover"
-                      />
+  <figure class="mt-8 w-full md:mt-12">
+    <img
+      src="/images/projects/nordichairglow/pack2.png"
+      alt="Nordic Hair Glow packaging design"
+      loading="lazy"
+      class="block h-auto w-full object-contain"
+    />
+  </figure>
 
-                    </figure>
 
-                  </div>
+  <!-- PACKAGING 03 -->
+
+  <figure class="w-full md:mt-5">
+    <img
+      src="/images/projects/nordichairglow/pack3.png"
+      alt="Nordic Hair Glow packaging design"
+      loading="lazy"
+      class="block h-auto w-full object-contain"
+    />
+  </figure>
+
+
+  <!-- PACKAGING 04 — SLIGHTLY LOWER -->
+
+  <figure class="mt-8 w-full md:mt-15">
+    <img
+      src="/images/projects/nordichairglow/pack4.png"
+      alt="Nordic Hair Glow packaging design"
+      loading="lazy"
+      class="block h-auto w-full object-contain"
+    />
+  </figure>
+
+</div>
 
                 </section>
 
               </div>
 
 
-              <!-- RIGHT — NORDIC INFO -->
+              <!-- ================================================= -->
+              <!-- RIGHT — NORDIC INTRO -->
+              <!-- ================================================= -->
 
               <aside
-                class="order-1 lg:order-2 lg:sticky lg:top-24 self-start"
+                class="order-1 min-w-0 self-start md:mt-30 lg:mt-0 lg:order-2 lg:sticky lg:top-24"
               >
 
-                <div class="project-intro">
+                <div>
 
                   <div class="project-meta">
 
@@ -497,7 +625,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
 
                   <h1
-                    class="heading-display text-5xl md:text-6xl lg:text-7xl leading-tight text-primary mb-8 mt-8"
+                    class="heading-display mt-8 mb-8 text-4xl leading-tight text-primary md:text-5xl lg:text-5xl xl:text-6xl"
                   >
                     {project.title}
                   </h1>
@@ -510,7 +638,9 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
                   {
                     project.longDescription && (
-                      <p class="project-extra-text nordic-long-description">
+                      <p
+                        class="mb-8 max-w-[38rem] whitespace-pre-line font-sans text-base leading-[1.7] text-muted-foreground"
+                      >
                         {project.longDescription}
                       </p>
                     )
@@ -537,72 +667,6 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                     )
                   }
 
-
-                  <nav
-                    aria-label="Project sections"
-                    class="project-navigation"
-                  >
-
-                    <p class="project-navigation-label">
-                      Project
-                    </p>
-
-
-                    <div class="space-y-3">
-
-                      <a
-                        href="#meta-ads"
-                        data-section-link="meta-ads"
-                        class="project-nav-link active"
-                      >
-                        <span>01</span>
-                        Meta Ads
-                      </a>
-
-
-                      <a
-                        href="#web-design"
-                        data-section-link="web-design"
-                        class="project-nav-link"
-                      >
-                        <span>02</span>
-                        Web Design
-                      </a>
-
-
-                      <a
-                        href="#photography"
-                        data-section-link="photography"
-                        class="project-nav-link"
-                      >
-                        <span>03</span>
-                        Photography
-                      </a>
-
-
-                      <a
-                        href="#ai-imagery"
-                        data-section-link="ai-imagery"
-                        class="project-nav-link"
-                      >
-                        <span>04</span>
-                        AI Imagery
-                      </a>
-
-
-                      <a
-                        href="#packaging"
-                        data-section-link="packaging"
-                        class="project-nav-link"
-                      >
-                        <span>05</span>
-                        Packaging
-                      </a>
-
-                    </div>
-
-                  </nav>
-
                 </div>
 
               </aside>
@@ -615,17 +679,19 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
             <!-- OTHER PROJECTS -->
             <!-- ================================================= -->
 
-            <section class="other-project-layout">
+            <section
+              class="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-20 -mt-5"
+            >
 
-              <!-- LEFT -->
+              <!-- LEFT — PROJECT TEXT -->
 
-              <div class="other-project-text">
+              <div class="min-w-0 pt-0 lg:pt-2 mt-5">
 
                 <div class="mb-8">
 
                   <a
                     href="/#projects"
-                    class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
+                    class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
                     <span aria-hidden="true">←</span>
                     Back to projects
@@ -633,8 +699,6 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
                 </div>
 
-
-                <!-- META -->
 
                 <div class="project-meta">
 
@@ -656,23 +720,17 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                 </div>
 
 
-                <!-- TITLE -->
-
                 <h1
-                  class="heading-display text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight text-primary"
+                  class="heading-display mb-8 mt-8 text-4xl leading-tight text-primary md:text-5xl lg:text-6xl"
                 >
                   {project.title}
                 </h1>
 
 
-                <!-- DESCRIPTION -->
-
                 <p class="project-description">
                   {project.description}
                 </p>
 
-
-                <!-- LINK -->
 
                 {
                   project.link && (
@@ -695,17 +753,21 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                 }
 
 
-                <!-- MORE INFORMATION -->
-
                 {
                   project.longDescription && (
-                    <div class="project-extra-info">
+                    <div
+                      class="mt-12 border-t border-border pt-6 lg:mt-16"
+                    >
 
-                      <p class="project-extra-label">
+                      <p
+                        class="mb-4 font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground"
+                      >
                         About the project
                       </p>
 
-                      <p class="project-extra-text">
+                      <p
+                        class="max-w-[38rem] whitespace-pre-line font-sans text-base leading-[1.7] text-muted-foreground"
+                      >
                         {project.longDescription}
                       </p>
 
@@ -716,29 +778,29 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
               </div>
 
 
-              <!-- RIGHT — FIXED VIEWPORT IMAGE AREA -->
+              <!-- RIGHT — PROJECT MEDIA -->
 
-              <div class="other-project-images -mt-5">
+              <div
+                class="sticky top-24 h-[80vh] min-h-[500px] min-w-0 self-start max-lg:static max-lg:mt-8 max-lg:h-auto max-lg:min-h-0"
+              >
 
-                <div class="image-scroll-area">
+              <div
+  class="h-full overflow-y-scroll overflow-x-hidden overscroll-contain scrollbar-thin max-lg:h-auto max-lg:overflow-visible max-w-[600px] lg:max-w-[800px]"
+>
 
                   {
                     project.video && (
-                      <figure class="project-media">
-
+                      <figure class="mb-4 w-full">
                         <video
                           controls
                           preload="metadata"
-                          class="block w-full aspect-video object-cover"
+                          class="block h-auto w-full object-contain"
                         >
-
                           <source
                             src={project.video}
                             type="video/mp4"
                           />
-
                         </video>
-
                       </figure>
                     )
                   }
@@ -747,13 +809,13 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                   {
                     project.gallery?.map((image, index) => (
 
-                      <figure class="project-media">
+                      <figure class="mb-4 w-full last:mb-0">
 
                         <img
                           src={image}
                           alt={`${project.title} image ${index + 1}`}
                           loading={index === 0 ? "eager" : "lazy"}
-                          class="block w-full h-auto"
+                          class="block h-auto w-full object-contain"
                         />
 
                       </figure>
@@ -781,7 +843,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
 
   <!-- =============================================================== -->
-  <!-- NORDIC ACTIVE SECTION -->
+  <!-- NORDIC ACTIVE SECTION SCRIPT -->
   <!-- =============================================================== -->
 
   {
@@ -789,7 +851,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
       <script>
         const sections = Array.from(
           document.querySelectorAll<HTMLElement>(
-            "#meta-ads, #web-design, #photography, #ai-imagery, #packaging"
+            "#meta-ads, #web-design, #ai-imagery, #packaging"
           )
         );
 
@@ -825,9 +887,20 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
               active
             );
 
+            link.classList.toggle(
+              "text-primary",
+              active
+            );
+
+            link.classList.toggle(
+              "text-muted-foreground",
+              !active
+            );
+
           });
 
         };
+
 
         window.addEventListener(
           "scroll",
@@ -842,389 +915,61 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
 
   <!-- =============================================================== -->
-  <!-- STYLES -->
+  <!-- SMALL AMOUNT OF CSS -->
   <!-- =============================================================== -->
 
   <style>
-
     html {
       scroll-behavior: smooth;
     }
-
-
-    /* ==========================================================
-       GENERAL PROJECT TYPOGRAPHY
-       ========================================================== */
 
     .project-meta {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 0.75rem;
-
       font-family: sans-serif;
       font-size: 0.875rem;
-
       color: hsl(var(--muted-foreground));
     }
-
 
     .project-description {
       max-width: 38rem;
-
       margin-bottom: 1.75rem;
-
       font-family: sans-serif;
-
-      font-size: clamp(
-        1.25rem,
-        2vw,
-        1.75rem
-      );
-
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
       line-height: 1.35;
-
       color: hsl(var(--foreground));
     }
 
-
-    /* ==========================================================
-       NORDIC
-       ========================================================== */
-
-    .project-number {
-      margin: 0;
-
-      font-family: sans-serif;
-
-      font-size: 0.75rem;
-
-      letter-spacing: 0.18em;
-
-      text-transform: uppercase;
-
-      color: hsl(var(--muted-foreground));
-    }
-
-
-    .project-heading {
-      margin-top: 0.5rem;
-
-      font-family: var(--font-heading, sans-serif);
-
-      font-size: clamp(
-        2.25rem,
-        4vw,
-        3rem
-      );
-
-      line-height: 1;
-
-      color: hsl(var(--primary));
-    }
-
-
-    .project-navigation {
-      margin-top: 2.5rem;
-
-      padding-top: 1.25rem;
-
-      border-top:
-        1px solid
-        hsl(var(--border));
-    }
-
-
-    .project-navigation-label {
-      margin-bottom: 1rem;
-
-      font-family: sans-serif;
-
-      font-size: 0.75rem;
-
-      letter-spacing: 0.18em;
-
-      text-transform: uppercase;
-
-      color: hsl(var(--muted-foreground));
-    }
-
-
     .project-nav-link {
-      display: block;
-
       position: relative;
-
-      font-family: sans-serif;
-
-      font-size: 0.875rem;
-
-      color: hsl(var(--muted-foreground));
-
-      transition:
-        color 200ms ease,
-        padding-left 200ms ease;
     }
-
-
-    .project-nav-link span {
-      display: inline-block;
-
-      width: 2rem;
-
-      color:
-        hsl(var(--muted-foreground) / 0.5);
-    }
-
 
     .project-nav-link.active {
-      color: hsl(var(--primary));
-
       padding-left: 0.375rem;
     }
 
-
     .project-nav-link.active::before {
       content: "";
-
       position: absolute;
-
       left: -0.625rem;
-
       top: 50%;
-
       width: 3px;
-
       height: 14px;
-
-      transform:
-        translateY(-50%);
-
-      background:
-        currentColor;
+      transform: translateY(-50%);
+      background: currentColor;
     }
-
-
-    /* ==========================================================
-       NORDIC LONG DESCRIPTION
-       ========================================================== */
-
-    .nordic-long-description {
-      max-width: 38rem;
-
-      margin-top: 0;
-
-      margin-bottom: 2rem;
-
-      font-family: sans-serif;
-
-      font-size: 1rem;
-
-      line-height: 1.7;
-
-      color: hsl(var(--muted-foreground));
-
-      white-space: pre-line;
-    }
-
-
-    /* ==========================================================
-       OTHER PROJECTS
-       ========================================================== */
-
-    .other-project-layout {
-      display: grid;
-
-      grid-template-columns:
-        minmax(0, 0.9fr)
-        minmax(0, 1.1fr);
-
-      gap: 4rem;
-
-      align-items: start;
-    }
-
-
-    /* ==========================================================
-       LEFT TEXT
-       ========================================================== */
-
-    .other-project-text {
-      min-width: 0;
-
-      padding-top: 0.5rem;
-    }
-
-
-    .project-extra-info {
-      margin-top: 4rem;
-
-      padding-top: 1.5rem;
-
-      border-top:
-        1px solid
-        hsl(var(--border));
-    }
-
-
-    .project-extra-label {
-      margin-bottom: 1rem;
-
-      font-family: sans-serif;
-
-      font-size: 0.75rem;
-
-      letter-spacing: 0.18em;
-
-      text-transform: uppercase;
-
-      color: hsl(var(--muted-foreground));
-    }
-
-
-    .project-extra-text {
-      max-width: 38rem;
-
-      font-family: sans-serif;
-
-      font-size: 1rem;
-
-      line-height: 1.7;
-
-      color: hsl(var(--muted-foreground));
-
-      white-space: pre-line;
-    }
-
-
-    /* ==========================================================
-       RIGHT IMAGE AREA
-       ========================================================== */
-
-    .other-project-images {
-      position: sticky;
-
-      top: 6rem;
-
-      height: 80vh;
-
-      min-height: 500px;
-
-      min-width: 0;
-
-      align-self: start;
-    }
-
-
-    .image-scroll-area {
-      width: 100%;
-
-      height: 100%;
-
-      overflow-y: auto;
-
-      overflow-x: hidden;
-
-      overscroll-behavior: contain;
-
-      scrollbar-width: thin;
-
-      scrollbar-color:
-        rgba(0, 0, 0, 0.18)
-        transparent;
-    }
-
-
-    .image-scroll-area::-webkit-scrollbar {
-      width: 4px;
-    }
-
-
-    .image-scroll-area::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-
-    .image-scroll-area::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.18);
-
-      border-radius: 999px;
-    }
-
-
-    .project-media {
-      width: 100%;
-
-      margin: 0 0 1rem 0;
-    }
-
-
-    .project-media:last-child {
-      margin-bottom: 0;
-    }
-
-
-    .project-media img {
-      display: block;
-
-      width: 100%;
-
-      height: auto;
-    }
-
-
-    /* ==========================================================
-       MOBILE
-       ========================================================== */
 
     @media (max-width: 1023px) {
-
-      .other-project-layout {
-        display: block;
-      }
-
-
-      .other-project-text {
-        padding-top: 0;
-      }
-
-
-      .other-project-images {
-        position: static;
-
-        height: auto;
-
-        min-height: 0;
-
-        margin-top: 4rem;
-      }
-
-
-      .image-scroll-area {
-        height: auto;
-
-        overflow: visible;
-
-        overscroll-behavior: auto;
-      }
-
-
-      .project-extra-info {
-        margin-top: 3rem;
-      }
-
-
       .project-nav-link.active {
         padding-left: 0;
       }
 
-
       .project-nav-link.active::before {
         display: none;
       }
-
     }
-
   </style>
 
 </Layout>
