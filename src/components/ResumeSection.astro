@@ -22,6 +22,46 @@ type CVTab = {
 
 };
 
+const danishTabs: CVTab[] = [
+  {
+    key: "uddannelse",
+    label: "Uddannelse",
+    entries: [
+      { title: "Magasin", meta: "2020 - 2022", subtitle: "Elevuddannelse", points: ["Gennemførte en elevuddannelse med fokus på salg, service og kundeoplevelser.", "Erfaring med rådgivning og afdækning af kunders behov.", "Styrket forståelse for detailhandel, salg og kommerciel tænkning.", "Erfaring med produktpræsentation, visual merchandising og brandidentitet.", "Udviklede stærke kompetencer inden for kommunikation, teamwork og problemløsning."] },
+      { title: "Niels Brock HHX", meta: "2015 - 2018", subtitle: "Marketing", points: ["Forståelse for målgrupper og branding.", "Strategisk tænkning og kommunikation.", "Erfaring med projektledelse og teamwork.", "Forretningsforståelse med fokus på værdiskabende design."] },
+      { title: "Erhvervsakademi København", meta: "2024 - 2026", subtitle: "Multimediedesign", points: ["Kompetencer inden for UI/UX-design og prototyping.", "Erfaring med webudvikling (HTML, CSS, JavaScript).", "Animation og videoredigering i After Effects og Premiere Pro.", "Arbejde med brugercentreret design og research.", "Fokus på kreativ problemløsning og visuel kommunikation."] },
+      { title: "Erhvervsakademi København", meta: "2026 - nu", subtitle: "Digital konceptudvikling", points: ["Udvikling af digitale koncepter og løsninger fra idé til færdigt koncept.", "Fokus på konceptudvikling, brugeroplevelser og digitale trends.", "Arbejde med strategi, research og brugercentrerede designprocesser.", "Udvikling og formidling af kreative koncepter på tværs af digitale platforme.", "Fokus på innovation, kreativ problemløsning og visuel kommunikation."] },
+    ],
+  },
+  {
+    key: "erfaring",
+    label: "Erfaring",
+    entries: [
+      { title: "Magasin du Nord", meta: "2020 - 2022", subtitle: "Salgsassistent", points: ["Kundeorienteret service og afdækning af behov.", "Erfaring med præsentation og visual merchandising.", "Håndtering af travle miljøer og deadlines.", "Teamwork og effektiv kommunikation.", "Fokus på kvalitet og sans for detaljer."] },
+      { title: "Dansk Kirurgisk Selskab", meta: "2025 - nu", subtitle: "Webmaster", points: ["Erfaring med webudvikling i Wix og JavaScript.", "Kompetencer i Figma.", "Selvstændig arbejdsstil med ansvar for planlægning og håndtering af egne opgaver og tid.", "Fleksibel tilpasning til deadlines og løbende kommunikation med samarbejdspartnere."] },
+      { title: "REFYNE", meta: "Jan 2026 - Apr 2026", subtitle: "Praktik", points: ["Erfaring med paid social (Meta Ads), kampagneopsætning og annoncering.", "Kreativ udvikling i Canva og anvendelse af UX/UI-principper fra Figma.", "Udarbejdelse af stillbilleder, carousels og video.", "Selvstændig arbejdsstil med fokus på optimering og samarbejde."] },
+      { title: "nordic hair glow", meta: "Maj 2026 - nu", subtitle: "Multimediedesigner", points: ["Grafisk design til sociale medier, web og marketingmaterialer.", "Marketing og visuel kommunikation på tværs af kanaler.", "Alt fra content creation til layout, brandidentitet og kampagnematerialer.", "Tæt samarbejde om alt visuelt og digitalt arbejde i en lille virksomhed."] },
+    ],
+  },
+  {
+    key: "programmer",
+    label: "Værktøjer",
+    entries: [
+      { title: "Figma", meta: "Avanceret", points: ["Til prototyping, brugerflader, moodboards, designsystemer og meget mere."] },
+      { title: "Visual Studio Code", meta: "Avanceret", points: ["Til kodning i HTML, CSS, JavaScript samt Astro og Tailwind CSS."] },
+      { title: "Adobe Illustrator", meta: "Avanceret", points: ["Til illustrationer, ikoner, logodesign og grafiske elementer til print, web og animation."] },
+      { title: "Canva", meta: "Avanceret", points: ["Til hurtige designs og visuelt content."] },
+      { title: "Microsoft Office Suite", meta: "Avanceret", points: ["Til effektiv opgaveløsning og organisering med Word, PowerPoint og Excel."] },
+      { title: "Wix", meta: "Avanceret", points: ["Til opbygning og design af hjemmesider i et brugervenligt drag-and-drop-system."] },
+      { title: "Git/GitHub", meta: "Middel", points: ["Til versionsstyring og samarbejde om projekter."] },
+      { title: "Adobe Photoshop", meta: "Begynder", points: ["Til billedredigering."] },
+      { title: "Adobe After Effects", meta: "Begynder", points: ["Til animation og motion graphics."] },
+      { title: "Adobe Premiere Pro", meta: "Begynder", points: ["Til videoredigering og storytelling."] },
+      { title: "LottieFiles", meta: "Begynder", points: ["Til integration af animationer i webprojekter."] },
+    ],
+  },
+];
+
 const tabs: CVTab[] = [
 
   {
@@ -258,7 +298,13 @@ const defaultTab = "uddannelse";
                     : "text-muted-foreground hover:text-foreground",
                 ]}
               >
-                {tab.label}
+                <span
+                  data-lang-field
+                  data-da={danishTabs.find((localizedTab) => localizedTab.key === tab.key)?.label}
+                  data-en={tab.label}
+                >
+                  {danishTabs.find((localizedTab) => localizedTab.key === tab.key)?.label}
+                </span>
               </button>
             ))
           }
@@ -293,7 +339,7 @@ const defaultTab = "uddannelse";
               >
 
                 {
-                  tab.entries.map((entry) => (
+                  tab.entries.map((entry, entryIndex) => (
                     <div class="border-t border-black/10 pt-5 font-sans">
 
                       <!-- Entry title -->
@@ -305,8 +351,11 @@ const defaultTab = "uddannelse";
                         {entry.meta && (
                           <span
                             class="block mt-1 font-sans text-sm font-normal text-muted-foreground"
+                            data-lang-field
+                            data-da={danishTabs.find((localizedTab) => localizedTab.key === tab.key)?.entries[entryIndex].meta}
+                            data-en={entry.meta}
                           >
-                            {entry.meta}
+                            {danishTabs.find((localizedTab) => localizedTab.key === tab.key)?.entries[entryIndex].meta}
                           </span>
                         )}
                       </h4>
@@ -315,15 +364,18 @@ const defaultTab = "uddannelse";
                       {entry.subtitle && (
                         <p
                           class="mt-1 font-sans text-base text-foreground/80"
+                          data-lang-field
+                          data-da={danishTabs.find((localizedTab) => localizedTab.key === tab.key)?.entries[entryIndex].subtitle}
+                          data-en={entry.subtitle}
                         >
-                          {entry.subtitle}
+                          {danishTabs.find((localizedTab) => localizedTab.key === tab.key)?.entries[entryIndex].subtitle}
                         </p>
                       )}
 
                       <!-- Description -->
                       <ul class="mt-4 space-y-2 font-sans">
                         {
-                          entry.points.map((point) => (
+                          entry.points.map((point, pointIndex) => (
                             <li
                               class="relative pl-4 font-sans text-sm md:text-base font-normal leading-relaxed text-muted-foreground"
                             >
@@ -331,7 +383,13 @@ const defaultTab = "uddannelse";
                                 class="absolute left-0 top-[0.6em] h-1.5 w-1.5 bg-primary"
                               ></span>
 
-                              {point}
+                              <span
+                                data-lang-field
+                                data-da={danishTabs.find((localizedTab) => localizedTab.key === tab.key)?.entries[entryIndex].points[pointIndex]}
+                                data-en={point}
+                              >
+                                {danishTabs.find((localizedTab) => localizedTab.key === tab.key)?.entries[entryIndex].points[pointIndex]}
+                              </span>
                             </li>
                           ))
                         }

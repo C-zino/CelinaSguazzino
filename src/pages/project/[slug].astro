@@ -18,6 +18,15 @@ if (!project) {
 }
 
 const isNordicHairGlow = project.slug === "nordic-hair-glow";
+
+const localize = (value, language = "da") => {
+  if (typeof value === "string") return value;
+  return value?.[language] ?? value?.da ?? "";
+};
+
+const linkLabelFallback = project.link?.includes("figma")
+  ? { da: "Se prototype", en: "View prototype" }
+  : { da: "Besøg hjemmeside", en: "Visit website" };
 ---
 
 <Layout title={`${project.title} | Celina Sguazzino`}>
@@ -51,14 +60,18 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
               <!-- ================================================= -->
 
               <nav
-                aria-label="Project sections"
+                aria-label="Projektsektioner"
+                data-lang-attr="aria-label"
+                data-da="Projektsektioner"
+                data-en="Project sections"
                 class="fixed left-15 top-24 z-40 hidden 2xl:block"
               >
 
                 <p
+                  data-i18n="project.label"
                   class="mb-3 font-sans text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground"
                 >
-                  Project
+                  Projekt
                 </p>
 
                 <div class="space-y-2">
@@ -71,7 +84,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                     <span class="inline-block w-8 text-muted-foreground/50">
                       01
                     </span>
-                    Meta Ads
+                    <span data-i18n="project.sectionMetaAds">Meta Ads</span>
                   </a>
 
                   <a
@@ -82,7 +95,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                     <span class="inline-block w-8 text-muted-foreground/50">
                       02
                     </span>
-                    Web Design
+                    <span data-i18n="project.sectionWebDesign">Webdesign</span>
                   </a>
 
                   <a
@@ -93,7 +106,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                     <span class="inline-block w-8 text-muted-foreground/50">
                       03
                     </span>
-                    AI Imagery
+                    <span data-i18n="project.sectionAiImagery">AI-billeder</span>
                   </a>
 
                   <a
@@ -104,7 +117,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                     <span class="inline-block w-8 text-muted-foreground/50">
                       04
                     </span>
-                    Packaging
+                    <span data-i18n="project.sectionPackagingMenu">Emballage</span>
                   </a>
 
                 </div>
@@ -128,7 +141,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                     class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
                     <span aria-hidden="true">←</span>
-                    Back to projects
+                    <span data-i18n="project.backToProjects">Tilbage til projekter</span>
                   </a>
 
                 </div>
@@ -152,7 +165,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                     <h2
                       class="mt-2 font-heading text-3xl font-normal leading-tight tracking-[-0.02em] text-primary md:text-4xl"
                     >
-                      Meta Ads
+                      <span data-i18n="project.sectionMetaAds">Meta Ads</span>
                     </h2>
 
                   </div>
@@ -270,7 +283,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                     <h2
                       class="mt-2 font-heading text-3xl font-normal leading-tight tracking-[-0.02em] text-primary md:text-4xl"
                     >
-                      Web Design
+                      <span data-i18n="project.sectionWebDesign">Webdesign</span>
                     </h2>
 
                   </div>
@@ -360,7 +373,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                     <h2
                       class="mt-2 font-heading text-3xl font-normal leading-tight tracking-[-0.02em] text-primary md:text-4xl"
                     >
-                      AI Imagery
+                      <span data-i18n="project.sectionAiImagery">AI-billeder</span>
                     </h2>
 
                   </div>
@@ -532,7 +545,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                     <h2
                       class="mt-2 font-heading text-3xl font-normal leading-tight tracking-[-0.02em] text-primary md:text-4xl"
                     >
-                      Packaging (conceptual)
+                      <span data-i18n="project.sectionPackaging">Emballage (koncept)</span>
                     </h2>
 
                   </div>
@@ -606,17 +619,35 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
                   <div class="project-meta">
 
-                    <span>{project.category}</span>
+                    <span
+                      data-lang-field
+                      data-da={localize(project.category, "da")}
+                      data-en={localize(project.category, "en")}
+                    >
+                      {localize(project.category, "da")}
+                    </span>
 
                     <span>·</span>
 
-                    <span>{project.year}</span>
+                    <span
+                      data-lang-field
+                      data-da={localize(project.year, "da")}
+                      data-en={localize(project.year, "en")}
+                    >
+                      {localize(project.year, "da")}
+                    </span>
 
                     {
                       project.tags?.map((tag) => (
                         <>
                           <span>·</span>
-                          <span>{tag}</span>
+                          <span
+                            data-lang-field
+                            data-da={localize(tag, "da")}
+                            data-en={localize(tag, "en")}
+                          >
+                            {localize(tag, "da")}
+                          </span>
                         </>
                       ))
                     }
@@ -631,17 +662,25 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                   </h1>
 
 
-                  <p class="project-description">
-                    {project.description}
+                  <p
+                    class="project-description"
+                    data-lang-field
+                    data-da={localize(project.description, "da")}
+                    data-en={localize(project.description, "en")}
+                  >
+                    {localize(project.description, "da")}
                   </p>
 
 
                   {
                     project.longDescription && (
                       <p
+                        data-lang-field
+                        data-da={localize(project.longDescription, "da")}
+                        data-en={localize(project.longDescription, "en")}
                         class="mb-8 max-w-[38rem] whitespace-pre-line font-sans text-base leading-[1.7] text-muted-foreground"
                       >
-                        {project.longDescription}
+                        {localize(project.longDescription, "da")}
                       </p>
                     )
                   }
@@ -655,10 +694,13 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                         rel="noopener noreferrer"
                         class="link-external inline-flex items-center gap-1 font-sans text-base font-medium"
                       >
-                        {project.linkLabel ??
-                          (project.link.includes("figma")
-                            ? "View prototype"
-                            : "Visit website")}
+                        <span
+                          data-lang-field
+                          data-da={localize(project.linkLabel ?? linkLabelFallback, "da")}
+                          data-en={localize(project.linkLabel ?? linkLabelFallback, "en")}
+                        >
+                          {localize(project.linkLabel ?? linkLabelFallback, "da")}
+                        </span>
 
                         <span aria-hidden="true">
                           ↗
@@ -694,7 +736,7 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                     class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
                     <span aria-hidden="true">←</span>
-                    Back to projects
+                    <span data-i18n="project.backToProjects">Tilbage til projekter</span>
                   </a>
 
                 </div>
@@ -702,17 +744,35 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
 
                 <div class="project-meta">
 
-                  <span>{project.category}</span>
+                  <span
+                    data-lang-field
+                    data-da={localize(project.category, "da")}
+                    data-en={localize(project.category, "en")}
+                  >
+                    {localize(project.category, "da")}
+                  </span>
 
                   <span>·</span>
 
-                  <span>{project.year}</span>
+                  <span
+                    data-lang-field
+                    data-da={localize(project.year, "da")}
+                    data-en={localize(project.year, "en")}
+                  >
+                    {localize(project.year, "da")}
+                  </span>
 
                   {
                     project.tags?.map((tag) => (
                       <>
                         <span>·</span>
-                        <span>{tag}</span>
+                        <span
+                          data-lang-field
+                          data-da={localize(tag, "da")}
+                          data-en={localize(tag, "en")}
+                        >
+                          {localize(tag, "da")}
+                        </span>
                       </>
                     ))
                   }
@@ -727,8 +787,13 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                 </h1>
 
 
-                <p class="project-description">
-                  {project.description}
+                <p
+                  class="project-description"
+                  data-lang-field
+                  data-da={localize(project.description, "da")}
+                  data-en={localize(project.description, "en")}
+                >
+                  {localize(project.description, "da")}
                 </p>
 
 
@@ -740,10 +805,13 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                       rel="noopener noreferrer"
                       class="link-external inline-flex items-center gap-1 font-sans text-base font-medium"
                     >
-                      {project.linkLabel ??
-                        (project.link.includes("figma")
-                          ? "View prototype"
-                          : "Visit website")}
+                      <span
+                        data-lang-field
+                        data-da={localize(project.linkLabel ?? linkLabelFallback, "da")}
+                        data-en={localize(project.linkLabel ?? linkLabelFallback, "en")}
+                      >
+                        {localize(project.linkLabel ?? linkLabelFallback, "da")}
+                      </span>
 
                       <span aria-hidden="true">
                         ↗
@@ -760,15 +828,19 @@ const isNordicHairGlow = project.slug === "nordic-hair-glow";
                     >
 
                       <p
+                        data-i18n="project.aboutProject"
                         class="mb-4 font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground"
                       >
-                        About the project
+                        Om projektet
                       </p>
 
                       <p
+                        data-lang-field
+                        data-da={localize(project.longDescription, "da")}
+                        data-en={localize(project.longDescription, "en")}
                         class="max-w-[38rem] whitespace-pre-line font-sans text-base leading-[1.7] text-muted-foreground"
                       >
-                        {project.longDescription}
+                        {localize(project.longDescription, "da")}
                       </p>
 
                     </div>

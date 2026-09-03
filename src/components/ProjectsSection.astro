@@ -1,12 +1,17 @@
 ---
 import { projects } from "../data/projects";
+
+const localize = (value, language = "da") => {
+  if (typeof value === "string") return value;
+  return value?.[language] ?? value?.da ?? "";
+};
 ---
 
 <section id="projects" class="bg-secondary/30">
   <div class="section-container">
 
-    <h3 class="section-header reveal-section">
-      selected projects
+    <h3 class="section-header reveal-section" data-i18n="projects.heading">
+      udvalgte projekter
     </h3>
 
     <div class="flex flex-col gap-16 md:gap-24">
@@ -43,13 +48,25 @@ import { projects } from "../data/projects";
                 <div
                   class="project-meta flex items-center gap-3 text-sm font-sans text-muted-foreground mb-4"
                 >
-                  <span>{project.category}</span>
+                  <span
+                    data-lang-field
+                    data-da={localize(project.category, "da")}
+                    data-en={localize(project.category, "en")}
+                  >
+                    {localize(project.category, "da")}
+                  </span>
 
                   <span class="text-muted-foreground/40">
                     ·
                   </span>
 
-                  <span>{project.year}</span>
+                  <span
+                    data-lang-field
+                    data-da={localize(project.year, "da")}
+                    data-en={localize(project.year, "en")}
+                  >
+                    {localize(project.year, "da")}
+                  </span>
                 </div>
 
                 <!-- Tags -->
@@ -59,9 +76,12 @@ import { projects } from "../data/projects";
                   >
                     {project.tags.map((tag) => (
                       <span
+                        data-lang-field
+                        data-da={localize(tag, "da")}
+                        data-en={localize(tag, "en")}
                         class="inline-flex items-center rounded-full bg-secondary/70 px-3 py-1 text-sm font-sans font-medium text-secondary-foreground transition-colors duration-300"
                       >
-                        {tag}
+                        {localize(tag, "da")}
                       </span>
                     ))}
                   </div>
@@ -76,16 +96,19 @@ import { projects } from "../data/projects";
 
                 <!-- Description -->
                 <p
+                  data-lang-field
+                  data-da={localize(project.description, "da")}
+                  data-en={localize(project.description, "en")}
                   class="project-description font-sans text-base md:text-lg text-muted-foreground leading-relaxed mb-6"
                 >
-                  {project.description}
+                  {localize(project.description, "da")}
                 </p>
 
                 <!-- Project link -->
                 <span
                   class="project-link inline-flex items-center gap-2 font-sans text-primary font-medium"
                 >
-                  View project
+                  <span data-i18n="projects.viewProject">Se projekt</span>
 
                   <span
                     aria-hidden="true"

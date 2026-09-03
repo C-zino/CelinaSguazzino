@@ -6,8 +6,10 @@ const aboutUrl = "/images/about/about-italy.jpg";
 const galleryUrl = "/images/about/italy-about.jpg";
 ---
 
-<section id="about" class="section-container">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+<section id="about" class="section-container lg:!max-w-6xl">
+  <div
+    class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-16 items-start"
+  >
     <div class="grid grid-cols-2 gap-4">
       <img
         src={yellowUrl}
@@ -42,32 +44,33 @@ const galleryUrl = "/images/about/italy-about.jpg";
     </div>
 
     <div class="lg:sticky lg:top-24">
-      <h3 class="section-header" data-i18n="about.heading">about me</h3>
+      <h3 class="section-header" data-i18n="about.heading">om mig</h3>
       <p
         class="font-sans text-2xl md:text-3xl lg:text-4xl leading-snug text-foreground mb-8"
         data-i18n="about.intro"
+        data-i18n-html
       >
-        I’m Celina, <br /> a multimedia designer based in Kongens Lyngby, Denmark.
+        Jeg er Celina, <br /> en multimediedesigner baseret i Kongens Lyngby, Danmark.
       </p>
       <p
         class="text-base md:text-lg text-muted-foreground leading-relaxed mb-6"
         data-i18n="about.paragraphOne"
       >
-        I work across digital design, UX/UI, branding, graphic design,
-        photography, and web development. I enjoy bringing ideas to life through
-        a mix of visual storytelling, creative thinking, and technology. Whether
-        I’m designing a visual identity, building a digital experience, creating
-        imagery, or writing code, I’m always looking for the balance between
-        creativity, functionality, and a strong visual expression.
+        Jeg arbejder med digitalt design, UX/UI, branding, grafisk design,
+        fotografi og webudvikling. Jeg nyder at føre idéer ud i livet gennem
+        visuel storytelling, kreativ tænkning og teknologi. Uanset om jeg
+        designer en visuel identitet, bygger en digital oplevelse, skaber
+        billedmateriale eller skriver kode, søger jeg altid balancen mellem
+        kreativitet, funktionalitet og et stærkt visuelt udtryk.
       </p>
       <p
         class="text-base md:text-lg text-muted-foreground leading-relaxed"
         data-i18n="about.paragraphTwo"
       >
-        I’m curious, detail-oriented, and always eager to learn, experiment, and
-        take on new creative challenges. As I continue developing my skills, I’m
-        looking forward to collaborating with people and brands that value
-        thoughtful and engaging design.
+        Jeg er nysgerrig, detaljeorienteret og altid klar på at lære,
+        eksperimentere og tage nye kreative udfordringer. Mens jeg fortsætter
+        med at udvikle mine kompetencer, ser jeg frem til at samarbejde med
+        mennesker og brands, der værdsætter gennemtænkt og engagerende design.
       </p>
     </div>
   </div>
