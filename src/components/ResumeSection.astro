@@ -232,14 +232,8 @@ const defaultTab = "uddannelse";
 
   <div class="relative">
 
-    <!--
-      DESKTOP:
-      Sticky CV with scroll-controlled tabs.
-
-      MOBILE/TABLET:
-      Normal scrolling with clickable tabs.
-    -->
-    <div class="lg:sticky lg:top-24 lg:z-20">
+    <!-- Clickable tabs on all screen sizes -->
+    <div>
 
       <!-- TAB NAVIGATION -->
       <div
@@ -279,9 +273,7 @@ const defaultTab = "uddannelse";
       </div>
 
       <!-- CONTENT -->
-      <div
-        class="relative lg:h-[calc(100vh-12rem)] lg:min-h-[600px] lg:overflow-hidden"
-      >
+      <div class="relative">
 
         {
           tabs.map((tab) => (
@@ -289,10 +281,7 @@ const defaultTab = "uddannelse";
               data-tab-panel={tab.key}
               class:list={[
                 "tab-panel w-full",
-                "lg:absolute lg:inset-0 lg:transition-[opacity,transform] lg:duration-500 lg:ease-out lg:will-change-[opacity,transform]",
-                tab.key === defaultTab
-                  ? "block opacity-100 translate-x-0"
-                  : "hidden opacity-0 translate-x-8 pointer-events-none lg:block",
+                tab.key === defaultTab ? "block" : "hidden",
               ]}
             >
 
@@ -360,31 +349,6 @@ const defaultTab = "uddannelse";
       </div>
     </div>
 
-    <!--
-      DESKTOP ONLY SCROLL TRACK
-
-      Hidden completely on smaller screens.
-      This is what makes the automatic tab
-      switching possible on desktop.
-    -->
-    <div
-      data-scroll-track
-      class="relative hidden lg:block"
-    >
-
-      {
-        tabs.map((tab, index) => (
-          <div
-            data-tab-sentinel={tab.key}
-            class={index === 0 ? "h-[5vh]" : "h-[50vh]"}
-          />
-        ))
-      }
-
-      <div class="h-[40vh]"></div>
-
-    </div>
-
   </div>
 </section>
 
@@ -405,24 +369,10 @@ const defaultTab = "uddannelse";
       "[data-tab-panel]"
     );
 
-  const tabSentinels =
-    document.querySelectorAll<HTMLElement>(
-      "[data-tab-sentinel]"
-    );
-
   const tabLine =
     document.querySelector<HTMLElement>(
       "[data-tab-line]"
     );
-
-  /*
-   * Check if we are on desktop.
-   */
-  const isDesktop = (): boolean => {
-    return window.matchMedia(
-      "(min-width: 1024px)"
-    ).matches;
-  };
 
   /*
    * Update active underline
@@ -444,17 +394,8 @@ const defaultTab = "uddannelse";
    * Change active tab
    */
   const setActiveTab = (
-    key: string,
-    options: {
-      scroll?: boolean;
-    } = {}
+    key: string
   ): void => {
-
-    const activeIndex =
-      Array.from(tabButtons).findIndex(
-        (button) =>
-          button.dataset.tabTrigger === key
-      );
 
     /*
      * Update buttons
@@ -501,94 +442,14 @@ const defaultTab = "uddannelse";
      */
     tabPanels.forEach((panel) => {
 
-      const panelIndex =
-        Array.from(tabPanels).indexOf(panel);
-
       const isActive =
         panel.dataset.tabPanel === key;
-
-      /*
-       * MOBILE / TABLET
-       */
-      if (!isDesktop()) {
-
-        panel.classList.toggle(
-          "hidden",
-          !isActive
-        );
-
-        panel.classList.remove(
-          "opacity-0",
-          "opacity-100",
-          "translate-x-0",
-          "translate-x-8",
-          "-translate-x-8",
-          "pointer-events-none",
-          "pointer-events-auto"
-        );
-
-        return;
-      }
-
-      /*
-       * DESKTOP
-       */
-      panel.classList.remove("hidden");
-
       panel.classList.toggle(
-        "opacity-100",
-        isActive
-      );
-
-      panel.classList.toggle(
-        "opacity-0",
+        "hidden",
         !isActive
-      );
-
-      panel.classList.toggle(
-        "pointer-events-auto",
-        isActive
-      );
-
-      panel.classList.toggle(
-        "pointer-events-none",
-        !isActive
-      );
-
-      panel.classList.toggle(
-        "translate-x-0",
-        isActive
-      );
-
-      panel.classList.toggle(
-        "-translate-x-8",
-        !isActive &&
-          panelIndex < activeIndex
-      );
-
-      panel.classList.toggle(
-        "translate-x-8",
-        !isActive &&
-          panelIndex > activeIndex
       );
 
     });
-
-    /*
-     * Keep clicked tab visible
-     */
-    if (
-      options.scroll &&
-      activeButton
-    ) {
-
-      activeButton.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
-
-    }
   };
 
   /*
@@ -605,137 +466,16 @@ const defaultTab = "uddannelse";
 
         if (!key) return;
 
-        /*
-         * DESKTOP:
-         * Clicking a tab moves the page
-         * to the corresponding scroll section.
-         */
-        if (isDesktop()) {
-
-          const sentinel =
-            document.querySelector<HTMLElement>(
-              `[data-tab-sentinel="${key}"]`
-            );
-
-          if (sentinel) {
-
-            sentinel.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
-
-          }
-
-        }
-
-        /*
-         * MOBILE:
-         * Simply change the active content.
-         */
-        setActiveTab(key, {
-          scroll: true,
-        });
+        setActiveTab(key);
 
       }
     );
 
   });
 
-  /*
-   * Intersection Observer
-   */
-  let observer:
-    IntersectionObserver | null = null;
-
-  const setupScrollObserver = (): void => {
-
-    /*
-     * Remove old observer
-     */
-    if (observer) {
-
-      observer.disconnect();
-
-      observer = null;
-
-    }
-
-    /*
-     * No observer on mobile/tablet
-     */
-    if (!isDesktop()) return;
-
-    /*
-     * Browser support
-     */
-    if (
-      !("IntersectionObserver" in window)
-    ) {
-      return;
-    }
-
-    observer =
-      new IntersectionObserver(
-        (entries) => {
-
-          const visibleEntry =
-            entries
-              .filter(
-                (entry) =>
-                  entry.isIntersecting
-              )
-              .sort(
-                (a, b) =>
-                  b.intersectionRatio -
-                  a.intersectionRatio
-              )[0];
-
-          const visibleTarget =
-            visibleEntry?.target as
-              | HTMLElement
-              | undefined;
-
-          if (
-            visibleTarget?.dataset
-              ?.tabSentinel
-          ) {
-
-            setActiveTab(
-              visibleTarget.dataset.tabSentinel
-            );
-
-          }
-
-        },
-        {
-          rootMargin:
-            "-35% 0px -45% 0px",
-
-          threshold: 0.1,
-        }
-      );
-
-    /*
-     * Observe desktop scroll sections
-     */
-    tabSentinels.forEach(
-      (sentinel) => {
-
-        observer?.observe(sentinel);
-
-      }
-    );
-
-  };
-
-  /*
-   * Resize
-   */
   window.addEventListener(
     "resize",
     () => {
-
-      setupScrollObserver();
 
       const activeButton =
         document.querySelector<HTMLButtonElement>(
@@ -757,8 +497,15 @@ const defaultTab = "uddannelse";
    */
   setActiveTab(initialTab);
 
-  /*
-   * Start desktop scroll behavior
-   */
-  setupScrollObserver();
+  const updateInitialTabLine = (): void => {
+    const activeButton =
+      document.querySelector<HTMLButtonElement>(
+        '[aria-selected="true"]'
+      );
+
+    updateTabLine(activeButton);
+  };
+
+  requestAnimationFrame(updateInitialTabLine);
+  document.fonts?.ready.then(updateInitialTabLine);
 </script>
