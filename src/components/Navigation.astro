@@ -1,8 +1,8 @@
 ---
 const links = [
-  { label: "about", href: "/#about" },
-  { label: "projects", href: "/#projects" },
-  { label: "contact", href: "/#contact" },
+  { key: "nav.about", fallback: "om", href: "/#about" },
+  { key: "nav.projects", fallback: "projekter", href: "/#projects" },
+  { key: "nav.contact", fallback: "kontakt", href: "/#contact" },
 ];
 ---
 
@@ -20,10 +20,27 @@ const links = [
         {
           links.map((link) => (
             <a href={link.href} class="nav-link">
-              {link.label}
+              <span data-i18n={link.key}>{link.fallback}</span>
             </a>
           ))
         }
+        <div class="flex items-center gap-2 border-l border-black/20 pl-4">
+          <button
+            type="button"
+            data-language-option="da"
+            class="cursor-pointer text-sm font-semibold text-foreground transition-colors"
+          >
+            DA
+          </button>
+          <span class="text-muted-foreground/50">/</span>
+          <button
+            type="button"
+            data-language-option="en"
+            class="cursor-pointer text-sm text-muted-foreground transition-colors"
+          >
+            EN
+          </button>
+        </div>
       </div>
     </div>
   </div>

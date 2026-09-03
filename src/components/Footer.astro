@@ -6,7 +6,9 @@
     >
       <!-- Contact -->
       <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-        <span class="text-sm font-medium text-foreground"> Get in touch </span>
+        <span class="text-sm font-medium text-foreground" data-i18n="footer.getInTouch">
+          Tag kontakt
+        </span>
 
         <a
           href="mailto:celinakhrs@gmail.com"
@@ -40,9 +42,9 @@
       <!-- Location -->
       <div class="flex items-center gap-2 text-sm text-muted-foreground">
         <span class="text-[#A9B89C]">⌖</span>
-        <span>Kongens Lyngby, Denmark</span>
+        <span data-i18n="footer.location">Kongens Lyngby, Danmark</span>
         <span class="hidden sm:inline">·</span>
-        <span id="footer-local-time">local time</span>
+        <span id="footer-local-time">lokal tid</span>
       </div>
     </div>
 
@@ -53,7 +55,7 @@
       <span class="text-xs text-muted-foreground"> © Celina Sguazzino </span>
 
       <span class="text-xs text-muted-foreground" data-i18n="footer.made">
-        Made in Kongens Lyngby, Denmark
+        Lavet i Kongens Lyngby, Danmark
       </span>
     </div>
   </div>
@@ -67,17 +69,11 @@
 
     const now = new Date();
 
-    const copenhagenTime = now.toLocaleTimeString("en-US", {
-      timeZone: "Europe/Copenhagen",
-      hour: "numeric",
-      minute: "2-digit",
-      hour12: true,
-    });
-
-    node.textContent = `${copenhagenTime} local time`;
+    node.textContent = window.portfolioI18n.formatLocalTime(now);
   };
 
   updateFooterTime();
+  window.addEventListener("languagechange", updateFooterTime);
 
   setInterval(updateFooterTime, 60000);
 </script>
