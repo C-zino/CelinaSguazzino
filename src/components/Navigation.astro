@@ -16,7 +16,7 @@ const links = [
         celina sguazzino
       </a>
 
-      <div class="flex items-center gap-8 md:gap-12 text-sm tracking-wide">
+      <div class="hidden items-center gap-8 text-sm tracking-wide md:flex lg:gap-12">
         {
           links.map((link) => (
             <a href={link.href} class="nav-link">
@@ -42,6 +42,108 @@ const links = [
           </button>
         </div>
       </div>
+
+      <button
+        type="button"
+        class="relative z-10 flex h-11 w-11 items-center justify-center rounded-full text-foreground transition-colors hover:bg-black/5 hover:text-primary md:hidden"
+        aria-label="Open menu"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        data-menu-toggle
+      >
+        <span class="sr-only">Open menu</span>
+        <span class="flex w-5 flex-col gap-1.5" aria-hidden="true">
+          <span class="h-0.5 w-full bg-current transition-transform duration-200" data-menu-line></span>
+          <span class="h-0.5 w-full bg-current transition-opacity duration-200" data-menu-line></span>
+          <span class="h-0.5 w-full bg-current transition-transform duration-200" data-menu-line></span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden border-t border-black/10 bg-background px-8 pb-8 pt-5 md:hidden"
+    data-mobile-menu
+  >
+    <div class="flex flex-col gap-5 text-base tracking-wide">
+      {
+        links.map((link) => (
+          <a href={link.href} class="nav-link" data-menu-link>
+            <span data-i18n={link.key}>{link.fallback}</span>
+          </a>
+        ))
+      }
+      <div class="flex items-center gap-2 border-t border-black/10 pt-5">
+        <button
+          type="button"
+          data-language-option="da"
+          class="cursor-pointer text-sm font-semibold text-foreground transition-colors"
+        >
+          DA
+        </button>
+        <span class="text-muted-foreground/50">/</span>
+        <button
+          type="button"
+          data-language-option="en"
+          class="cursor-pointer text-sm text-muted-foreground transition-colors"
+        >
+          EN
+        </button>
+      </div>
     </div>
   </div>
 </nav>
+
+<script>
+  const toggle = document.querySelector("[data-menu-toggle]");
+  const menu = document.querySelector("[data-mobile-menu]");
+
+  if (toggle instanceof HTMLButtonElement && menu instanceof HTMLElement) {
+    const lines = toggle.querySelectorAll("[data-menu-line]");
+
+    const closeMenu = () => {
+      menu.classList.add("hidden");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open menu");
+      lines[0]?.classList.remove("translate-y-2", "rotate-45");
+      lines[1]?.classList.remove("opacity-0");
+      lines[2]?.classList.remove("-translate-y-2", "-rotate-45");
+    };
+
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+      if (isOpen) {
+        closeMenu();
+        return;
+      }
+
+      menu.classList.remove("hidden");
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Close menu");
+      lines[0]?.classList.add("translate-y-2", "rotate-45");
+      lines[1]?.classList.add("opacity-0");
+      lines[2]?.classList.add("-translate-y-2", "-rotate-45");
+    });
+
+    menu.querySelectorAll("[data-menu-link]").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Node)) return;
+      if (!menu.contains(event.target) && !toggle.contains(event.target)) closeMenu();
+    });
+
+    window.addEventListener("scroll", closeMenu, { passive: true });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.matchMedia("(min-width: 768px)").matches) closeMenu();
+    });
+  }
+</script>
