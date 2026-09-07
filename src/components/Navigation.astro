@@ -3,20 +3,17 @@ const links = [
   {
     key: "nav.about",
     fallback: "om",
-    href: "/#about",
-    mobileHref: "/#about-heading",
+    href: "/#about-heading",
   },
   {
     key: "nav.projects",
     fallback: "projekter",
-    href: "/#projects",
-    mobileHref: "/#projects-heading",
+    href: "/#projects-heading",
   },
   {
     key: "nav.contact",
     fallback: "kontakt",
-    href: "/#contact",
-    mobileHref: "/#contact-heading",
+    href: "/#contact-heading",
   },
 ];
 ---
@@ -84,7 +81,7 @@ const links = [
     <div class="flex flex-col gap-5 text-base tracking-wide">
       {
         links.map((link) => (
-          <a href={link.mobileHref} class="nav-link" data-menu-link>
+          <a href={link.href} class="nav-link" data-menu-link>
             <span data-i18n={link.key}>{link.fallback}</span>
           </a>
         ))
