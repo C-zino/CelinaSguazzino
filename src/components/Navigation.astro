@@ -16,7 +16,9 @@ const links = [
         celina sguazzino
       </a>
 
-      <div class="hidden items-center gap-8 text-sm tracking-wide md:flex lg:gap-12">
+      <div
+        class="hidden items-center gap-8 text-sm tracking-wide md:flex lg:gap-12"
+      >
         {
           links.map((link) => (
             <a href={link.href} class="nav-link">
@@ -53,9 +55,15 @@ const links = [
       >
         <span class="sr-only">Open menu</span>
         <span class="flex w-5 flex-col gap-1.5" aria-hidden="true">
-          <span class="h-0.5 w-full bg-current transition-transform duration-200" data-menu-line></span>
-          <span class="h-0.5 w-full bg-current transition-opacity duration-200" data-menu-line></span>
-          <span class="h-0.5 w-full bg-current transition-transform duration-200" data-menu-line></span>
+          <span
+            class="h-0.5 w-full bg-current transition-transform duration-200"
+            data-menu-line></span>
+          <span
+            class="h-0.5 w-full bg-current transition-opacity duration-200"
+            data-menu-line></span>
+          <span
+            class="h-0.5 w-full bg-current transition-transform duration-200"
+            data-menu-line></span>
         </span>
       </button>
     </div>
@@ -133,7 +141,8 @@ const links = [
 
     document.addEventListener("click", (event) => {
       if (!(event.target instanceof Node)) return;
-      if (!menu.contains(event.target) && !toggle.contains(event.target)) closeMenu();
+      if (!menu.contains(event.target) && !toggle.contains(event.target))
+        closeMenu();
     });
 
     window.addEventListener("scroll", closeMenu, { passive: true });
