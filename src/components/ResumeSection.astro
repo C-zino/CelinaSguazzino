@@ -39,7 +39,7 @@ const danishTabs: CVTab[] = [
     entries: [
       { title: "Magasin du Nord", meta: "2020 - 2022", subtitle: "Salgsassistent", points: ["Kundeorienteret service og afdækning af behov.", "Erfaring med præsentation og visual merchandising.", "Håndtering af travle miljøer og deadlines.", "Teamwork og effektiv kommunikation.", "Fokus på kvalitet og sans for detaljer."] },
       { title: "Dansk Kirurgisk Selskab", meta: "2025 - nu", subtitle: "Webmaster", points: ["Erfaring med webudvikling i Wix og JavaScript.", "Kompetencer i Figma.", "Selvstændig arbejdsstil med ansvar for planlægning og håndtering af egne opgaver og tid.", "Fleksibel tilpasning til deadlines og løbende kommunikation med samarbejdspartnere."] },
-      { title: "REFYNE", meta: "Jan 2026 - Apr 2026", subtitle: "Praktik", points: ["Erfaring med paid social (Meta Ads), kampagneopsætning og annoncering.", "Kreativ udvikling i Canva og anvendelse af UX/UI-principper fra Figma.", "Udarbejdelse af stillbilleder, carousels og video.", "Selvstændig arbejdsstil med fokus på optimering og samarbejde."] },
+      { title: "REFYNE", meta: "Jan 2026 - Apr 2026", subtitle: "Praktik", points: ["Erfaring med Paid Social (Meta Ads), kampagneopsætning, publicering og annoncering.", "Arbejde med performance-data og kampagneindsigter for at overvåge og optimere annoncering.", "Kreativ udvikling i Canva, herunder stillbilleder, carousels, bannere og video.", "Anvendelse af UX/UI-principper med Figma, WordPress, Elementor og Formidable Forms.", "Deltog i et Meta-kursus på Metas hovedkontor i Dublin.", "Selvstændig arbejdsstil med fokus på optimering, læring og samarbejde."] },
       { title: "nordic hair glow", meta: "Maj 2026 - nu", subtitle: "Multimediedesigner", points: ["Grafisk design til sociale medier, web og marketingmaterialer.", "Marketing og visuel kommunikation på tværs af kanaler.", "Alt fra content creation til layout, brandidentitet og kampagnematerialer.", "Tæt samarbejde om alt visuelt og digitalt arbejde i en lille virksomhed."] },
     ],
   },
@@ -54,6 +54,7 @@ const danishTabs: CVTab[] = [
       { title: "Microsoft Office Suite", meta: "Avanceret", points: ["Til effektiv opgaveløsning og organisering med Word, PowerPoint og Excel."] },
       { title: "Wix", meta: "Avanceret", points: ["Til opbygning og design af hjemmesider i et brugervenligt drag-and-drop-system."] },
       { title: "Git/GitHub", meta: "Middel", points: ["Til versionsstyring og samarbejde om projekter."] },
+      { title: "Meta Ads", meta: "Middel", points: ["Til opsætning og optimering af kampagner."] },
       { title: "Adobe Photoshop", meta: "Begynder", points: ["Til billedredigering."] },
       { title: "Adobe After Effects", meta: "Begynder", points: ["Til animation og motion graphics."] },
       { title: "Adobe Premiere Pro", meta: "Begynder", points: ["Til videoredigering og storytelling."] },
@@ -150,10 +151,12 @@ const tabs: CVTab[] = [
         meta: "Jan 2026 - Apr 2026",
         subtitle: "Internship",
         points: [
-          "Experience with Paid Social (Meta Ads), campaign setup, and advertising.",
-          "Creative development in Canva and application of UX/UI principles from Figma.",
-          "Creation of still images, carousels, and video.",
-          "Independent work style with focus on optimization and collaboration.",
+          "Experience with Paid Social (Meta Ads), campaign setup, publishing, and advertising.",
+          "Worked with performance data and campaign insights to monitor and optimize advertising.",
+          "Creative development in Canva, including still images, carousels, banners, and video.",
+          "Applied UX/UI principles using Figma, WordPress, Elementor, and Formidable Forms.",
+          "Participated in a Meta course at Meta's headquarters in Dublin.",
+          "Independent work style with focus on optimization, learning, and collaboration.",
         ],
       },
       {
@@ -224,6 +227,13 @@ const tabs: CVTab[] = [
         ],
       },
       {
+        title: "Meta Ads",
+        meta: "Moderate",
+        points: [
+          "For campaign setup and optimization.",
+        ],
+      },
+      {
         title: "Adobe Photoshop",
         meta: "Beginner",
         points: [
@@ -280,7 +290,7 @@ const defaultTab = "uddannelse";
         data-tablist
         role="tablist"
         aria-label="CV categories"
-        class="mb-12 overflow-x-auto whitespace-nowrap border-b border-black/10 bg-background/90 pb-4 pt-2 backdrop-blur-sm"
+        class="mb-3 overflow-x-auto whitespace-nowrap  bg-background/90 pb-4 pt-2 backdrop-blur-sm"
       >
         <div class="relative flex items-center gap-3 md:gap-6">
 
@@ -333,14 +343,14 @@ const defaultTab = "uddannelse";
 
               <div
                 class:list={[
-                  "grid gap-x-10 gap-y-12",
+                  "grid gap-x-10 gap-y-4",
                   "grid-cols-1 md:grid-cols-2 lg:grid-cols-4",
                 ]}
               >
 
                 {
                   tab.entries.map((entry, entryIndex) => (
-                    <div class="border-t border-black/10 pt-5 font-sans">
+                    <div class="border-t border-black/10 pt-2 font-sans">
 
                       <!-- Entry title -->
                       <h4
@@ -350,7 +360,7 @@ const defaultTab = "uddannelse";
 
                         {entry.meta && (
                           <span
-                            class="block mt-1 font-sans text-sm font-normal text-muted-foreground"
+                            class="block mt-2 font-sans text-sm font-normal text-muted-foreground"
                             data-lang-field
                             data-da={danishTabs.find((localizedTab) => localizedTab.key === tab.key)?.entries[entryIndex].meta}
                             data-en={entry.meta}
@@ -363,7 +373,7 @@ const defaultTab = "uddannelse";
                       <!-- Subtitle -->
                       {entry.subtitle && (
                         <p
-                          class="mt-1 font-sans text-base text-foreground/80"
+                          class="mt-2 font-sans text-base text-foreground/80"
                           data-lang-field
                           data-da={danishTabs.find((localizedTab) => localizedTab.key === tab.key)?.entries[entryIndex].subtitle}
                           data-en={entry.subtitle}
@@ -373,11 +383,11 @@ const defaultTab = "uddannelse";
                       )}
 
                       <!-- Description -->
-                      <ul class="mt-4 space-y-2 font-sans">
+                      <ul class="mt-3 space-y-3 font-sans">
                         {
                           entry.points.map((point, pointIndex) => (
                             <li
-                              class="relative pl-4 font-sans text-sm md:text-base font-normal leading-relaxed text-muted-foreground"
+                              class="relative pl-4 font-sans text-xs md:text-sm font-normal leading-relaxed text-muted-foreground"
                             >
                               <span
                                 class="absolute left-0 top-[0.6em] h-1.5 w-1.5 bg-primary"
