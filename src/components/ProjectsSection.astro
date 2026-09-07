@@ -1,7 +1,9 @@
 ---
 import { projects } from "../data/projects";
 
-const localize = (value, language = "da") => {
+type LocalizedValue = string | Record<string, string>;
+
+const localize = (value: LocalizedValue, language = "da") => {
   if (typeof value === "string") return value;
   return value?.[language] ?? value?.da ?? "";
 };
