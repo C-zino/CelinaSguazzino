@@ -1,18 +1,16 @@
 ---
 import { projects } from "../data/projects";
 
-type LocalizedValue = string | Record<string, string>;
-
-const localize = (value: LocalizedValue, language = "da") => {
+const localize = (value, language = "da") => {
   if (typeof value === "string") return value;
   return value?.[language] ?? value?.da ?? "";
 };
 ---
 
-<section class="bg-secondary/30">
+<section id="projects" class="bg-secondary/30">
   <div class="section-container">
 
-    <h3 id="projects" class="pt-15 section-header reveal-section scroll-mt-28" data-i18n="projects.heading">
+    <h3 class="pt-15 section-header reveal-section" data-i18n="projects.heading">
       udvalgte projekter
     </h3>
 
