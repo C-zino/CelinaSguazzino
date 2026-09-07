@@ -100,7 +100,7 @@ body {
      ------------------------------------------------------- */
 
   .section-header {
-    @apply mb-20 text-sm font-medium tracking-widest text-primary lowercase;
+    @apply mb-10  text-sm font-medium tracking-widest text-primary lowercase md:mb-20;
   }
 
   /* -------------------------------------------------------
@@ -108,7 +108,7 @@ body {
      ------------------------------------------------------- */
 
   .section-container {
-    @apply mx-auto max-w-5xl px-8 py-32;
+    @apply mx-auto max-w-5xl px-8 mt-10 md:py-32;
   }
 
   /* -------------------------------------------------------
