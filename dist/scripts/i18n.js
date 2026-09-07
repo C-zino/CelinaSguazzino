@@ -200,7 +200,7 @@ window.portfolioI18n = {
   },
 };
 
-const initialLanguage = DEFAULT_LANGUAGE;
+const initialLanguage = resolveLanguage(localStorage.getItem(STORAGE_KEY));
 document.documentElement.lang = initialLanguage;
 document.documentElement.dataset.language = initialLanguage;
 localStorage.setItem(STORAGE_KEY, initialLanguage);

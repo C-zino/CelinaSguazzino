@@ -1,14 +1,16 @@
 ---
 import { projects } from "../data/projects";
 
-const localize = (value, language = "da") => {
+type LocalizedValue = string | Partial<Record<"da" | "en", string>>;
+
+const localize = (value: LocalizedValue, language: "da" | "en" = "da") => {
   if (typeof value === "string") return value;
   return value?.[language] ?? value?.da ?? "";
 };
 ---
 
 <section id="projects" class="bg-secondary/30">
-  <div class="section-container">
+  <div class="section-container pb-10 md:pb-30">
 
     <h3 id="projects-heading" class="scroll-mt-24 pt-15 section-header reveal-section" data-i18n="projects.heading">
       udvalgte projekter
