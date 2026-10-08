@@ -27,7 +27,9 @@ const translations = {
     },
     projects: {
       heading: "udvalgte projekter",
+      allHeading: "alle projekter",
       viewProject: "Se projekt",
+      seeMore: "Se flere projekter",
     },
     contact: {
       heading: "kontakt",
@@ -76,7 +78,9 @@ const translations = {
     },
     projects: {
       heading: "selected projects",
+      allHeading: "all projects",
       viewProject: "View project",
+      seeMore: "See more projects",
     },
     contact: {
       heading: "contact",

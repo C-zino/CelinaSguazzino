@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Alle projekter | Celina Sguazzino"
+  description="Se alle projekter af Celina Sguazzino inden for digitalt design, branding, fotografi og webudvikling."
+>
+  <div class="min-h-screen bg-background">
+    <Navigation />
+    <main class="pt-16 md:pt-20">
+      <ProjectsSection headingKey="projects.allHeading" headingText="alle projekter" />
+    </main>
+    <Footer />
+  </div>
+</Layout>
