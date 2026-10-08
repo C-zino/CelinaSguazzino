@@ -61,15 +61,6 @@ const linkLabelFallback = project.link?.includes("figma")
               </a>
             </div>
 
-            <figure class="mb-12 overflow-hidden">
-              <img
-                src="/images/projects/nordichairglow/nordichairglow.webp"
-                alt="Nordic Hair Glow"
-                loading="lazy"
-                class="block h-auto w-full"
-              />
-            </figure>
-
             <section
               class="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(320px,3fr)] lg:gap-12 xl:gap-16 2xl:gap-20"
             >
@@ -1601,15 +1592,15 @@ const linkLabelFallback = project.link?.includes("figma")
 
 
   <!-- =============================================================== -->
-  <!-- NORDIC ACTIVE SECTION SCRIPT -->
+  <!-- PROJECT ACTIVE SECTION SCRIPT -->
   <!-- =============================================================== -->
 
   {
-    isNordicHairGlow && (
+    (isNordicHairGlow || isTivoliMoments) && (
       <script>
         const sections = Array.from(
           document.querySelectorAll<HTMLElement>(
-            "#meta-ads, #web-design, #ai-imagery, #packaging"
+            "#meta-ads, #web-design, #ai-imagery, #packaging, #research, #concept, #prototype, #visuals"
           )
         );
 
@@ -1700,15 +1691,18 @@ const linkLabelFallback = project.link?.includes("figma")
       color: hsl(var(--foreground));
     }
 
-    .project-nav-link {
+    .project-nav-link,
+    .tivoli-nav-link {
       position: relative;
     }
 
-    .project-nav-link.active {
+    .project-nav-link.active,
+    .tivoli-nav-link.active {
       padding-left: 0.375rem;
     }
 
-    .project-nav-link.active::before {
+    .project-nav-link.active::before,
+    .tivoli-nav-link.active::before {
       content: "";
       position: absolute;
       left: -0.625rem;
@@ -1720,11 +1714,13 @@ const linkLabelFallback = project.link?.includes("figma")
     }
 
     @media (max-width: 1023px) {
-      .project-nav-link.active {
+      .project-nav-link.active,
+      .tivoli-nav-link.active {
         padding-left: 0;
       }
 
-      .project-nav-link.active::before {
+      .project-nav-link.active::before,
+      .tivoli-nav-link.active::before {
         display: none;
       }
     }
