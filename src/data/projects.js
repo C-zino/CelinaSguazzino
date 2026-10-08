@@ -4,8 +4,8 @@ export const projects = [
   {
     slug: "nordic-hair-glow",
     title: "Nordic Hair Glow",
-    category: localized("Marketing / Branddesign", "Marketing / Brand Design"),
-    year: localized("Igangværende", "Ongoing"),
+    category: localized("Marketing / Branddesign", "Marketing / Brand Design"), 
+    year: localized("Igangværende hos Leadgen Group", "Ongoing at Leadgen Group"),
     description: localized(
       "En aktuel kreativ rolle med fokus på marketingmaterialer, Meta-annoncer, email-kampagner, produktvisuals og branddesign for Nordic Hair Glow.",
       "A current creative role focused on marketing assets, Meta ads, email campaigns, product visuals, and brand design for Nordic Hair Glow.",
@@ -18,11 +18,12 @@ export const projects = [
     link: "https://nordichairglow.dk/?srsltid=AfmBOooQBVMKBH_gX8krwdIkZEkeh-6FWp3PHZzdxhwrXe6_imxQE4Wy",
     linkLabel: localized("Besøg hjemmeside", "Visit website"),
     gallery: ["/images/projects/nordichairglow/nordichairglow.webp"],
-    tags: [
-      localized("Nuværende rolle", "Current role"),
-      "Meta Ads",
-      localized("Produktfotografi", "Product Photography"),
-    ],
+  tags: [
+  localized("Multimediedesign", "Multimedia Design"),
+  "Digital Marketing",
+  "Meta Ads",
+
+],
   },
   {
     slug: "dansk-kirurgisk-selskab",
@@ -55,24 +56,21 @@ export const projects = [
       "Digital Concept Development",
     ),
     year: "2026",
-    description: localized(
-      "Et digitalt loyalitetskoncept, der skal gøre Tivoli mere top-of-mind for unge årskortholdere gennem inspiration, social planlægning og personlige Tivoli-oplevelser.",
-      "A digital loyalty concept designed to keep Tivoli top-of-mind for young annual pass holders through inspiration, social planning, and personalised Tivoli experiences.",
-    ),
-    longDescription: localized(
-      "Tivoli Moments blev udviklet som et projekt på Digital Konceptudvikling med fokus på Tivolis ambition om at styrke den emotionelle loyalitet blandt 20-30-årige årskortholdere.\n\nVores research viste, at et årskort ikke nødvendigvis fører til flere besøg. Årskortet fjerner adgangsbarrieren, men ikke beslutningsbarrieren. Målgruppen besøger især Tivoli, når der er en konkret anledning, som et event, en koncert eller en plan med venner.\n\nPå baggrund af vores research udviklede vi Tivoli Moments, et digitalt loyalitetskoncept, der kombinerer inspiration, social planlægning og personligt indhold for at skabe flere anledninger til at besøge Tivoli.\n\nJeg arbejdede med research, konceptudvikling, UX/UI, prototyping og visuel formidling i Figma.",
-      "Tivoli Moments was developed as a project in Digital Concept Development, focusing on Tivoli's ambition to strengthen emotional loyalty among 20-30-year-old annual pass holders.\n\nOur research showed that having an annual pass does not necessarily lead to more visits. The pass removes the entrance barrier, but not the decision barrier. The target group mainly visits Tivoli when there is a concrete reason to go, such as an event, concert, or plans with friends.\n\nBased on our research, we developed Tivoli Moments, a digital loyalty concept combining inspiration, social planning, and personalised content to create more reasons to visit Tivoli.\n\nI worked with research, concept development, UX/UI, prototyping, and visual communication in Figma.",
-    ),
+   description: localized(
+  "Et digitalt loyalitetskoncept, der gør Tivoli mere top-of-mind gennem inspiration, social planlægning og personlige oplevelser.",
+  "A digital loyalty concept designed to keep Tivoli top-of-mind through inspiration, social planning, and personalised experiences.",
+),
+  longDescription: localized(
+  "Tivoli Moments blev udviklet som et projekt på Digital Konceptudvikling med fokus på at styrke den emotionelle loyalitet blandt 20-30-årige årskortholdere.\n\nVores research viste, at et årskort fjerner adgangsbarrieren, men ikke beslutningsbarrieren. Målgruppen besøger især Tivoli, når der er en konkret anledning som et event, en koncert eller en plan med venner.\n\nPå baggrund af vores research udviklede vi Tivoli Moments, et digitalt loyalitetskoncept med fokus på inspiration, social planlægning og personligt indhold.\n\nJeg arbejdede med research, konceptudvikling, UX/UI, prototyping og visuel formidling i Figma.",
+  "Tivoli Moments was developed as a project in Digital Concept Development, focusing on strengthening emotional loyalty among 20-30-year-old annual pass holders.\n\nOur research showed that an annual pass removes the entrance barrier, but not the decision barrier. The target group mainly visits Tivoli when there is a concrete reason, such as an event, concert, or plans with friends.\n\nBased on our research, we developed Tivoli Moments, a digital loyalty concept focused on inspiration, social planning, and personalised content.\n\nI worked with research, concept development, UX/UI, prototyping, and visual communication in Figma.",
+),
     image: "/images/projects/tivoli/tivoliprojectpic.webp",
     gallery: [
       "/images/projects/tivoli/tivoliprojectpic.webp",
-      "/images/projects/tivoli/flow-calendar.webp",
-      "/images/projects/tivoli/flow-invitation.webp",
       "/images/projects/tivoli/tivolirecap.webp",
       "/images/projects/tivoli/tivolikommunikation.webp",
       "/images/projects/tivoli/tivolimomenta5kortfortalt.webp",
       "/images/projects/tivoli/tivolimomentsudsnit.webp",
-      "/images/projects/tivoli/storyboard.webp",
     ],
     resources: [
       {
@@ -89,10 +87,10 @@ export const projects = [
       },
     ],
     tags: [
-      localized("Uddannelsesprojekt", "Academic Project"),
-      "UX / UI",
-
-    ],
+  localized("Uddannelsesprojekt", "Academic Project"),
+  "UX / UI",
+  localized("Digitalt koncept", "Digital Concept"),
+],
   },
 
   {
