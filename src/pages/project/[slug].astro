@@ -23,7 +23,7 @@ const localize = (value, language = "da") => {
 };
 
 const linkLabelFallback = project.link?.includes("figma")
-  ? { da: "Se prototype", en: "View prototype" }
+  ? { da: "Prototype", en: "Prototype" }
   : { da: "Besøg hjemmeside", en: "Visit website" };
 ---
 
@@ -53,7 +53,8 @@ const linkLabelFallback = project.link?.includes("figma")
 
             <div class="mb-8 block pt-10 md:hidden">
               <a
-                href="/#projects"
+                href="/projects"
+                data-back-link="/projects"
                 class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground transition-colors hover:text-primary"
               >
                 <span aria-hidden="true">←</span>
@@ -148,7 +149,8 @@ const linkLabelFallback = project.link?.includes("figma")
                 <div class="mb-10 mt-24 hidden md:block">
 
                   <a
-                    href="/#projects"
+                    href="/projects"
+                    data-back-link="/projects"
                     class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
                     <span aria-hidden="true">←</span>
@@ -738,7 +740,8 @@ const linkLabelFallback = project.link?.includes("figma")
 
           <div class="mb-8 block pt-10 md:hidden">
             <a
-              href="/#projects"
+              href="/projects"
+              data-back-link="/projects"
               class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground transition-colors hover:text-primary"
             >
               <span aria-hidden="true">←</span>
@@ -761,7 +764,8 @@ const linkLabelFallback = project.link?.includes("figma")
 
               <div class="mb-10 mt-24 hidden md:block">
                 <a
-                  href="/#projects"
+                  href="/projects"
+                  data-back-link="/projects"
                   class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground transition-colors hover:text-primary"
                 >
                   <span aria-hidden="true">←</span>
@@ -1409,7 +1413,8 @@ const linkLabelFallback = project.link?.includes("figma")
                 <div class="mb-8">
 
                   <a
-                    href="/#projects"
+                    href="/projects"
+                    data-back-link="/projects"
                     class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
                     <span aria-hidden="true">←</span>
@@ -1661,6 +1666,27 @@ const linkLabelFallback = project.link?.includes("figma")
       </script>
     )
   }
+
+  <script>
+    const backLinks = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>("[data-back-link]"),
+    );
+    const currentOrigin = window.location.origin;
+    const referrer = document.referrer;
+    const referrerUrl = referrer ? new URL(referrer) : null;
+    const cameFromPortfolio =
+      referrerUrl?.origin === currentOrigin &&
+      (referrerUrl.pathname === "/" || referrerUrl.pathname === "/projects");
+
+    backLinks.forEach((backLink) => {
+      backLink.addEventListener("click", (event) => {
+        if (!cameFromPortfolio || window.history.length <= 1) return;
+
+        event.preventDefault();
+        window.history.back();
+      });
+    });
+  </script>
 
 
   <!-- =============================================================== -->

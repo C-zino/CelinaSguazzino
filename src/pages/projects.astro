@@ -15,6 +15,7 @@ import Footer from "../components/Footer.astro";
       <div>
         <a
           href="/"
+          data-back-link="/"
           class="inline-flex items-center gap-2 border-b border-primary pb-1 font-sans text-sm text-primary transition-colors hover:border-primary/60 hover:text-primary/70"
         >
           <span aria-hidden="true">←</span>
@@ -32,3 +33,22 @@ import Footer from "../components/Footer.astro";
     <Footer />
   </div>
 </Layout>
+
+<script>
+  const backLink = document.querySelector<HTMLAnchorElement>("[data-back-link]");
+
+  if (backLink) {
+    const referrer = document.referrer;
+    const currentOrigin = window.location.origin;
+    const cameFromHome =
+      referrer.startsWith(`${currentOrigin}/`) &&
+      new URL(referrer).pathname === "/";
+
+    backLink.addEventListener("click", (event) => {
+      if (!cameFromHome || window.history.length <= 1) return;
+
+      event.preventDefault();
+      window.history.back();
+    });
+  }
+</script>
