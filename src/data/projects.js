@@ -48,17 +48,68 @@ export const projects = [
     ],
   },
   {
+    slug: "tivoli-moments",
+    title: "Tivoli Moments",
+    category: localized(
+      "Digital Konceptudvikling",
+      "Digital Concept Development",
+    ),
+    year: "2026",
+    description: localized(
+      "Et digitalt loyalitetskoncept, der skal gøre Tivoli mere top-of-mind for unge årskortholdere gennem inspiration, social planlægning og personlige Tivoli-oplevelser.",
+      "A digital loyalty concept designed to keep Tivoli top-of-mind for young annual pass holders through inspiration, social planning, and personalised Tivoli experiences.",
+    ),
+    longDescription: localized(
+      "Tivoli Moments blev udviklet som et projekt på Digital Konceptudvikling med fokus på Tivolis ambition om at styrke den emotionelle loyalitet blandt 20-30-årige årskortholdere.\n\nVores research viste, at et årskort ikke nødvendigvis fører til flere besøg. Årskortet fjerner adgangsbarrieren, men ikke beslutningsbarrieren. Målgruppen besøger især Tivoli, når der er en konkret anledning, som et event, en koncert eller en plan med venner.\n\nPå baggrund af vores research udviklede vi Tivoli Moments, et digitalt loyalitetskoncept, der kombinerer inspiration, social planlægning og personligt indhold for at skabe flere anledninger til at besøge Tivoli.\n\nJeg arbejdede med research, konceptudvikling, UX/UI, prototyping og visuel formidling i Figma.",
+      "Tivoli Moments was developed as a project in Digital Concept Development, focusing on Tivoli's ambition to strengthen emotional loyalty among 20-30-year-old annual pass holders.\n\nOur research showed that having an annual pass does not necessarily lead to more visits. The pass removes the entrance barrier, but not the decision barrier. The target group mainly visits Tivoli when there is a concrete reason to go, such as an event, concert, or plans with friends.\n\nBased on our research, we developed Tivoli Moments, a digital loyalty concept combining inspiration, social planning, and personalised content to create more reasons to visit Tivoli.\n\nI worked with research, concept development, UX/UI, prototyping, and visual communication in Figma.",
+    ),
+    image: "/images/projects/tivoli/tivoliprojectpic.webp",
+    gallery: [
+      "/images/projects/tivoli/tivoliprojectpic.webp",
+      "/images/projects/tivoli/flow-calendar.webp",
+      "/images/projects/tivoli/flow-invitation.webp",
+      "/images/projects/tivoli/tivolirecap.webp",
+      "/images/projects/tivoli/tivolikommunikation.webp",
+      "/images/projects/tivoli/tivolimomenta5kortfortalt.webp",
+      "/images/projects/tivoli/tivolimomentsudsnit.webp",
+      "/images/projects/tivoli/storyboard.webp",
+    ],
+    resources: [
+      {
+        href: "https://www.figma.com/proto/OHpQtoCKXfeWMLDANopYOq/Group-5-Tivoli--Copy-?node-id=628-4801&viewport=161%2C192%2C0.14&t=VCd16g7lEC3J4fzn-1&scaling=scale-down&content-scaling=fixed&page-id=628%3A4142",
+        label: localized("Prototype", "Prototype"),
+      },
+      {
+        href: "/documents/tivoli/tivoli_moments.pdf",
+        label: localized("Pitch", "Pitch"),
+      },
+      {
+        href: "/documents/tivoli/tivoli_digital%20concept_abstract.pdf",
+        label: localized("Abstract", "Abstract"),
+      },
+    ],
+    tags: [
+      localized("Uddannelsesprojekt", "Academic Project"),
+      "UX / UI",
+
+    ],
+  },
+
+  {
     slug: "crying-wine",
     title: "Crying Wine",
-    category: localized("Digitalt design / Webudvikling", "Digital Design / Web Development"),
+    category: localized(
+      "Digitalt design / Webudvikling",
+      "Digital Design / Web Development",
+    ),
     year: "2026",
     description: localized(
       "Et eksamensprojekt på multimediedesign, der kombinerer digitalt design, webudvikling, sociale medier og Meta-annoncering for at skabe en mere sammenhængende digital tilstedeværelse for Crying Wine.",
       "A Multimedia Design exam project combining digital design, web development, social media, and Meta advertising to create a more cohesive digital presence for Crying Wine.",
     ),
     longDescription: localized(
-      "Som en del af mit afsluttende eksamensprojekt på multimediedesign arbejdede jeg med Crying Wine, en lille dansk vinvirksomhed, som oplevede et misforhold mellem den målgruppe, de ønskede at nå, og den målgruppe deres eksisterende kommunikation faktisk ramte.\n\nVores mål var at skabe en mere sammenhængende digital tilstedeværelse og udvikle en visuel retning, der kunne kommunikere brandet konsekvent på tværs af platforme. Vi designede og udviklede en ny hjemmeside, producerede Instagram-indhold og udviklede Meta-annoncer, så den nye visuelle retning blev samlet på tværs af brandets digitale kontaktflader.\n\nJeg arbejdede gennem hele projektet med både digitalt design og webudvikling, herunder UI-design, UX, responsiv webudvikling og visuel kommunikation. Hjemmesiden blev designet i Figma og derefter udviklet til en funktionel kodet løsning, hvilket gav mig mulighed for at kombinere mine designkompetencer med HTML, CSS, JavaScript og webudvikling.\n\nProjektet gjorde det muligt at samle flere områder fra min multimediedesignuddannelse, herunder digitalt design, UX/UI, webudvikling, sociale medier, Meta-annoncering og visuel kommunikation. Arbejdet i gruppe gav os også mulighed for at kombinere forskellige kompetencer og skabe én samlet digital oplevelse.",
-      "As part of my final Multimedia Design exam project, I worked with Crying Wine, a small Danish wine business that was experiencing a gap between the audience they wanted to reach and the audience their existing communication was actually attracting.\n\nOur goal was to create a more cohesive digital presence and develop a visual direction that could communicate the brand consistently across different platforms. We designed and developed a new website, created Instagram content, and developed Meta ads to bring the new visual direction and communication together across the brand's digital touchpoints.\n\nI worked across both digital design and web development throughout the project, including UI design, UX, responsive web development, and visual communication. The website was designed in Figma and then developed into a functional coded website, allowing me to combine my design skills with HTML, CSS, JavaScript, and web development.\n\nThe project allowed me to bring together several areas of my Multimedia Design education, including digital design, UX/UI, web development, social media, Meta advertising, and visual communication. Working as part of a group also allowed us to combine different skill sets while creating one cohesive digital experience.",
+      "Som en del af mit afsluttende eksamensprojekt på multimediedesign arbejdede jeg med Crying Wine, en lille dansk vinvirksomhed, hvor der var et misforhold mellem den ønskede målgruppe og den eksisterende kommunikation.\n\nMålet var at skabe en mere sammenhængende digital tilstedeværelse med en tydelig visuel retning på tværs af platforme. Vi designede og udviklede en ny hjemmeside, producerede Instagram-indhold og udviklede Meta-annoncer.\n\nJeg arbejdede især med digitalt design og webudvikling, herunder UX/UI, responsivt design og visuel kommunikation. Hjemmesiden blev designet i Figma og efterfølgende udviklet til en funktionel kodet løsning.\n\nProjektet samlede flere områder fra min multimediedesignuddannelse, herunder UX/UI, webudvikling, digitalt design, sociale medier og Meta-annoncering.",
+      "As part of my final Multimedia Design exam project, I worked with Crying Wine, a small Danish wine business where there was a gap between the desired target audience and the existing communication.\n\nThe goal was to create a more cohesive digital presence with a clear visual direction across platforms. We designed and developed a new website, produced Instagram content, and created Meta ads.\n\nI mainly worked with digital design and web development, including UX/UI, responsive design, and visual communication. The website was designed in Figma and then developed into a functional coded solution.\n\nThe project brought together several areas from my Multimedia Design education, including UX/UI, web development, digital design, social media, and Meta advertising.",
     ),
     image: "/images/projects/cryingwine/cryingwine.webp",
     link: "https://www.figma.com/proto/LENOsfWynbeOlPpVSy4nJU/Design-2.0?node-id=6843-9303&viewport=6%2C161%2C0.63&t=Z5PH8VwZGYS5fQAB-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6843%3A9303&page-id=6843%3A8785",
@@ -80,10 +131,14 @@ export const projects = [
       localized("Meta-annoncering", "Meta Advertising"),
     ],
   },
+
   {
     slug: "petit-bateau",
     title: "Petit Bateau",
-    category: localized("Marketing / Sociale medier", "Marketing / Social Media"),
+    category: localized(
+      "Marketing / Sociale medier",
+      "Marketing / Social Media",
+    ),
     year: "2026",
     description: localized(
       "Emailmarketing i Klaviyo, annoncer i Canva og Meta-annoncering – inklusive træning på Metas hovedkontor i Dublin.",
@@ -94,17 +149,23 @@ export const projects = [
       "During my internship at Refyne, I also worked with Petit Bateau, where I was responsible for newsletters in Klaviyo, creating ads in Canva, and handling Meta advertising.\n\nI also attended a course at Meta's headquarters in Dublin, which gave me solid insight into the platform's possibilities and best practices. This combination of hands-on work and specialized training has strengthened my ability to create targeted content and ads that reflect the brand's visual identity while performing well on social media.",
     ),
     image: "/images/projects/petitb/petit.webp",
-    gallery: ["/images/projects/petitb/petit.webp"],
+    gallery: [
+      "/images/projects/petitb/petit.webp",
+    ],
     tags: [
       "Refyne",
       localized("Praktik", "Internship"),
       localized("Emailmarketing", "Email Marketing"),
     ],
   },
+
   {
     slug: "pengeraadgivningen",
     title: "Pengerådgivningen",
-    category: localized("UX / UI-design", "UX / UI Design"),
+    category: localized(
+      "UX / UI-design",
+      "UX / UI Design",
+    ),
     year: "2026",
     description: localized(
       "Optimering af en brugertest om omlægning af lån – fra analyse af brugerrejsen til Figma-prototype og implementering i WordPress.",
@@ -115,19 +176,28 @@ export const projects = [
       "A concrete example of my work during my internship at Refyne is a project for Pengerådgivningen, where I worked on optimizing a user test related to loan refinancing. I analyzed the user journey and identified elements that created friction, after which I developed a prototype of my own solution in Figma with a focus on a more intuitive and clearer flow.\n\nI worked with visual structure, hierarchy, and reduction of unnecessary information, drawing inspiration from Gestalt principles. Although this was a test and not a traditional form, I was able to apply my knowledge of input fields and user flow from my studies. I experienced that many of the same principles apply when creating an intuitive and clear experience, which strengthened my understanding of how UX methods can be transferred to practice.\n\nAfterward, I presented my solution to the client by comparing it with the existing solution and arguing for my design choices. I then had the opportunity to implement the solution in their tests myself, which gave me experience working in WordPress through Elementor and Formidable Forms.\n\nThe task gave me a deeper understanding of how theory can be translated into practice, as well as the importance of being able to justify design decisions professionally. I also became more aware of how even small changes can have a significant impact on the user experience. In addition, I learned how important it is to balance my professional judgment with the client's wishes, which requires clear argumentation and understanding of business needs. This has strengthened my ability to think more holistically in my design work and not only focus on the visual solution.",
     ),
     image: "/images/projects/pengeradgivning/pengeradgivning.webp",
-    gallery: ["/images/projects/pengeradgivning/p1.webp"],
+    gallery: [
+      "/images/projects/pengeradgivning/p1.webp",
+    ],
     link: "https://pengeraadgivning.dk/sommerhusberegner/",
-    linkLabel: localized("Besøg hjemmeside", "Visit website"),
+    linkLabel: localized(
+      "Besøg hjemmeside",
+      "Visit website",
+    ),
     tags: [
       "Refyne",
       localized("Praktik", "Internship"),
       "WordPress",
     ],
   },
+
   {
     slug: "hojskolen-dk",
     title: "Højskolen.dk",
-    category: localized("Skoleprojekt / Redesign", "School Project / Redesign"),
+    category: localized(
+      "Skoleprojekt / Redesign",
+      "School Project / Redesign",
+    ),
     year: "2025",
     description: localized(
       "Et komplet redesign af højskolen.dk udviklet som skoleprojekt på multimediedesign i tæt samarbejde med virksomheden.",
@@ -148,13 +218,21 @@ export const projects = [
       "/images/projects/hojskole/h7.webp",
       "/images/projects/hojskole/Styletilehojskole.webp",
     ],
-    link: "https://www.figma.com/proto/RnAganBFDFlTSRrBDxwUMj/Wireframes-og-Prototype?node-id=12-52&p=f&viewport=694%2C226%2C0.04&t=dSQaPqml5roqNpl-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=12%3A52&show-proto-sidebar=1&page-id=12%3A51",
-    tags: ["UX / UI", "Figma", localized("Brugerresearch", "User Research")],
+    link: "https://www.figma.com/proto/RnAganBFDFlTSRrBDxwUMj/Wireframes-og-Prototype?node-id=12-52&p=f&viewport=694%2C226%2C0.04&t=dSQaPqml5roqNpl-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=12%3A52&page-id=12%3A51&show-proto-sidebar=1",
+    tags: [
+      "UX / UI",
+      "Figma",
+      localized("Brugerresearch", "User Research"),
+    ],
   },
+
   {
     slug: "baob",
     title: "BAOB",
-    category: localized("Skoleprojekt / Brandidentitet", "School Project / Brand Identity"),
+    category: localized(
+      "Skoleprojekt / Brandidentitet",
+      "School Project / Brand Identity",
+    ),
     year: "2025",
     description: localized(
       "Et brandidentitetskoncept for BAOB med fokus på et specialdesignet visuelt sprog, typografisk system, emballageretning og en tydelig premium organisk profil.",
@@ -179,6 +257,7 @@ export const projects = [
       localized("Visuel identitet", "Visual Identity"),
     ],
   },
+
   {
     slug: "yellow-bird-coffee",
     title: "Yellow Bird Coffee",
@@ -209,6 +288,12 @@ export const projects = [
     ],
   },
 ];
+
+projects.sort((a, b) => {
+  if (a.slug === "tivoli-moments") return -1;
+  if (b.slug === "tivoli-moments") return 1;
+  return 0;
+});
 
 export function getProjectBySlug(slug) {
   return projects.find((project) => project.slug === slug);

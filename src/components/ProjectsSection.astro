@@ -39,7 +39,12 @@ const localize = (value: LocalizedValue, language: "da" | "en" = "da") => {
                   width="1024"
                   height="768"
                   loading="lazy"
-                  class="w-full h-auto object-contain aspect-[4/3] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  class:list={[
+                    "w-full h-auto aspect-[4/3] transition-transform duration-700 ease-out group-hover:scale-[1.03]",
+                    project.slug === "tivoli-moments"
+                      ? "object-cover"
+                      : "object-contain",
+                  ]}
                 />
               </div>
 

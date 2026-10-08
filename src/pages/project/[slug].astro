@@ -7,17 +7,15 @@ import { getProjectBySlug, projects } from "../../data/projects.js";
 export function getStaticPaths() {
   return projects.map((project) => ({
     params: { slug: project.slug },
+    props: { project },
   }));
 }
 
-const { slug } = Astro.params;
-const project = slug ? getProjectBySlug(slug) : undefined;
-
-if (!project) {
-  return Astro.redirect("/");
-}
+const { project } = Astro.props;
 
 const isNordicHairGlow = project.slug === "nordic-hair-glow";
+const isTivoliMoments = project.slug === "tivoli-moments";
+const isPlaceholderLink = (href) => href?.startsWith("DIN-");
 
 const localize = (value, language = "da") => {
   if (typeof value === "string") return value;
@@ -29,7 +27,10 @@ const linkLabelFallback = project.link?.includes("figma")
   : { da: "Besøg hjemmeside", en: "Visit website" };
 ---
 
-<Layout title={`${project.title} | Celina Sguazzino`}>
+<Layout
+  title={`${project.title} | Celina Sguazzino`}
+  description={localize(project.description, "da")}
+>
   <div class="min-h-screen bg-background">
 
     <Navigation />
@@ -37,7 +38,7 @@ const linkLabelFallback = project.link?.includes("figma")
     <main
       class:list={[
         "min-h-screen px-4 pb-24 md:px-5 lg:px-8",
-        isNordicHairGlow ? "pt-20 md:pt-0" : "pt-24 md:pt-28",
+        isNordicHairGlow || isTivoliMoments ? "pt-20 md:pt-0" : "pt-24 md:pt-28",
       ]}
     >
 
@@ -59,6 +60,15 @@ const linkLabelFallback = project.link?.includes("figma")
                 <span data-i18n="project.backToProjects">Tilbage til projekter</span>
               </a>
             </div>
+
+            <figure class="mb-12 overflow-hidden">
+              <img
+                src="/images/projects/tivoli/tivolimomentsudsnit.webp"
+                alt="Selected Tivoli Moments app screens"
+                loading="lazy"
+                class="block h-auto w-full"
+              />
+            </figure>
 
             <section
               class="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(320px,3fr)] lg:gap-12 xl:gap-16 2xl:gap-20"
@@ -725,7 +735,673 @@ const linkLabelFallback = project.link?.includes("figma")
 
             </section>
 
-          ) : (
+          ) : isTivoliMoments ? (
+
+        <!-- ================================================= -->
+        <!-- TIVOLI MOMENTS -->
+        <!-- ================================================= -->
+
+        <div class="tivoli-case">
+
+          <!-- MOBILE BACK -->
+
+          <div class="mb-8 block pt-10 md:hidden">
+            <a
+              href="/#projects"
+              class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground transition-colors hover:text-primary"
+            >
+              <span aria-hidden="true">←</span>
+              <span data-i18n="project.backToProjects">
+                Tilbage til projekter
+              </span>
+            </a>
+          </div>
+
+
+          <section class="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(320px,3fr)] lg:gap-12 xl:gap-16 2xl:gap-20">
+
+            <!-- ================================================= -->
+            <!-- LEFT — CASE CONTENT -->
+            <!-- ================================================= -->
+
+            <div class="order-2 min-w-0 max-w-[500px] lg:order-1 lg:mx-0 lg:max-w-[700px] lg:pl-0 xl:pl-2 2xl:pl-4">
+
+              <!-- BACK -->
+
+              <div class="mb-10 mt-24 hidden md:block">
+                <a
+                  href="/#projects"
+                  class="inline-flex items-center gap-2 font-sans text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  <span aria-hidden="true">←</span>
+                  <span data-i18n="project.backToProjects">
+                    Tilbage til projekter
+                  </span>
+                </a>
+              </div>
+
+              <figure class="tivoli-hero-image mb-20 overflow-hidden">
+                <img
+                  src="/images/projects/tivoli/tivoliprojectpic.webp"
+                  alt="Tivoli Moments visual direction"
+                  onerror="this.closest('figure').hidden = true"
+                  class="block h-auto w-full"
+                />
+              </figure>
+
+
+              <!-- ================================================= -->
+              <!-- CASE NAV -->
+              <!-- ================================================= -->
+
+              <nav
+                aria-label="Projektsektioner"
+                data-lang-attr="aria-label"
+                data-da="Projektsektioner"
+                data-en="Project sections"
+                class="fixed left-15 top-24 z-40 hidden 2xl:block"
+              >
+
+                <p
+                  class="mb-3 font-sans text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground"
+                  data-lang-field
+                  data-da="Projekt"
+                  data-en="Project"
+                >
+                  Projekt
+                </p>
+
+                <div class="space-y-2">
+
+                  <a
+                    href="#research"
+                    data-section-link="research"
+                    class="tivoli-nav-link active block text-sm font-sans text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <span class="inline-block w-8 text-muted-foreground/50">
+                      01
+                    </span>
+                    <span data-lang-field data-da="Research & insight" data-en="Research & insight">Research & insight</span>
+                  </a>
+
+                  <a
+                    href="#concept"
+                    data-section-link="concept"
+                    class="tivoli-nav-link block text-sm font-sans text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <span class="inline-block w-8 text-muted-foreground/50">
+                      02
+                    </span>
+                    <span data-lang-field data-da="Koncept" data-en="Concept">Koncept</span>
+                  </a>
+
+                  <a
+                    href="#prototype"
+                    data-section-link="prototype"
+                    class="tivoli-nav-link block text-sm font-sans text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <span class="inline-block w-8 text-muted-foreground/50">
+                      03
+                    </span>
+                    <span data-lang-field data-da="Prototype" data-en="Prototype">Prototype</span>
+                  </a>
+
+                  <a
+                    href="#visuals"
+                    data-section-link="visuals"
+                    class="tivoli-nav-link block text-sm font-sans text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    <span class="inline-block w-8 text-muted-foreground/50">
+                      04
+                    </span>
+                    <span data-lang-field data-da="Visuelt udtryk" data-en="Visuals">Visuelt udtryk</span>
+                  </a>
+
+                </div>
+
+              </nav>
+
+
+              <!-- ================================================= -->
+              <!-- 01 RESEARCH -->
+              <!-- ================================================= -->
+
+              <section
+                id="research"
+                class="mb-32 scroll-mt-28"
+              >
+
+                <div class="mb-8">
+
+                  <p class="project-number">
+                    01
+                  </p>
+
+                  <h2 class="mt-2 font-heading text-3xl font-normal leading-tight tracking-[-0.02em] text-primary md:text-4xl" data-lang-field data-da="Research & indsigt" data-en="Research & insight">
+                    Research & indsigt
+                  </h2>
+
+                </div>
+
+
+                <div class="space-y-8">
+
+                  <div>
+
+                    <p class="mb-3 font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground" data-lang-field data-da="Udfordringen" data-en="The challenge">
+                      Udfordringen
+                    </p>
+
+                    <p class="font-heading text-2xl leading-[1.25] text-primary md:text-3xl" data-lang-field data-da="“Årskortet fjerner adgangsbarrieren, men ikke beslutningsbarrieren.”" data-en="“The annual pass removes the entrance barrier, but not the decision barrier.”">
+                      “Årskortet fjerner adgangsbarrieren, men ikke beslutningsbarrieren.”
+                    </p>
+
+                  </div>
+
+
+                  <p class="font-sans text-base leading-[1.7] text-muted-foreground" data-lang-field data-da="Vores research viste, at et årskort ikke nødvendigvis betyder, at unge voksne besøger Tivoli ofte. Besøg opstår især, når der er en konkret anledning, som en koncert, et event eller en plan med venner." data-en="Our research showed that an annual pass does not necessarily mean young adults visit Tivoli often. Visits usually happen when there is a concrete reason, such as a concert, event, or plans with friends.">
+                    Vores research viste, at et årskort ikke nødvendigvis betyder, at unge voksne besøger Tivoli ofte. Besøg opstår især, når der er en konkret anledning, som en koncert, et event eller en plan med venner.
+                  </p>
+
+
+                  <div class="grid grid-cols-2 gap-3 md:gap-4">
+
+                    <div class="border border-border p-5 md:p-6">
+
+                      <p class="font-heading text-4xl text-primary">
+                        67%
+                      </p>
+
+                      <p class="mt-2 font-sans text-sm leading-relaxed text-muted-foreground">
+                        <span data-lang-field data-da="oplevede pris som en barriere" data-en="experienced price as a barrier">oplevede pris som en barriere</span>
+                      </p>
+
+                    </div>
+
+
+                    <div class="border border-border p-5 md:p-6">
+
+                      <p class="font-heading text-4xl text-primary">
+                        50%
+                      </p>
+
+                      <p class="mt-2 font-sans text-sm leading-relaxed text-muted-foreground">
+                        <span data-lang-field data-da="pegede på crowding som en barriere" data-en="pointed to crowding as a barrier">pegede på crowding som en barriere</span>
+                      </p>
+
+                    </div>
+
+                  </div>
+
+
+                  <p class="font-sans text-base leading-[1.7] text-muted-foreground" data-lang-field data-da="Det pegede på et behov for at gøre Tivolis eksisterende oplevelser mere synlige, skabe konkrete anledninger til besøg og gøre det lettere at planlægge noget sammen med andre." data-en="This pointed to a need to make Tivoli's existing experiences more visible, create concrete reasons to visit, and make it easier to plan something together.">
+                    Det pegede på et behov for at gøre Tivolis eksisterende oplevelser mere synlige, skabe konkrete anledninger til besøg og gøre det lettere at planlægge noget sammen med andre.
+                  </p>
+
+                </div>
+
+              </section>
+
+
+              <!-- ================================================= -->
+              <!-- 02 CONCEPT -->
+              <!-- ================================================= -->
+
+              <section
+                id="concept"
+                class="mb-32 scroll-mt-28"
+              >
+
+                <div class="mb-8">
+
+                  <p class="project-number">
+                    02
+                  </p>
+
+                  <h2 class="mt-2 font-heading text-3xl font-normal leading-tight tracking-[-0.02em] text-primary md:text-4xl" data-lang-field data-da="Konceptet" data-en="The concept">
+                    Konceptet
+                  </h2>
+
+                </div>
+
+
+                <p class="mb-10 max-w-[38rem] font-sans text-base leading-[1.7] text-muted-foreground" data-lang-field data-da="Tivoli Moments er et digitalt loyalitetskoncept, der samler inspiration, social planlægning og personligt indhold i én oplevelse. Målet er ikke bare at give adgang til Tivoli, men at gøre det lettere at finde en grund til at tage afsted." data-en="Tivoli Moments is a digital loyalty concept that brings inspiration, social planning, and personal content together in one experience. The goal is not only to provide access to Tivoli, but to make it easier to find a reason to go.">
+                  Tivoli Moments er et digitalt loyalitetskoncept, der samler inspiration, social planlægning og personligt indhold i én oplevelse. Målet er ikke bare at give adgang til Tivoli, men at gøre det lettere at finde en grund til at tage afsted.
+                </p>
+
+                <figure class="mb-12 overflow-hidden">
+                  <img
+                    src="/images/projects/tivoli/tivolimomenta5kortfortalt.webp"
+                    alt="Tivoli Moments concept overview"
+                    loading="lazy"
+                    class="block h-auto w-full"
+                  />
+                </figure>
+
+
+                <!-- USER JOURNEY -->
+
+                <div class="mb-12 overflow-hidden border border-border">
+
+                  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+
+                    <div class="min-w-0 border-b border-r border-border p-4 sm:border-b-0">
+
+                      <span class="text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground">
+                        01
+                      </span>
+
+                      <p class="mt-2 break-words font-sans text-[0.65rem] leading-tight [hyphens:auto]">
+                        SoMe
+                      </p>
+
+                    </div>
+
+
+                    <div class="min-w-0 border-b border-border p-4 sm:border-b-0 sm:border-r">
+
+                      <span class="text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground">
+                        02
+                      </span>
+
+                      <p class="mt-2 break-words font-sans text-[0.65rem] leading-tight [hyphens:auto]">
+                        App
+                      </p>
+
+                    </div>
+
+
+                    <div class="min-w-0 border-b border-r border-border p-4 sm:border-b-0">
+
+                      <span class="text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground">
+                        03
+                      </span>
+
+                      <p class="mt-2 break-words font-sans text-[0.65rem] leading-tight [hyphens:auto]">
+                        <span data-lang-field data-da="Planlægning" data-en="Planning">Planlægning</span>
+                      </p>
+
+                    </div>
+
+
+                    <div class="min-w-0 border-b border-border p-4 sm:border-b-0 sm:border-r">
+
+                      <span class="text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground">
+                        04
+                      </span>
+
+                      <p class="mt-2 break-words font-sans text-[0.65rem] leading-tight [hyphens:auto]">
+                        Tivoli
+                      </p>
+
+                    </div>
+
+
+                    <div class="min-w-0 p-4">
+
+                      <span class="text-[0.65rem] uppercase tracking-[0.15em] text-muted-foreground">
+                        05
+                      </span>
+
+                      <p class="mt-2 break-words font-sans text-[0.65rem] leading-tight [hyphens:auto]">
+                        Moments
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <!-- CONCEPT FEATURES -->
+
+                <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
+
+                  <div>
+
+                    <p class="mb-2 font-heading text-xl text-primary" data-lang-field data-da="Kalender & invitationer" data-en="Calendar & invitations">
+                      Kalender & invitationer
+                    </p>
+
+                    <p class="font-sans text-sm leading-[1.7] text-muted-foreground" data-lang-field data-da="Brugeren kan opdage events, gemme dem i sin Tivoli-kalender og invitere venner direkte gennem appen. Det gør det lettere at gå fra inspiration til en konkret plan." data-en="Users can discover events, save them to their Tivoli calendar, and invite friends directly through the app. This makes it easier to turn inspiration into a concrete plan.">
+                      Brugeren kan opdage events, gemme dem i sin Tivoli-kalender og invitere venner direkte gennem appen. Det gør det lettere at gå fra inspiration til en konkret plan.
+                    </p>
+
+                  </div>
+
+
+                  <div>
+
+                    <p class="mb-2 font-heading text-xl text-primary">
+                      Tivoli Moments
+                    </p>
+
+                    <p class="font-sans text-sm leading-[1.7] text-muted-foreground" data-lang-field data-da="En personlig opsamling inspireret af Spotify Wrapped, hvor brugerens Tivoli-besøg bliver samlet til minder, typer og anbefalinger." data-en="A personal recap inspired by Spotify Wrapped, turning visits to Tivoli into memories, patterns, and recommendations.">
+                      En personlig opsamling inspireret af Spotify Wrapped, hvor brugerens Tivoli-besøg bliver samlet til minder, typer og anbefalinger.
+                    </p>
+
+                  </div>
+
+
+                  <div>
+
+                    <p class="mb-2 font-heading text-xl text-primary" data-lang-field data-da="Photobooths" data-en="Photobooths">
+                      Photobooths
+                    </p>
+
+                    <p class="font-sans text-sm leading-[1.7] text-muted-foreground" data-lang-field data-da="Fysiske photobooths skaber små delbare øjeblikke i haven og kobler den fysiske Tivoli-oplevelse sammen med det digitale univers." data-en="Physical photobooths create small, shareable moments in the gardens and connect the physical Tivoli experience to the digital universe.">
+                      Fysiske photobooths skaber små delbare øjeblikke i haven og kobler den fysiske Tivoli-oplevelse sammen med det digitale univers.
+                    </p>
+
+                  </div>
+
+
+                  <div>
+
+                    <p class="mb-2 font-heading text-xl text-primary" data-lang-field data-da="Kommunikation" data-en="Communication">
+                      Kommunikation
+                    </p>
+
+                    <p class="font-sans text-sm leading-[1.7] text-muted-foreground" data-lang-field data-da="SoMe og digital kommunikation holder Tivoli relevant mellem besøg og skaber opmærksomhed omkring events og personlige Moments." data-en="Social and digital communication keeps Tivoli relevant between visits and builds awareness around events and personal Moments.">
+                      SoMe og digital kommunikation holder Tivoli relevant mellem besøg og skaber opmærksomhed omkring events og personlige Moments.
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </section>
+
+
+              <!-- ================================================= -->
+              <!-- 03 PROTOTYPE -->
+              <!-- ================================================= -->
+
+              <section
+                id="prototype"
+                class="mb-32 scroll-mt-28"
+              >
+
+                <div class="mb-8">
+
+                  <p class="project-number">
+                    03
+                  </p>
+
+                  <h2 class="mt-2 font-heading text-3xl font-normal leading-tight tracking-[-0.02em] text-primary md:text-4xl" data-lang-field data-da="Prototype & brugerflows" data-en="Prototype & user flows">
+                    Prototype & brugerflows
+                  </h2>
+
+                </div>
+
+
+                <p class="mb-10 max-w-[38rem] font-sans text-base leading-[1.7] text-muted-foreground">
+                  <span data-lang-field data-da="Den endelige prototype demonstrerer to centrale brugerflows: hvordan brugeren opdager og planlægger et event sammen med venner, og hvordan tidligere Tivoli-oplevelser samles i Tivoli Moments." data-en="The final prototype demonstrates two central user flows: discovering and planning an event with friends, and turning past Tivoli experiences into Tivoli Moments.">Den endelige prototype demonstrerer to centrale brugerflows: hvordan brugeren opdager og planlægger et event sammen med venner, og hvordan tidligere Tivoli-oplevelser samles i Tivoli Moments.</span>
+                </p>
+
+
+
+
+                <div class="space-y-12">
+
+                  <!-- FLOW 01 -->
+
+                  <div>
+
+                    <p class="mb-4 font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                      <span data-lang-field data-da="Flow 01 · Opdag → planlæg → invitér" data-en="Flow 01 · Discover → plan → invite">Flow 01 · Opdag → planlæg → invitér</span>
+                    </p>
+
+                    <div class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-3 md:gap-4">
+
+                      <figure>
+                        <img
+                          src="/images/projects/tivoli/flow-calendar.webp"
+                          alt="Tivoli Moments calendar prototype"
+                          onerror="this.closest('figure').hidden = true"
+                          loading="lazy"
+                          class="block h-auto w-full object-contain"
+                        />
+                      </figure>
+
+
+                      <figure>
+                        <img
+                          src="/images/projects/tivoli/flow-invitation.webp"
+                          alt="Tivoli Moments friend invitation prototype"
+                          onerror="this.closest('figure').hidden = true"
+                          loading="lazy"
+                          class="block h-auto w-full object-contain"
+                        />
+                      </figure>
+
+
+                      <figure>
+                        <img
+                          src="/images/projects/tivoli/flow-planning.webp"
+                          alt="Tivoli Moments planning flow"
+                          onerror="this.closest('figure').hidden = true"
+                          loading="lazy"
+                          class="block h-auto w-full object-contain"
+                        />
+                      </figure>
+
+                    </div>
+
+                    <figure class="mt-4 overflow-hidden">
+                      <img
+                        src="/images/projects/tivoli/tivolimomentsudsnit.webp"
+                        alt="Selected Tivoli Moments screens from flow 1"
+                        loading="lazy"
+                        class="block h-auto w-full object-contain"
+                      />
+                    </figure>
+
+                  </div>
+
+
+                  <!-- FLOW 02 -->
+
+                  <div>
+
+                    <p class="mb-4 font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                      <span data-lang-field data-da="Flow 02 · Besøg → husk → kom igen" data-en="Flow 02 · Visit → remember → return">Flow 02 · Besøg → husk → kom igen</span>
+                    </p>
+
+                    <figure class="mt-4">
+                      <img
+                        src="/images/projects/tivoli/tivolirecap.webp"
+                        alt="Tivoli Moments personalised recap"
+                        onerror="this.closest('figure').hidden = true"
+                        loading="lazy"
+                        class="block h-auto w-full object-contain"
+                      />
+                    </figure>
+
+                  </div>
+
+                </div>
+
+              </section>
+
+
+              <!-- ================================================= -->
+              <!-- 04 VISUALS -->
+              <!-- ================================================= -->
+
+              <section
+                id="visuals"
+                class="mb-20 scroll-mt-28"
+              >
+
+                <div class="mb-8">
+
+                  <p class="project-number">
+                    04
+                  </p>
+
+                  <h2 class="mt-2 font-heading text-3xl font-normal leading-tight tracking-[-0.02em] text-primary md:text-4xl" data-lang-field data-da="Visuel kommunikation" data-en="Visual communication">
+                    Visuel kommunikation
+                  </h2>
+
+                </div>
+
+
+                <p class="mb-10 max-w-[38rem] font-sans text-base leading-[1.7] text-muted-foreground">
+                  <span data-lang-field data-da="Konceptet blev også tænkt som en del af Tivolis eksisterende kommunikation. Her arbejder vi med korte, sociale budskaber, der skal skabe nysgerrighed og få brugeren til at åbne appen." data-en="The concept was also designed as part of Tivoli's existing communication. Short, social messages create curiosity and encourage users to open the app.">Konceptet blev også tænkt som en del af Tivolis eksisterende kommunikation. Her arbejder vi med korte, sociale budskaber, der skal skabe nysgerrighed og få brugeren til at åbne appen.</span>
+                </p>
+
+
+                <div class="grid grid-cols-2 gap-3 md:gap-4">
+
+                  <figure class="col-span-2">
+                    <img
+                      src="/images/projects/tivoli/tivolikommunikation.webp"
+                      alt="Tivoli Moments social media communication"
+                      onerror="this.closest('figure').hidden = true"
+                      loading="lazy"
+                      class="block h-auto w-full object-contain"
+                    />
+                  </figure>
+
+
+                  <figure>
+                    <img
+                      src="/images/projects/tivoli/storyboard.webp"
+                      alt="Tivoli Moments storyboard"
+                      onerror="this.closest('figure').hidden = true"
+                      loading="lazy"
+                      class="block h-auto w-full object-contain"
+                    />
+                  </figure>
+
+
+                  <figure class="mt-8 md:mt-12">
+                    <img
+                      src="/images/projects/tivoli/photobooth.webp"
+                      alt="Tivoli Moments photobooth concept"
+                      onerror="this.closest('figure').hidden = true"
+                      loading="lazy"
+                      class="block h-auto w-full object-contain"
+                    />
+                  </figure>
+
+                </div>
+
+              </section>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- RIGHT — PROJECT INTRO -->
+            <!-- ================================================= -->
+
+            <aside
+              class="order-1 min-w-0 self-start md:mt-30 lg:mt-0 lg:order-2 lg:sticky lg:top-24"
+            >
+
+              <div>
+
+                <div class="project-meta">
+
+                  <span
+                    data-lang-field
+                    data-da={localize(project.category, "da")}
+                    data-en={localize(project.category, "en")}
+                  >
+                    {localize(project.category, "da")}
+                  </span>
+
+                  <span>·</span>
+
+                  <span>
+                    {project.year}
+                  </span>
+
+                  {
+                    project.tags?.map((tag) => (
+                      <>
+                        <span>·</span>
+                        <span
+                          data-lang-field
+                          data-da={localize(tag, "da")}
+                          data-en={localize(tag, "en")}
+                        >
+                          {localize(tag, "da")}
+                        </span>
+                      </>
+                    ))
+                  }
+
+                </div>
+
+
+                <h1 class="heading-display mt-8 mb-8 text-4xl leading-tight text-primary md:text-5xl lg:text-5xl xl:text-6xl">
+                  {project.title}
+                </h1>
+
+
+                <p
+                  class="project-description max-w-[38rem]"
+                  data-lang-field
+                  data-da={localize(project.description, "da")}
+                  data-en={localize(project.description, "en")}
+                >
+                  {localize(project.description, "da")}
+                </p>
+
+
+                <p
+                  class="mb-8 max-w-[38rem] whitespace-pre-line font-sans text-base leading-[1.7] text-muted-foreground"
+                  data-lang-field
+                  data-da={localize(project.longDescription, "da")}
+                  data-en={localize(project.longDescription, "en")}
+                >
+                  {localize(project.longDescription, "da")}
+                </p>
+
+
+                <div class="flex flex-wrap gap-5">
+                  {
+                    project.resources?.map((resource) => (
+                      <a
+                        href={isPlaceholderLink(resource.href) ? "#" : resource.href}
+                        target={resource.href.startsWith("http") ? "_blank" : undefined}
+                        rel={resource.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        download={resource.href.endsWith(".pdf") ? true : undefined}
+                        class:list={[
+                          "inline-flex items-center gap-1 font-sans text-base font-medium",
+                          isPlaceholderLink(resource.href)
+                            ? "cursor-not-allowed text-muted-foreground/60"
+                            : "link-external",
+                        ]}
+                        aria-disabled={isPlaceholderLink(resource.href) ? "true" : undefined}
+                        onclick={isPlaceholderLink(resource.href) ? "event.preventDefault()" : undefined}
+                      >
+                        <span
+                          data-lang-field
+                          data-da={localize(resource.label, "da")}
+                          data-en={localize(resource.label, "en")}
+                        >
+                          {localize(resource.label, "da")}
+                        </span>
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    ))
+                  }
+                </div>
+
+              </div>
+
+            </aside>
+
+          </section>
+
+        </div>
+
+      ) : (
 
             <!-- ================================================= -->
             <!-- OTHER PROJECTS -->
