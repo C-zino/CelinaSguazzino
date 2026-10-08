@@ -1,6 +1,21 @@
 ---
 import { projects } from "../data/projects";
 
+interface Props {
+  limit?: number;
+  showMoreLink?: boolean;
+  headingKey?: string;
+  headingText?: string;
+}
+
+const {
+  limit,
+  showMoreLink = false,
+  headingKey = "projects.heading",
+  headingText = "udvalgte projekter",
+} = Astro.props;
+const visibleProjects = limit ? projects.slice(0, limit) : projects;
+
 type LocalizedValue = string | Partial<Record<"da" | "en", string>>;
 
 const localize = (value: LocalizedValue, language: "da" | "en" = "da") => {
@@ -12,14 +27,14 @@ const localize = (value: LocalizedValue, language: "da" | "en" = "da") => {
 <section id="projects" class="bg-secondary/30">
   <div class="section-container pb-10 md:pb-30">
 
-    <h3 id="projects-heading" class="scroll-mt-24 pt-15 section-header reveal-section" data-i18n="projects.heading">
-      udvalgte projekter
+    <h3 id="projects-heading" class="scroll-mt-24 pt-15 section-header reveal-section" data-i18n={headingKey}>
+      {headingText}
     </h3>
 
     <div class="flex flex-col gap-16 md:gap-24">
 
       {
-        projects.map((project, index) => (
+        visibleProjects.map((project, index) => (
           <article
             class="project-card font-sans"
             style={{ transitionDelay: `${index * 100}ms` }}
@@ -132,6 +147,18 @@ const localize = (value: LocalizedValue, language: "da" | "en" = "da") => {
       }
 
     </div>
+
+    {showMoreLink && (
+      <div class="mt-16 flex justify-center md:mt-24">
+        <a
+          href="/projects"
+          class="inline-flex items-center gap-2 border-b border-primary pb-1 font-sans font-medium text-primary transition-colors duration-200 hover:border-primary/60 hover:text-primary/70"
+        >
+          <span data-i18n="projects.seeMore">Se flere projekter</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    )}
   </div>
 </section>
 
