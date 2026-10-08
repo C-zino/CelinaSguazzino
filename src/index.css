@@ -258,6 +258,10 @@ body {
 
     transform: translateY(0);
   }
+
+  .project-card-compact {
+    transition-duration: 0.45s;
+  }
 }
 
 /* =========================================================

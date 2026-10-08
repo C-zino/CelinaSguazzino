@@ -11,8 +11,23 @@ import Footer from "../components/Footer.astro";
 >
   <div class="min-h-screen bg-background">
     <Navigation />
-    <main class="pt-16 md:pt-20">
-      <ProjectsSection headingKey="projects.allHeading" headingText="alle projekter" />
+    <main>
+      <div>
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 border-b border-primary pb-1 font-sans text-sm text-primary transition-colors hover:border-primary/60 hover:text-primary/70"
+        >
+          <span aria-hidden="true">←</span>
+          <span data-i18n="project.backToHome">Tilbage til forsiden</span>
+        </a>
+      </div>
+      <ProjectsSection
+        headingKey="projects.allHeading"
+        headingText="alle projekter"
+        containerClass="!max-w-7xl !pt-4 md:!pt-20"
+        wideLayout
+        compactLayout
+      />
     </main>
     <Footer />
   </div>

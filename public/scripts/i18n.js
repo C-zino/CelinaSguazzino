@@ -46,6 +46,7 @@ const translations = {
     project: {
       label: "Projekt",
       backToProjects: "Tilbage til projekter",
+      backToHome: "Tilbage til forsiden",
       sectionMetaAds: "Meta Ads",
       sectionWebDesign: "Webdesign",
       sectionAiImagery: "AI-billeder",
@@ -97,6 +98,7 @@ const translations = {
     project: {
       label: "Project",
       backToProjects: "Back to projects",
+      backToHome: "Back to home",
       sectionMetaAds: "Meta Ads",
       sectionWebDesign: "Web Design",
       sectionAiImagery: "AI Imagery",
